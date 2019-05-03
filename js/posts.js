@@ -1,1 +1,1 @@
-[{"title":"ʹ��Hexo��������","date":"2019.05.03","uri":"2019/05/03/new-blob/","excerpt":""},{"title":"Hello World","date":"2019.05.03","uri":"2019/05/03/hello-world/","excerpt":""}]
+[{"title":"使用hexo写博客","date":"2019.05.03","uri":"2019/05/03/使用hexo写博客/","excerpt":""},{"title":"Hello World","date":"2019.05.03","uri":"2019/05/03/hello-world/","excerpt":""}]
