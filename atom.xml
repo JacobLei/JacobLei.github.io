@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://JacobLei.github.io/"/>
-  <updated>2019-05-04T08:17:20.236Z</updated>
+  <updated>2019-05-04T08:12:44.257Z</updated>
   <id>http://JacobLei.github.io/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>CNAME</title>
-    <link href="http://JacobLei.github.io/2019/05/04/CNAME/"/>
-    <id>http://JacobLei.github.io/2019/05/04/CNAME/</id>
-    <published>2019-05-04T08:17:20.000Z</published>
-    <updated>2019-05-04T08:17:20.236Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>[LeetCode]1. 两数之和</title>
