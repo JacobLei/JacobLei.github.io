@@ -85,14 +85,18 @@
 <meta name="keywords" content="Spring,Spring in action">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[spring实战]1-自动化装配bean">
-<meta property="og:url" content="http://JacobLei.github.io/2019/05/04/spring实战-自动化装配bean/index.html">
+<meta property="og:url" content="http://JacobLei.github.io/2019/05/04/spring实战1-自动化装配bean/index.html">
 <meta property="og:site_name" content="jacob2359">
 <meta property="og:description" content="Spring提供三种主要的装备机制：  在XML中进行显示配置 在Java中进行显示配置 隐式的bean发现机制和自动配置  本章主要学习隐式的bean发现机制和自动配置，通过音响系统的各个组件来说明Spring是如何隐式的bean发现机制和自动配置。首先创建一个CD接口，Spring会发现它并将其创建一个bean；然后会创建一个CDPlayer类，让Spring发现它并将CD bean注入进来。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-04T16:07:57.306Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/04/spring实战1-自动化装配bean/CDPlayerTest错误.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/04/spring实战1-自动化装配bean/CDPlayerTest测试通过.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/04/spring实战1-自动化装配bean/验证自动装配测试结果.png">
+<meta property="og:updated_time" content="2019-05-04T15:33:28.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[spring实战]1-自动化装配bean">
 <meta name="twitter:description" content="Spring提供三种主要的装备机制：  在XML中进行显示配置 在Java中进行显示配置 隐式的bean发现机制和自动配置  本章主要学习隐式的bean发现机制和自动配置，通过音响系统的各个组件来说明Spring是如何隐式的bean发现机制和自动配置。首先创建一个CD接口，Spring会发现它并将其创建一个bean；然后会创建一个CDPlayer类，让Spring发现它并将CD bean注入进来。">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/04/spring实战1-自动化装配bean/CDPlayerTest错误.png">
 
 
 
@@ -122,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/05/04/spring实战-自动化装配bean/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/05/04/spring实战1-自动化装配bean/">
 
 
 
@@ -255,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/04/spring实战-自动化装配bean/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/04/spring实战1-自动化装配bean/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -382,9 +386,9 @@
 <p><code>CDPlayerTest</code>使用<code>Spring</code>的<code>SpringJUnit4ClassRunner</code>，以便在测试开始的时候自动创建<code>Spring</code>的<code>ApplicationContext</code>。<code>@ContextConfiguration</code>会告诉<code>CDPlayerTest</code>在需要在<code>CDPlayerConfig</code>中加载配置。因为<code>CDPlayerConfig</code>中包含<code>@ComponentScan</code>，因此最终的<code>ApplicationContext</code>包含<code>CD bean</code>。</p>
 <p>为了证明<code>ApplicationContext</code>包含<code>CD bean</code>， 在测试代码中使用<code>CD</code>类型的属性，且在这个属性中添加<code>@Autowired</code>注解，以便将<code>CD</code>注入到测试代码中。最后通过断言判断<code>cd</code>属性不为<code>null</code>。</p>
 <blockquote>
-<p>注意：在创建测试代码过程中，出现如图问题：<br>图中的主要原因是<code>junit</code>的版本过低，在<code>pom.xml</code>文件中<code>junit</code>依赖的改为4.12及其以上即可。</p>
+<p>注意：在创建测试代码过程中，出现如图问题：<img src="/2019/05/04/spring实战1-自动化装配bean/CDPlayerTest错误.png" title="CDPlayerTest错误示意图"><br>图中的主要原因是<code>junit</code>的版本过低，在<code>pom.xml</code>文件中<code>junit</code>依赖的改为4.12及其以上即可。</p>
 </blockquote>
-
+<img src="/2019/05/04/spring实战1-自动化装配bean/CDPlayerTest测试通过.png" title="CDPlayerTest测试通过示意图">
 <h1 id="为组件扫描的bean命名"><a href="#为组件扫描的bean命名" class="headerlink" title="为组件扫描的bean命名"></a>为组件扫描的bean命名</h1><p><code>Spring</code>中的<code>ApplicationContext</code>所有的<code>bean</code>都会有一个<code>ID</code>。如<code>PianoCD</code>中我们没有设置其对应<code>bean</code>的<code>ID</code>，这时<code>Spring</code>会默认指定其<code>ID</code>为<code>pianoCD</code>。有些情况，我们需要自定义<code>bean</code>的<code>ID</code>，可以通过<code>@Component</code>注解来实现，具体如下代码所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"myLoveCD"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PianoCD</span> <span class="keyword">implements</span> <span class="title">CD</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="设置组件扫描-ComponentScan-的基础包"><a href="#设置组件扫描-ComponentScan-的基础包" class="headerlink" title="设置组件扫描(@ComponentScan)的基础包"></a>设置组件扫描(<code>@ComponentScan</code>)的基础包</h1><p><code>@ComponentScan</code>默认情况下扫描配置类所在的包（基础包，base package）中的组件，有时需要扫描不同的包，有时需要扫描多个包，该如何处理？<br>为了将配置代码与应用代码分离开，一般配置类单独放<code>config</code>包中，这时需要我们明确设置基础包，可以通过指定<code>@ComponentScan</code>中的<code>value</code>属性值来设置需要扫描的基础包。具体代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(value=<span class="string">"com.jacob"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CDPlayerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>如果需要扫描多个包，具体代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages=&#123;<span class="string">"package1"</span>, <span class="string">"package2"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CDPlayerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -392,8 +396,7 @@
 <p><code>CDPlayer</code>中在构造器上添加<code>@Autowired</code>注解，表明当<code>Spring</code>创建<code>CDPlayer bean</code>时，会通过这个构造器来进行实例化并且会传入<code>CD</code>类型的<code>bean</code>。<br><code>@Autowired</code>注解类可以在任何方法上使用。例如<code>CDPlayer</code>有一个<code>setCD()</code>方法，那么可以采用如下的注解形式进行自动装配：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@`<span class="meta">@Autowired</span>`</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCD</span><span class="params">(CD cd)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.cd = cd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在自动装配时，如果没有匹配的<code>bean</code>，那么在创建<code>ApplicationContext</code>时会抛异常。可以通过<code>@Autowired(required=false)</code>来避免抛异常，这时<code>Spring</code>将这个<code>bean</code>置为未装配状态。在代码中需要进行<code>null</code>检查来判断<code>bean</code>是否装配成功。如果没有<code>null</code>检查，未装配的<code>bean</code>会抛出<code>NullPointerException</code>。</p>
 <h1 id="验证自动装配"><a href="#验证自动装配" class="headerlink" title="验证自动装配"></a>验证自动装配</h1><p>我们在<code>CDPlayer</code>中在构造器上添加<code>@Autowired</code>注解，<code>Spring</code>会将一个可分配的<code>CD</code>类型的<code>bean</code>自动注入进来（该实验项目中为<code>PianoCD bean</code>）。接下来测试是否注入成功，修改<code>CDPlayerTest</code>如下所示:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jacob;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Rule;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.junit.contrib.java.lang.system.StandardOutputStreamLog;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertEquals;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertNotNull;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(classes = CDPlayerConfig.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CDPlayerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> StandardOutputStreamLog log = <span class="keyword">new</span> StandardOutputStreamLog();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MediaPlayer player;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CD cd;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cdShouldNotBeNull</span><span class="params">()</span></span>&#123;</span><br><span class="line">        assertNotNull(cd);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">play</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        player.play();</span><br><span class="line">        assertEquals(</span><br><span class="line">                <span class="string">"this is PianoCD!!!"</span>,</span><br><span class="line">                log.getLog());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><p><a href="https://github.com/JacobLei/spring-in-aciton/tree/master/ch2-stereo-autoconfig" target="_blank" rel="noopener">github</a></p>
+<img src="/2019/05/04/spring实战1-自动化装配bean/验证自动装配测试结果.png" title="验证自动装配测试结果示意图">
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://item.jd.com/11899370.html" target="_blank" rel="noopener">Spring实战（第四版）</a></p>
 <blockquote>
 <p>声明：本文为学习《Spring实战（第四版）》所作学习笔记，一切版权归该书所有。</p>
@@ -447,7 +450,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://JacobLei.github.io/2019/05/04/spring实战-自动化装配bean/" title="[spring实战]1-自动化装配bean">http://JacobLei.github.io/2019/05/04/spring实战-自动化装配bean/</a>
+    <a href="http://JacobLei.github.io/2019/05/04/spring实战1-自动化装配bean/" title="[spring实战]1-自动化装配bean">http://JacobLei.github.io/2019/05/04/spring实战1-自动化装配bean/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -477,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/04/spring实战1-自动化装配bean/" rel="next" title="[spring实战]1-自动化装配bean">
-                <i class="fa fa-chevron-left"></i> [spring实战]1-自动化装配bean
+              <a href="/2019/05/04/LeetCode-1-两数之和/" rel="next" title="[LeetCode]1. 两数之和">
+                <i class="fa fa-chevron-left"></i> [LeetCode]1. 两数之和
               </a>
             
           </div>
@@ -487,8 +490,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/04/spring实战2-通过Java代码装配bean/" rel="prev" title="[spring实战]2-通过Java代码装配bean">
-                [spring实战]2-通过Java代码装配bean <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/04/spring实战-自动化装配bean/" rel="prev" title="[spring实战]1-自动化装配bean">
+                [spring实战]1-自动化装配bean <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -640,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建bean"><span class="nav-number">1.</span> <span class="nav-text">创建bean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建CD接口和PianoCD类"><span class="nav-number">1.1.</span> <span class="nav-text">创建CD接口和PianoCD类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启组件扫描"><span class="nav-number">1.2.</span> <span class="nav-text">开启组件扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试组件扫描功能"><span class="nav-number">1.3.</span> <span class="nav-text">测试组件扫描功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为组件扫描的bean命名"><span class="nav-number">2.</span> <span class="nav-text">为组件扫描的bean命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置组件扫描-ComponentScan-的基础包"><span class="nav-number">3.</span> <span class="nav-text">设置组件扫描(@ComponentScan)的基础包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过为bean添加注解实现自动装配"><span class="nav-number">4.</span> <span class="nav-text">通过为bean添加注解实现自动装配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#验证自动装配"><span class="nav-number">5.</span> <span class="nav-text">验证自动装配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整代码"><span class="nav-number">6.</span> <span class="nav-text">完整代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建bean"><span class="nav-number">1.</span> <span class="nav-text">创建bean</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建CD接口和PianoCD类"><span class="nav-number">1.1.</span> <span class="nav-text">创建CD接口和PianoCD类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启组件扫描"><span class="nav-number">1.2.</span> <span class="nav-text">开启组件扫描</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试组件扫描功能"><span class="nav-number">1.3.</span> <span class="nav-text">测试组件扫描功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为组件扫描的bean命名"><span class="nav-number">2.</span> <span class="nav-text">为组件扫描的bean命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置组件扫描-ComponentScan-的基础包"><span class="nav-number">3.</span> <span class="nav-text">设置组件扫描(@ComponentScan)的基础包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过为bean添加注解实现自动装配"><span class="nav-number">4.</span> <span class="nav-text">通过为bean添加注解实现自动装配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#验证自动装配"><span class="nav-number">5.</span> <span class="nav-text">验证自动装配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
