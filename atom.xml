@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://JacobLei.github.io/"/>
-  <updated>2019-05-04T15:33:24.191Z</updated>
+  <updated>2019-05-04T15:33:28.277Z</updated>
   <id>http://JacobLei.github.io/</id>
   
   <author>
@@ -15,41 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>[spring实战]2-通过Java代码装配bean</title>
-    <link href="http://JacobLei.github.io/2019/05/04/spring%E5%AE%9E%E6%88%982-%E9%80%9A%E8%BF%87Java%E4%BB%A3%E7%A0%81%E8%A3%85%E9%85%8Dbean/"/>
-    <id>http://JacobLei.github.io/2019/05/04/spring实战2-通过Java代码装配bean/</id>
-    <published>2019-05-04T15:31:15.000Z</published>
-    <updated>2019-05-04T15:33:24.191Z</updated>
-    
-    <content type="html"><![CDATA[<p>Spring提供三种主要的装备机制：</p><ul><li>在XML中进行显示配置</li><li>在Java中进行显示配置</li><li>隐式的bean发现机制和自动配置</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Spring提供三种主要的装备机制：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在XML中进行显示配置&lt;/li&gt;
-&lt;li&gt;在Java中进行显示配置&lt;/li&gt;
-&lt;li&gt;隐式的bean发现机制和自动配置&lt;/li&gt;
-&lt;/ul&gt;
-
-      
-    
-    </summary>
-    
-      <category term="Spring" scheme="http://JacobLei.github.io/categories/Spring/"/>
-    
-      <category term="Spring in action" scheme="http://JacobLei.github.io/categories/Spring/Spring-in-action/"/>
-    
-    
-      <category term="Spring" scheme="http://JacobLei.github.io/tags/Spring/"/>
-    
-      <category term="Spring in action" scheme="http://JacobLei.github.io/tags/Spring-in-action/"/>
-    
-  </entry>
   
   <entry>
     <title>[spring实战]1-自动化装配bean</title>
@@ -84,11 +49,11 @@
   </entry>
   
   <entry>
-    <title>[LeetCode]1. 两数之和</title>
+    <title>LeetCode-1 两数之和</title>
     <link href="http://JacobLei.github.io/2019/05/04/LeetCode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
     <id>http://JacobLei.github.io/2019/05/04/LeetCode-1-两数之和/</id>
     <published>2019-05-04T04:09:36.000Z</published>
-    <updated>2019-05-04T08:12:44.257Z</updated>
+    <updated>2019-05-09T13:19:17.663Z</updated>
     
     <content type="html"><![CDATA[<ul><li>题目：1. 两数之和</li><li>难度：简单</li><li>解决方案：暴力求解、<code>HashMap</code></li></ul><a id="more"></a><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个整数数组<code>nums</code>和一个目标值<code>target</code>，请你在该数组中找出和为目标值的那 两个整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [2, 7, 11, 15], target = 9</span><br><span class="line"></span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure></p><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p><strong>两数之和</strong>可称为经典的面试题，曾经百度实习面试时手写过该代码，也在秋招电话面试时面到该题。这个题最基本的思路是使用两次<code>for</code>循环，但时间复杂度为<code>O(n^2)</code>，<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = target - nums[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;nums.length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j] == tmp &amp;&amp; j != i)&#123;</span><br><span class="line">                    res[<span class="number">0</span>] = i;</span><br><span class="line">                    res[<span class="number">1</span>] = j;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><img src="/2019/05/04/LeetCode-1-两数之和/两次for循环提交结果.jpg" title="两次for循环提交结果"><p>虽然在LeetCode或面试中能够解答出来，但是该方法的时间复杂度过高，需要进一步优化。我们发现题目中的数组是无序的（虽然示例中的数组有序的，但这只是一个特列，测试用例中并不是所有的数组都是有序的），当数组如果是<strong>有序</strong>的，然后再去查找是否能更加方便？一个很重要的问题，<strong>该题中需要返回的是数组下标，因此不能破坏数组中的位置关系</strong>。如果将数组进行排序，则会破坏数组的位置关系，不能满足题目要求。如何<strong>将数组的值与数组的位置关系进行绑定</strong>，是这个题目的解题关键。这样很容易想到<code>k-v</code>结构，在<code>java</code>中可以通过<code>HashMap</code>来实现。具体思路如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 遍历数组建立HashMap映射，其中HashMap中的key为数组的值，value为数组的位置，即&lt;nums[i], i&gt;;</span><br><span class="line">2. 查找是否存在两个数之和等于target：</span><br><span class="line">2.1 遍历数组，得到第一个数字nums[i]，记为num1，该数字在数组中的位置为i</span><br><span class="line">2.2 计算target-nums[i]，计算结果为另一个需要的数字num2，若该数字存在，该数字在数组中的位置为hasmMap.get(num2)</span><br><span class="line">2.3 在HashMap中判断num2是否存在：</span><br><span class="line">若不存在，则跳转至2.1</span><br><span class="line">若存在，则判断num1与num2对应的value是否相等：</span><br><span class="line">若相等，则跳转至2.1</span><br><span class="line">若不相等，则找到这两个数num1+num2==target，返回对应的数组位置</span><br></pre></td></tr></table></figure></p><p><code>java</code>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        </span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 1. 建立HashMap映射</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2. 查找是否存在两个数之和等于target</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(tmp) &amp;&amp; map.get(tmp) != i)&#123;</span><br><span class="line">                res[<span class="number">0</span>] = i;</span><br><span class="line">                res[<span class="number">1</span>] = map.get(tmp);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><img src="/2019/05/04/LeetCode-1-两数之和/HashMap方法提交结果.jpg" title="HashMap方法提交结果"><p>整个算法流程是时间复杂度为<code>O(n)</code>，由于使用了<code>HashMap</code>申请了内存空间，其空间复杂度为<code>O(n)</code>。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. 两数之和</a></p>]]></content>
     
