@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jacoblei.github.io/2019/05/04/LeetCode-1-两数之和/两次for循环提交结果.jpg">
 <meta property="og:image" content="http://jacoblei.github.io/2019/05/04/LeetCode-1-两数之和/HashMap方法提交结果.jpg">
-<meta property="og:updated_time" content="2019-05-09T14:34:24.914Z">
+<meta property="og:updated_time" content="2019-05-11T08:53:30.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-1 两数之和">
 <meta name="twitter:description" content="题目：1. 两数之和 难度：简单 分类：数组，哈希表 解决方案：暴力求解、HashMap">
@@ -354,6 +354,7 @@
 <li>解决方案：暴力求解、<code>HashMap</code></li>
 </ul>
 <a id="more"></a>
+<p>从今天开始开启《LeetCode解题报告》系列文章，希望能够坚持下来。今天我们来学习第1题两数之和，既然放在首位，可见该题的重要性。这个在笔试中出现的概率非常大，希望大家在面试前能够手写出来。</p>
 <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个整数数组<code>nums</code>和一个目标值<code>target</code>，请你在该数组中找出和为目标值的那 两个整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [2, 7, 11, 15], target = 9</span><br><span class="line"></span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure></p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p><strong>两数之和</strong>可称为经典的面试题，曾经百度实习面试时手写过该代码，也在秋招电话面试时面到该题。这个题最基本的思路是使用两次<code>for</code>循环，但时间复杂度为<code>O(n^2)</code>，<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = target - nums[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;nums.length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j] == tmp &amp;&amp; j != i)&#123;</span><br><span class="line">                    res[<span class="number">0</span>] = i;</span><br><span class="line">                    res[<span class="number">1</span>] = j;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <img src="/2019/05/04/LeetCode-1-两数之和/两次for循环提交结果.jpg" title="两次for循环提交结果">
@@ -485,7 +486,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -598,7 +599,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.2k字</span>
+  <span class="post-count">博客全站共3.7k字</span>
 </div>
 
 
