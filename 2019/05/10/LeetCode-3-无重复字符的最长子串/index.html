@@ -89,10 +89,15 @@
 <meta property="og:site_name" content="jacob2359">
 <meta property="og:description" content="题目：3. 无重复字符的最长子串 难度：中等 分类：字符串 解决方案：双指针、滑动窗口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-11T09:03:10.832Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/10/LeetCode-3-无重复字符的最长子串/子串.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/10/LeetCode-3-无重复字符的最长子串/子序列.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/10/LeetCode-3-无重复字符的最长子串/示例1分析过程.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/10/LeetCode-3-无重复字符的最长子串/提交结果.png">
+<meta property="og:updated_time" content="2019-05-11T14:36:31.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-3 无重复字符的最长子串">
 <meta name="twitter:description" content="题目：3. 无重复字符的最长子串 难度：中等 分类：字符串 解决方案：双指针、滑动窗口">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/10/LeetCode-3-无重复字符的最长子串/子串.png">
 
 
 
@@ -357,8 +362,18 @@
 <p>示例3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;pwwkew&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。</span><br></pre></td></tr></table></figure></p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>首先我们看看这个题的示例3，该示例中提示我们这个题需要求的字符串的<strong>子串</strong>而不是<strong>子序列</strong>，我们具体来看看什么是子串，什么是子序列。</p>
 <blockquote>
-<p>子串：字符串中任意个<strong>连续</strong>的字符组成的子序列称为该串的子串。<br>子序列：</p>
+<p>子串：字符串中任意个<strong>连续</strong>的字符组成的子序列称为该串的子串。注意子串强调字符的连续性。<br><img src="/2019/05/10/LeetCode-3-无重复字符的最长子串/子串.png" title="子串"><br>子序列：字符串中去掉任意个元素后得到的结果即为该字符串的子序列。注意子序列中字符出现的次序与原字符串中字符出现的次序要保持一致。<br><img src="/2019/05/10/LeetCode-3-无重复字符的最长子串/子序列.png" title="子序列"></p>
 </blockquote>
+<p>区分子串和子序列后，我们再回过头来看看这个题。我们先动手画一画示例1的解题过程，如下图所示：<br><img src="/2019/05/10/LeetCode-3-无重复字符的最长子串/示例1分析过程.png" title="示例1分析过程"><br>从上图我们可以观察出，可以使用双指针（<code>left</code>指针和<code>right</code>指针）来维护一个滑动窗口，这个窗口内的字符都是没有重复的，遍历一趟字符串后就可以得到最大的子串，因此时间复杂度为<code>O(n)</code>。现在想一个问题：<strong><code>right</code>指针指向的字符怎么确定它在前面是否出现过，若出现过，它出现的位置在哪儿？</strong>对于这个问题，做过<a href="https://www.jacob2359.com/2019/05/04/LeetCode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/#more" target="_blank" rel="noopener">LeetCode-1 两数之和</a>这道题的小伙伴们应该知道，我们可以使用<code>HashMap</code>记录一个字符是否出现以及出现后的位置。对于重复多次出现的字符，我们是保留所有出现的位置还是只记录一个位置？观察示例1分析过程可以知道，我们只需要保存一个最大位置即可。还有一个关键点，我们如何确定<code>left</code>指针的位置？这一点非常重要，需要分情况讨论。</p>
+<ul>
+<li>当目前<code>right</code>指针指向的字符未出现过，<code>left</code>指针不需要移动；</li>
+<li>当目前<code>right</code>指针指向的字符出现过，如果该字符在窗口中，即该字符出现在当前<code>left</code>指针的右边，则通过<code>HashMap</code>获取字符的位置并向右移动一位即为更新后<code>left</code>的位置；如果该字符在窗口外面，即在当前<code>left</code>指针的左边，则不需要移动<code>left</code>的位置。<br>分析完后，再看看<code>java</code>代码的具体实现：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 创建HashMap，用来保存字符与位置之间的对应关系</span></span><br><span class="line">        HashMap&lt;Character, Integer&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">// 初始化左指针和右指针，并遍历字符串</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>; right &lt; s.length(); right++)&#123;</span><br><span class="line">            <span class="comment">// 判断右指针指向的字符是否出现过</span></span><br><span class="line">            <span class="keyword">if</span>(hashMap.containsKey(s.charAt(right)))&#123;</span><br><span class="line">                <span class="comment">// 确定左指针的位置</span></span><br><span class="line">                left = Math.max(left, hashMap.get(s.charAt(right))+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 对于第一次出现的字符，保存该字符的位置；对于多次出现的字符，更新该字符出现的位置</span></span><br><span class="line">            hashMap.put(s.charAt(right), right);</span><br><span class="line">            <span class="comment">// 更新窗口的大小，保存最大的窗口大小</span></span><br><span class="line">            res = Math.max(res, right-left+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="/2019/05/10/LeetCode-3-无重复字符的最长子串/提交结果.png" title="提交结果">
+<p>整个算法流程是时间复杂度为<code>O(n)</code>，空间复杂度为<code>O(1)</code>。</p>
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A3_LongestSubstringWithoutRepeatingCharacters.java" target="_blank" rel="noopener">LeetCode-3 无重复字符的最长子串</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/" target="_blank" rel="noopener">3. 无重复字符的最长子串</a></p>
 
       
     </div>
@@ -556,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github地址"><span class="nav-number">3.</span> <span class="nav-text">Github地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
@@ -595,7 +610,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.7k字</span>
+  <span class="post-count">博客全站共4.4k字</span>
 </div>
 
 
