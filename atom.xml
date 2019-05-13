@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://JacobLei.github.io/"/>
-  <updated>2019-05-12T15:06:10.015Z</updated>
+  <updated>2019-05-13T14:55:40.210Z</updated>
   <id>http://JacobLei.github.io/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-5 最长回文子串</title>
+    <link href="http://JacobLei.github.io/2019/05/13/LeetCode-5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"/>
+    <id>http://JacobLei.github.io/2019/05/13/LeetCode-5-最长回文子串/</id>
+    <published>2019-05-13T13:02:42.000Z</published>
+    <updated>2019-05-13T14:55:40.210Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>题目：5. 最长回文子串</li><li>难度：中等</li><li>分类：字符串</li><li>解决方案：双指针<a id="more"></a></li></ul><p>今天我们学习第5题<strong>最长回文子串</strong>，这是一个字符串的中等题，像这样字符串的题目经常作为面试题来考察面试者算法能力和写代码能力，因此最好能手写出该题。下面我们看看这道题的题目描述。</p><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个字符串<code>s</code>，找到<code>s</code>中最长的回文子串。你可以假设<code>s</code>的最大长度为1000。</p><p>示例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;babad&quot;</span><br><span class="line">输出: &quot;bab&quot;</span><br><span class="line">注意: &quot;aba&quot; 也是一个有效答案。</span><br></pre></td></tr></table></figure></p><p>示例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;cbbd&quot;</span><br><span class="line">输出: &quot;bb&quot;</span><br></pre></td></tr></table></figure></p><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>读完这道题后，我们发现一个新名词<strong>回文子串</strong>，什么是回文子串？首先我们先理解什么是<strong>回文串</strong>，就是从左向右读和从右向左读的结果是一样的字符串，如’abcba’。回文子串就是在给定字符串中寻找回文串。我们想想该如何寻找？</p><p>最简单直观的方法是遍历字符串，遍历的时候以每个字符为中心向左右两侧扩散。如图1所示。<br><img src="/2019/05/13/LeetCode-5-最长回文子串/查找回文子串示意图.png" title="图1.查找回文子串示意图"></p><p>聪明的小伙伴们已经发现了上述解题思路对回文子串长度为偶数就不适用了，如示例2用上图的方法分析出来的结果就不正确。那该怎么办呢？解决办法很简单，对于奇数，我们以该字符为中心向两边扩散；对于偶数，我们以该字符和下一个字符作为中心字符，然后向两边扩散。具体见下面<code>java</code>代码所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> start = <span class="number">0</span>, maxLen = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() &lt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            <span class="comment">// 回文子串为奇数时，查找最长回文子串</span></span><br><span class="line">            extendPalindrome(s, i, i);</span><br><span class="line">            <span class="comment">// 回文子串为偶数时，查找最长回文子串</span></span><br><span class="line">            extendPalindrome(s, i, i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> s.substring(start, start + maxLen);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">extendPalindrome</span><span class="params">(String s, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 判断是否为回文子串，若是，则左指针向左移动，右指针向右移动</span></span><br><span class="line">        <span class="keyword">while</span>(left&gt;=<span class="number">0</span> &amp;&amp; right&lt;s.length() &amp;&amp; s.charAt(left) == s.charAt(right))&#123;</span><br><span class="line">            left--;</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 回文子串查找完成后，判断刚刚查找的回文子串是否为最长回文子串，若是，则更新起始位置和最长长度</span></span><br><span class="line">        <span class="keyword">if</span>(maxLen &lt; right-left-<span class="number">1</span>)&#123;</span><br><span class="line">            start = left + <span class="number">1</span>;</span><br><span class="line">            maxLen = right -left - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><img src="/2019/05/13/LeetCode-5-最长回文子串/提交结果.png" title="图2.提交结果"><p>整个算法流程的时间复杂度为<code>O(n^2)</code>，空间复杂度为<code>O(1)</code>。</p><h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A5_LongestPalindromicSubstring.java" target="_blank" rel="noopener">LeetCode-5 最长回文子串</a></p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode.com/problems/longest-palindromic-substring/discuss/2928/Very-simple-clean-java-solution" target="_blank" rel="noopener">5.最长回文子串</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;题目：5. 最长回文子串&lt;/li&gt;
+&lt;li&gt;难度：中等&lt;/li&gt;
+&lt;li&gt;分类：字符串&lt;/li&gt;
+&lt;li&gt;解决方案：双指针
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode刷题宝典</title>
+    <link href="http://JacobLei.github.io/2019/05/13/LeetCode%E5%88%B7%E9%A2%98%E5%AE%9D%E5%85%B8/"/>
+    <id>http://JacobLei.github.io/2019/05/13/LeetCode刷题宝典/</id>
+    <published>2019-05-13T09:46:31.000Z</published>
+    <updated>2019-05-13T13:00:24.614Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于LeetCode，我相信计算机专业或相关专业的同学又有所耳闻。在找工作时，常常听到某某大神刷了2遍LeetCode最后拿到9个offer等等传说。可见LeetCode的重要性。下面我将从什么是LeetCode，为什么需要刷LeetCode，怎么刷LeetCode这三个方面聊一聊。</p><h1 id="什么是LeetCode？"><a href="#什么是LeetCode？" class="headerlink" title="什么是LeetCode？"></a>什么是LeetCode？</h1><p>传说中的LeetCode就是美国在线编程网站，上面收集了各大IT公司的笔试题和面试题，对与要找工作的小伙伴来说，LeetCode是一个不可多得的好帮手。Wait~~<strong>美国在线编程网站</strong>？？？全英文？？？其实不是这样的，LeetCode也有相应的中文网站——力扣(<a href="https://leetcode-cn.com/)，对英文刷题吃力的小伙伴们赶紧收藏。" target="_blank" rel="noopener">https://leetcode-cn.com/)，对英文刷题吃力的小伙伴们赶紧收藏。</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;对于LeetCode，我相信计算机专业或相关专业的同学又有所耳闻。在找工作时，常常听到某某大神刷了2遍LeetCode最后拿到9个offer等等传说。可见LeetCode的重要性。下面我将从什么是LeetCode，为什么需要刷LeetCode，怎么刷LeetCode这三个方
+      
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
+    
+      <category term="学习方法" scheme="http://JacobLei.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-4 寻找两个有序数组的中位数</title>
