@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://jacoblei.github.io/2019/05/19/LeetCode-6-Z字形变换/Z字形旋转过程.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/05/19/LeetCode-6-Z字形变换/解题思路.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/05/19/LeetCode-6-Z字形变换/提交结果.png">
-<meta property="og:updated_time" content="2019-05-19T09:47:08.694Z">
+<meta property="og:updated_time" content="2019-05-20T12:29:33.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-6 Z字形变换">
 <meta name="twitter:description" content="题目：6. Z字形变换 难度：中等 分类：字符串 解决方案：字符串遍历">
@@ -368,7 +368,7 @@
 <p>具体<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 将字符串转换为字符数组</span></span><br><span class="line">        <span class="keyword">char</span>[] arr = s.toCharArray();</span><br><span class="line">        <span class="comment">// 构建二维数组（这里使用的StringBuilder是Java面试时的一个考点，可以查看String、StringBuffer和StringBuilder的区别）</span></span><br><span class="line">        StringBuilder[] sb = <span class="keyword">new</span> StringBuilder[numRows];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numRows; i++)&#123;</span><br><span class="line">            sb[i] = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>, len = arr.length;</span><br><span class="line">        <span class="comment">// 遍历原始数组，构建Z字形二维数组</span></span><br><span class="line">        <span class="keyword">while</span>(index &lt; len)&#123;</span><br><span class="line">            <span class="comment">// 垂直添加元素</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numRows &amp;&amp; index &lt; len; i++)&#123;</span><br><span class="line">                sb[i].append(arr[index++]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 斜右向添加元素</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=numRows-<span class="number">2</span>; i&gt;=<span class="number">1</span> &amp;&amp; index &lt; len; i--)&#123;</span><br><span class="line">                sb[i].append(arr[index++]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将除第0行以外的行有序拼接到第0行后面</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;numRows; i++)&#123;</span><br><span class="line">            sb[<span class="number">0</span>].append(sb[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> sb[<span class="number">0</span>].toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <img src="/2019/05/19/LeetCode-6-Z字形变换/提交结果.png" title="图3.提交结果">
 <h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A6_ZigZagConversion.java" target="_blank" rel="noopener">LeetCode-6 Z字形变换</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode.com/problems/zigzag-conversion/discuss/3403/Easy-to-understand-Java-solution" target="_blank" rel="noopener">6.最长回文子串</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode.com/problems/zigzag-conversion/discuss/3403/Easy-to-understand-Java-solution" target="_blank" rel="noopener">6.Z字形变换</a></p>
 
       
     </div>
@@ -416,6 +416,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/20/LeetCode-7-整数反转/" rel="prev" title="LeetCode-7 整数反转">
+                LeetCode-7 整数反转 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -492,7 +496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -605,7 +609,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.8k字</span>
+  <span class="post-count">博客全站共8.2k字</span>
 </div>
 
 
