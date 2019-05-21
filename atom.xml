@@ -95,30 +95,6 @@
   </entry>
   
   <entry>
-    <title>LeetCode刷题宝典</title>
-    <link href="http://JacobLei.github.io/2019/05/13/LeetCode%E5%88%B7%E9%A2%98%E5%AE%9D%E5%85%B8/"/>
-    <id>http://JacobLei.github.io/2019/05/13/LeetCode刷题宝典/</id>
-    <published>2019-05-13T09:46:31.000Z</published>
-    <updated>2019-05-14T02:28:51.169Z</updated>
-    
-    <content type="html"><![CDATA[<p>聊聊如何刷LeetCode</p><a id="more"></a><p>对于LeetCode，我相信计算机专业或相关专业的同学都有所耳闻。在找工作时，常常听到某某大神刷了2遍LeetCode最后拿到9个offer等等传说。可见LeetCode的重要性。下面我们聊一聊该怎么去刷LeetCode。</p><p>首先简单了解一下传说中的<a href="https://leetcode.com" target="_blank" rel="noopener">LeetCode</a>，它其实就是美国在线编程网站，上面收集了各大IT公司的笔试题和面试题，对于要找工作的小伙伴来说，LeetCode是一个不可多得的好帮手。Wait~~<strong>美国在线编程网站</strong>？？？全英文？？？其实不是这样的，LeetCode也有相应的中文网站——<a href="https://leetcode-cn.com" target="_blank" rel="noopener">力扣</a>，对英文刷题吃力的小伙伴们赶紧收藏。对于哪些人适合刷LeetCode？我认为从事编程工作的人员都应该去刷，不论是已经工作的”程序猿”还是在校学生，特别是将要找工作或找实习的在校学生是最需要刷LeetCode，如果想进大厂，必须得刷LeetCode。</p><p>那么，该如何去刷呢？我们先来看一看LeetCode网站，如下图1所示。<br><img src="/2019/05/13/LeetCode刷题宝典/力扣首页.png" title="图1.力扣首页"></p><p>注册并登陆后我们进入题库界面，如图2所示，选择标签和难度。<br><img src="/2019/05/13/LeetCode刷题宝典/力扣问题页.png" title="图2.力扣问题页"><br>到目前为止，总共右39个标签，我们可以按标签来刷题，比如我们今天做<strong>栈</strong>，我们先在标签页中选择栈，然后再选择适当难度，就可以开始做题了。</p><p>一般建议对于一个标签，我们先做2~3到简单题，熟悉其基本的算法思路后，然后做中等题，做了5~8道中等题后再去挑战困难题。读于刚刚开始接触某一个标签题型时，很难自己想出题目的求解答案，这时候一定不要灰心。<strong>对于一道题思考5分钟后如果还没有解题思路，我们可以去看该题目相关博客（如公众号：jacob2359 或 <a href="https://www.jacob2359.com/categories/LeetCode/" target="_blank" rel="noopener">jacob2359的博客</a>）或者查看该题目的讨论部分（讨论部分建议看英文网站上的）</strong>。查看该题的讨论部分具体方法如图3-4所示。<br><img src="/2019/05/13/LeetCode刷题宝典/leetcode讨论页.png" title="图3.leetcode讨论页"><br><img src="/2019/05/13/LeetCode刷题宝典/leetcode讨论页2.png" title="图4.leetcode讨论页"></p><p>通过查看博客和讨论部分后对该题有基本思路，我们再去做这道题。对于同一类标签的题做多后，我们对这一类标签的题就会熟悉，下次遇到同样主题的题目就不会完全没有思路。</p><p>对于有些小伙伴没有数据结构基础，推荐先看陈越老师和何钦铭老师的《数据结构》课程，也可以查看《算法 ：LeetCode刷题》，相关课程的资源，可扫一扫下方二维码，关注公众号，发送『 算法资源』即可获取。</p><p>对于有些小伙伴纠结使用什么语言的问题，其实完全不用纠结，使用一门你熟悉的语言即可。如果一门都不熟悉，推荐使用Java来刷题。</p><p>最后也是最重要的，一定要坚持，坚持每天都刷题，遇到难题后不要灰心，静下心来看看别人的解题思路，看懂后自己再总结，要相信自己一定可以把它弄懂的。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;聊聊如何刷LeetCode&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
-    
-      <category term="学习方法" scheme="http://JacobLei.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode-4 寻找两个有序数组的中位数</title>
     <link href="http://JacobLei.github.io/2019/05/12/LeetCode-4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/"/>
     <id>http://JacobLei.github.io/2019/05/12/LeetCode-4-寻找两个有序数组的中位数/</id>
@@ -254,6 +230,30 @@
     
     
       <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode刷题宝典</title>
+    <link href="http://JacobLei.github.io/2019/05/03/LeetCode%E5%88%B7%E9%A2%98%E5%AE%9D%E5%85%B8/"/>
+    <id>http://JacobLei.github.io/2019/05/03/LeetCode刷题宝典/</id>
+    <published>2019-05-03T09:46:31.000Z</published>
+    <updated>2019-05-21T04:39:45.985Z</updated>
+    
+    <content type="html"><![CDATA[<p>聊聊如何刷LeetCode</p><a id="more"></a><p>对于LeetCode，我相信计算机专业或相关专业的同学都有所耳闻。在找工作时，常常听到某某大神刷了2遍LeetCode最后拿到9个offer等等传说。可见LeetCode的重要性。下面我们聊一聊该怎么去刷LeetCode。</p><p>首先简单了解一下传说中的<a href="https://leetcode.com" target="_blank" rel="noopener">LeetCode</a>，它其实就是美国在线编程网站，上面收集了各大IT公司的笔试题和面试题，对于要找工作的小伙伴来说，LeetCode是一个不可多得的好帮手。Wait~~<strong>美国在线编程网站</strong>？？？全英文？？？其实不是这样的，LeetCode也有相应的中文网站——<a href="https://leetcode-cn.com" target="_blank" rel="noopener">力扣</a>，对英文刷题吃力的小伙伴们赶紧收藏。对于哪些人适合刷LeetCode？我认为从事编程工作的人员都应该去刷，不论是已经工作的”程序猿”还是在校学生，特别是将要找工作或找实习的在校学生是最需要刷LeetCode，如果想进大厂，必须得刷LeetCode。</p><p>那么，该如何去刷呢？我们先来看一看LeetCode网站，如下图1所示。<br><img src="/2019/05/03/LeetCode刷题宝典/力扣首页.png" title="图1.力扣首页"></p><p>注册并登陆后我们进入题库界面，如图2所示，选择标签和难度。<br><img src="/2019/05/03/LeetCode刷题宝典/力扣问题页.png" title="图2.力扣问题页"><br>到目前为止，总共右39个标签，我们可以按标签来刷题，比如我们今天做<strong>栈</strong>，我们先在标签页中选择栈，然后再选择适当难度，就可以开始做题了。</p><p>一般建议对于一个标签，我们先做2~3到简单题，熟悉其基本的算法思路后，然后做中等题，做了5~8道中等题后再去挑战困难题。读于刚刚开始接触某一个标签题型时，很难自己想出题目的求解答案，这时候一定不要灰心。<strong>对于一道题思考5分钟后如果还没有解题思路，我们可以去看该题目相关博客（如公众号：jacob2359 或 <a href="https://www.jacob2359.com/categories/LeetCode/" target="_blank" rel="noopener">jacob2359的博客</a>）或者查看该题目的讨论部分（讨论部分建议看英文网站上的）</strong>。查看该题的讨论部分具体方法如图3-4所示。<br><img src="/2019/05/03/LeetCode刷题宝典/leetcode讨论页.png" title="图3.leetcode讨论页"><br><img src="/2019/05/03/LeetCode刷题宝典/leetcode讨论页2.png" title="图4.leetcode讨论页"></p><p>通过查看博客和讨论部分后对该题有基本思路，我们再去做这道题。对于同一类标签的题做多后，我们对这一类标签的题就会熟悉，下次遇到同样主题的题目就不会完全没有思路。</p><p>对于有些小伙伴没有数据结构基础，推荐先看陈越老师和何钦铭老师的《数据结构》课程，也可以查看《算法 ：LeetCode刷题》，相关课程的资源，可扫一扫下方二维码，关注公众号，发送『 算法资源』即可获取。</p><p>对于有些小伙伴纠结使用什么语言的问题，其实完全不用纠结，使用一门你熟悉的语言即可。如果一门都不熟悉，推荐使用Java来刷题。</p><p>最后也是最重要的，一定要坚持，坚持每天都刷题，遇到难题后不要灰心，静下心来看看别人的解题思路，看懂后自己再总结，要相信自己一定可以把它弄懂的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;聊聊如何刷LeetCode&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
+    
+      <category term="学习方法" scheme="http://JacobLei.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
