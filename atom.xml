@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://JacobLei.github.io/"/>
-  <updated>2019-05-22T08:10:57.605Z</updated>
+  <updated>2019-05-23T05:13:40.186Z</updated>
   <id>http://JacobLei.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode答疑+打卡微信群</title>
+    <link href="http://JacobLei.github.io/2019/05/23/LeetCode%E7%AD%94%E7%96%91-%E6%89%93%E5%8D%A1%E5%BE%AE%E4%BF%A1%E7%BE%A4/"/>
+    <id>http://JacobLei.github.io/2019/05/23/LeetCode答疑-打卡微信群/</id>
+    <published>2019-05-23T02:54:51.000Z</published>
+    <updated>2019-05-23T05:13:40.186Z</updated>
+    
+    <content type="html"><![CDATA[<p>LeetCode答疑群和LeetCode打卡群进群方式</p><a id="more"></a><h1 id="LeetCode答疑群"><a href="#LeetCode答疑群" class="headerlink" title="LeetCode答疑群"></a>LeetCode答疑群</h1><p>为了方便小伙伴们在刷LeetCode（或其他算法题）时遇到任何疑问时方便答疑，建立一个LeetCode答疑群，有任何关于LeetCode（或其他算法题）的相关问题都可以在答疑群中留言，当博主或其他小伙伴看到问题留言时，如果对问题有思路，则会回复。答疑群目的是为了小伙伴们一起学习，共同进步。</p><ul><li>提问方式：【问题LeetCode编号】+ 问题描述</li><li>回答方式：【回答LeetCode编号】+ 答案描述</li><li>进群方式：扫描下方二维码，添加博主的微信号【申请时请留言：<strong>加入LeetCode答疑群+姓名</strong>】，然后博主将你拉入微信群。</li></ul><img src="/2019/05/23/LeetCode答疑-打卡微信群/博主微信二维码.jpg" title="博主微信二维码"><h1 id="LeetCode打卡群"><a href="#LeetCode打卡群" class="headerlink" title="LeetCode打卡群"></a>LeetCode打卡群</h1><p>如果有小伙伴觉得自己刷题自控能力不够，但又想每周刷三道题，或者想和更多的小伙伴们一起刷题，博主建立了一个LeetCode打卡群。打卡群主要是为了小伙伴们通过打卡机制来提高自己的自控能力，保证一周最少能刷三道LeetCode题。</p><ul><li>打卡方式：<ul><li>打卡周的前一个周日晚上8点群主将在群里中收集小伙伴的打卡目标，小伙伴们回复自己的【打卡目标】。如：打卡第一周目标：LeetCode第5、6、7题；或者按照主题打卡定目标，如打卡第一周目标：栈主题+2道简单题+1道困难题。回复目标可以自定义方式（要突出这一周的刷题个数，最少三道），主要是给自己定一个一周的小目标。</li><li>小伙伴们回复完【打卡目标】开始到打卡周的周日晚上7点30截至，在群里发送：<strong>【打卡第m周第n题+LeetCode编号】+ 解题答案 + 通过报告截图</strong> 即打卡完成</li></ul></li><li>奖励/惩罚方式：<ul><li>加入打卡群前提：入群时本人需要缴纳10元的保证金</li><li>惩罚：当在本周打卡截至时间前未完成打卡目标，则10元的保证金作为惩罚将由博主发到打卡群中，群众的小伙伴抢红包</li><li>奖励：现阶段奖励为能够有机会抢到未完成打卡目标的小伙伴的保证金红包，后续等博主资金充裕后会定相关规则，送获奖者书籍</li></ul></li><li>注意事项：<ul><li>由于打卡群涉及到需要收取保证金问题，必须提前声明一下<strong>打卡的保证金为自愿交纳</strong>。入群时先交给博主管理，博主会统计小伙伴的目标和打卡情况，然后周日7点30后会联系相应<strong>未打卡完成</strong>的小伙伴，告诉其保证金需要作为惩罚红包发送到群里。</li><li>未打卡完成的小伙伴由于其保证金作为惩罚红包发给打卡群中，如果想继续参加打卡活动，则需要重新联系博主交纳保证金；如果不想继续参加，也可联系博主，将其删除打卡群，如果未联系博主，则博主在一天后会将其删除打卡群</li><li>打卡完成的小伙伴如果想继续参加打卡活动，则不需要重新交纳保证金，上次交纳的保证金顺延到本次；如果不想继续参加，则联系博主退还保证金</li><li>由于博主一个人运营打卡群，担心人多管理不过来，设定打卡群的人数上限为30人</li><li>每次打卡活动10人（包含博主）及以上则启动打卡活动，若人数不够10人，则会暂停</li></ul></li><li>进群方式：扫描文下方二维码，添加博主的微信号【申请时请留言：<strong>加入LeetCode打卡群+姓名</strong>】，然后博主将你拉入微信群，进群后需要交纳10保证金，保证金的使用具体参看<strong>注意事项</strong>。</li></ul><img src="/2019/05/23/LeetCode答疑-打卡微信群/博主微信二维码.jpg" title="博主微信二维码">]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;LeetCode答疑群和LeetCode打卡群进群方式&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-9 回文数</title>
