@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学请点击课程链接购买学习。如有侵权请联系作者删除。">
+<meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
 <meta name="keywords" content="数据结构与算法,递归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法-递归">
 <meta property="og:url" content="http://JacobLei.github.io/2019/05/21/数据结构与算法-递归/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学请点击课程链接购买学习。如有侵权请联系作者删除。">
+<meta property="og:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jacoblei.github.io/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.jpg">
-<meta property="og:updated_time" content="2019-05-21T13:52:50.070Z">
+<meta property="og:updated_time" content="2019-05-23T07:26:47.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法-递归">
-<meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学请点击课程链接购买学习。如有侵权请联系作者删除。">
+<meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
 <meta name="twitter:image" content="http://jacoblei.github.io/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.jpg">
 
 
@@ -346,7 +346,7 @@
       
 
       
-        <p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学请点击<a href="https://time.geekbang.org/column/article/6691fa2d3eae08aca313064e97b89941/share?oss_token=4f692522d1570132" target="_blank" rel="noopener">课程链接</a>购买学习。如有侵权请联系作者删除。</p>
+        <p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。</p>
 <a id="more"></a>
 <h1 id="如何理解递归？"><a href="#如何理解递归？" class="headerlink" title="如何理解递归？"></a>如何理解递归？</h1><p>在学习数据结构与算法的过程中一般都会遇到一个坎——递归。今天我们就来分析分析递归。<br>首先我们通过一个生活中的例子入手。假如你现在正在排队买票，前面有很多人，怎么才能知道你现在是第几号呢？这个时候就可以用递归了，你知道问你前面的人是多少号，在他的号数上加一即为你的号数。但是，前面的人也不知道自己是多少号啊，所以他再问他前面的人，这样一个一个的向前面问，直到问道队头的人，他说他现在是1号，然后这样就可以一个一个向后把数字传回来，直到你前面的人告诉你他是多少号，这样你就知道了你的位置了。<br>这个例子就是一个标准的递归求解问题的分解过程，一个一个向前问的过程就是”递”，一个一个向后传回来的过程就是”归”。基本上所有的递归问题都可以用公式表示出来。如上述例子的递归推导公式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(n) = f(n-1) + 1，其中f(1) = 1</span><br></pre></td></tr></table></figure></p>
 <p><code>f(n)</code>表示你现状所在的位置（多少号），<code>f(n-1)</code>表示你前面一个人所在的位置（多少号），<code>f(1) = 1</code>表示第一个人直到自己为1号。有了这个递推公式，我们就可以很轻松的将它改写为递归代码，如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> f(n-<span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -504,7 +504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -617,7 +617,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共14.3k字</span>
+  <span class="post-count">博客全站共17.3k字</span>
 </div>
 
 

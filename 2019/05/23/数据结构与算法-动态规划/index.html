@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构与算法,递归,">
+
+
+
+
+
+  <link rel="alternate" href="/flase" title="jacob2359" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta name="keywords" content="数据结构与算法,递归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法-动态规划">
+<meta property="og:url" content="http://JacobLei.github.io/2019/05/23/数据结构与算法-动态规划/index.html">
+<meta property="og:site_name" content="jacob2359">
+<meta property="og:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/数据结构与算法-动态规划/简单01背包问题初始状态.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/数据结构与算法-动态规划/简单01背包问题第0号物品决策后的状态.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/数据结构与算法-动态规划/简单01背包问题第1号物品决策后的状态.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/数据结构与算法-动态规划/简单01背包问题第2号物品决策后的状态.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/数据结构与算法-动态规划/简单01背包问题第3号物品决策后的状态.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/数据结构与算法-动态规划/简单01背包问题第4号物品决策后的状态.png">
+<meta property="og:updated_time" content="2019-05-23T08:07:15.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法-动态规划">
+<meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/23/数据结构与算法-动态规划/简单01背包问题初始状态.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://JacobLei.github.io/2019/05/23/数据结构与算法-动态规划/">
+
+
+
+
+
+  <title>数据结构与算法-动态规划 | jacob2359</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jacob2359</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/23/数据结构与算法-动态规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jacob2359">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jacob2359">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构与算法-动态规划</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T15:25:59+08:00">
+                2019-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。</p>
+<a id="more"></a>
+<h1 id="动态规划思想"><a href="#动态规划思想" class="headerlink" title="动态规划思想"></a>动态规划思想</h1><ul>
+<li>将问题分解为多个阶段，每个阶段对应一个决策。记录每一个阶段可达的状态集合（去掉重复的），然后通过当前阶段的状态集合来推导下一个阶段的状态集合，动态地往前推进。</li>
+<li>用空间换时间       </li>
+</ul>
+<h1 id="简单0-1背包问题"><a href="#简单0-1背包问题" class="headerlink" title="简单0-1背包问题"></a>简单0-1背包问题</h1><p>动态规划最经典问题：0-1背包问题，但是经典的0-1背包问题给每个物品赋予两种属性（重量、价值），往往初次看此问题时难度较大。为了便于理解，先从经典的0-1背包问题提取一种属性进行分析（重量），题目如下：<br><strong>简单0-1背包问题</strong>：已知n个物品，每种物品对应有一个重量<code>weight</code>，给定一个背包可以装入物品的最大重量为<code>maxWeight</code>，求满足最大重量限制的情况下，背包中物品总重量的最大值是多少？<br>首先通过一个例子来分析简单0-1背包问题。假设总共有5种物品，即<code>n=5</code>，每个物品的重量为<code>weights=[ 2，2，4，6，3]</code>，最大重量<code>maxWeight=9</code>。如下表所示，表中的行表示第几个物品，表中的列表示物品的重量，记为<code>curWeight</code>，由于背包的最大重量<code>maxWeight=9</code>，因此，该背包总共有0~9种重量的可能。</p>
+<ul>
+<li><p>初始状态如下表所示： </p>
+<img src="/2019/05/23/数据结构与算法-动态规划/简单01背包问题初始状态.png" title="简单0-1背包问题初始状态">
+</li>
+<li><p>当第0号物品决策完之后，即将0号物品不放入背包或将0号物品放入背包，如果不放入背包，即<code>curWeight=0</code>，如果放入背包，即<code>curWeight=2</code>，改变表中的对应状态：</p>
+<img src="/2019/05/23/数据结构与算法-动态规划/简单01背包问题第0号物品决策后的状态.png" title="简单0-1背包问题第0号物品决策后的状态">
+</li>
+<li><p>当第1号物品决策完之后，即将1号物品不放入背包或将1号物品放入背包，如果不放入背包，基于<code>n=0</code>时的状态集合，该背包中的重量有两种可能，即<code>curWeight=0</code>或<code>curWeight=2</code>，如果放入背包，基于<code>n=0</code>时的状态集合，该背包中的重量有两种可能，即<code>curWeight=2</code>或<code>curWight=4</code>，综上，1号物品决策完之后，背包中的重量总共有三种可能，即<code>curWeight=0</code>、<code>curWeight=2</code>或<code>curWight=4</code>。改变表中的对应状态：</p>
+<img src="/2019/05/23/数据结构与算法-动态规划/简单01背包问题第1号物品决策后的状态.png" title="简单0-1背包问题第1号物品决策后的状态">
+</li>
+<li><p>当第2号物品决策完之后，表中状态如下所示：</p>
+<img src="/2019/05/23/数据结构与算法-动态规划/简单01背包问题第2号物品决策后的状态.png" title="简单0-1背包问题第2号物品决策后的状态">
+</li>
+<li><p>当第3号物品决策完之后，表中状态如下所示：</p>
+<img src="/2019/05/23/数据结构与算法-动态规划/简单01背包问题第3号物品决策后的状态.png" title="简单0-1背包问题第3号物品决策后的状态">
+</li>
+<li><p>当第4号物品决策完之后，表中状态如下所示：</p>
+<img src="/2019/05/23/数据结构与算法-动态规划/简单01背包问题第4号物品决策后的状态.png" title="简单0-1背包问题第4号物品决策后的状态">
+</li>
+<li><p>根据上表可知，当前背包下物品总重量的最大值为9.</p>
+</li>
+</ul>
+<p>通过上述分析，再看看将上述过程转化为<code>java</code>代码，如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 背包中物品总重量的最大值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> weight 每个物品的重量数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n 物品的个数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> maxWight 背包可承受的最大重量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 背包中物品总重量的最大值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMaxWeightInPackage</span><span class="params">(<span class="keyword">int</span>[] weight, <span class="keyword">int</span> n, <span class="keyword">int</span> maxWight)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    Boolean[][] state = <span class="keyword">new</span> Boolean[n][maxWight+<span class="number">1</span>]; <span class="comment">// 先申请状态数组，即上面的表格的初始化状态</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 对第0行进行特殊处理，手动标记</span></span><br><span class="line">    state[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;             <span class="comment">//  将第0号物品不放入背包</span></span><br><span class="line">    state[<span class="number">0</span>][weight[<span class="number">0</span>]] = <span class="keyword">true</span>;     <span class="comment">// 将第0号物品放入背包</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 依次对剩下的物品进行决策</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="comment">// 将第i号物品不放入背包</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=maxWight; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> ( state[i-<span class="number">1</span>][j] != <span class="keyword">null</span> &amp;&amp; state[i-<span class="number">1</span>][j] == <span class="keyword">true</span>)&#123;</span><br><span class="line">                state[i][j] = state[i-<span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将第i号物品放入背包</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;= (maxWight-weight[i]); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(state[i-<span class="number">1</span>][j] != <span class="keyword">null</span> &amp;&amp; state[i-<span class="number">1</span>][j] == <span class="keyword">true</span>)</span><br><span class="line">                state[i][j+weight[i]] = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在最后一行从后向前遍历</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=maxWight; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(state[n-<span class="number">1</span>][i] != <span class="keyword">null</span> &amp;&amp; state[n-<span class="number">1</span>][i] == <span class="keyword">true</span>)&#123;</span><br><span class="line">            res = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从上述实例可知，对于每个物品都有两种决策方案，要么放入背包，要么不放入背包。将整个过程分解成n个部分，对于每个部分都有两种决策方案，当每个物品决策完之后（放入背包或不放入背包）背包中的重量有多种情况，也就是说达到多种不同的情况。把每一层重复的状态合并，只记录不同的状态，然后基于上一层的状态集合，来推导下一层的状态集合。当所有部分决策完之后，即可得到最终的状态集合，从状态集合中可以得到该背包中最大的重量。<br>实际上，这就是动态规划解决问题的基本思路。<strong>将问题分解为多个阶段，每个阶段对应一个决策。我们记录每一个阶段可达的状态集合（去掉重复的部分），然后通过当前的状态集合来推到下一阶段的状态集合，动态地往前推进。</strong><br>从上述代码可知，该问题的时间复杂度为<code>O(n*weight)</code>，其中<code>n</code>为物品的个数，<code>maxWeight</code>为背包可承载的最大重量，该问题的空间复杂度为<code>O(n*weight)</code>，其中<code>n</code>为物品的个数，<code>maxWeight</code>为背包可承载的最大重量</p>
+<p>优化：事实上，只需要申请<code>weight+1</code>的一维数组即可解决这个问题。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMaxWeightInPackage2</span><span class="params">(<span class="keyword">int</span>[] weight, <span class="keyword">int</span> n, <span class="keyword">int</span> maxWight)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    Boolean[] state = <span class="keyword">new</span> Boolean[maxWight+<span class="number">1</span>]; <span class="comment">// 先申请状态数组</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对第0行进行特殊处理，手动标记</span></span><br><span class="line">    state[<span class="number">0</span>] = <span class="keyword">true</span>;             <span class="comment">//  将第0号物品不放入背包</span></span><br><span class="line">    state[weight[<span class="number">0</span>]] = <span class="keyword">true</span>;     <span class="comment">// 将第0号武平放入背包</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 依次对剩下的物品进行决策</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=maxWight-weight[i]; j&gt;=<span class="number">0</span>; j--)&#123;  <span class="comment">// 把第i个物品放入背包中</span></span><br><span class="line">            <span class="keyword">if</span> (state[j] != <span class="keyword">null</span> &amp;&amp; state[j] == <span class="keyword">true</span>)</span><br><span class="line">                state[j+weight[i]] = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在最后一行从后向前遍历</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=maxWight; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(state[i] != <span class="keyword">null</span> &amp;&amp; state[i] == <span class="keyword">true</span>)&#123;</span><br><span class="line">            res = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>简单0-1背包问题问题分析完成后，接下来将价值属性也添加进入，升级为高级0-1背包问题。</p>
+<h1 id="2-高级0-1背包问题"><a href="#2-高级0-1背包问题" class="headerlink" title="2. 高级0-1背包问题"></a>2. 高级0-1背包问题</h1><p><strong>高级0-1背包问题</strong>：已知n个物品，每种物品对应有重量<code>weight</code>和价值<code>value</code>两个属性，给定一个背包可以装入物品的最大重量为<code>maxWeight</code>，求满足最大重量限制的情况下，背包中装入物品的总价值最大是多少？<br>实例：总共有5种物品，即<code>n=5</code>，每个物品的重量为<code>weights=[ 2，2，4，6，3]</code>，对应价值为<code>values=[3, 4, 8, 9, 6]</code>，最大重量<code>maxWeight=9</code>，求背包中可装如物品的总价值最大是多少？</p>
+<pre><code>* 如下表所示，表中行表示的第几个物品，表中的列表示物品的重量，由于背包的最大重量maxWeight=9，因此，该背包总共有0~9种重量的可能，表中的数据项表示价值，记为curValue，初始状态下curValue=-1。初始状态如下表所示:
+{% asset_img 升级01背包问题初始状态.png 升级01背包问题初始状态 %}
+
+* 当第0号物品决策完之后，即不放入背包或放入背包，如果不放入背包，则在curWeight=0的列curValue=0，如果放入背包，即在curWeight=2的列curValue=3，改变表中的对应状态：
+{% asset_img 升级01背包问题第0号物品决策后的状态.png 升级01背包问题第0号物品决策后的状态 %}
+
+* 对于第1号物品：
+    * 将物品(curWeight=2, curValue=4)**不放入**背包时：根据n=0的状态集合可以得到n=1的状态集合，如下所示：
+    {% asset_img 升级01背包问题第1号物品不放入背包.png 升级01背包问题第1号物品不放入背包 %}
+
+    * 将物品(curWeight=2, curValue=4)**放入**背包时：根据n=0的状态集合可以得到n=1的状态集合，如下所示：
+    {% asset_img 升级01背包问题第1号物品放入背包.png 升级01背包问题第1号物品放入背包 %}
+
+    * 对于n=1时的第2列，选取当前状态的最大值为该列的状态值，即此时的4为n=1时的第2列的状态值。
+* 综上，对于1号物品决策完后，表中状态如下所示：
+{% asset_img 升级01背包问题第1号物品决策后的状态.png 升级01背包问题第1号物品决策后的状态 %}
+
+* 当第2号物品决策完之后，表中状态如下所示：
+{% asset_img 升级01背包问题第2号物品决策后的状态.png 升级01背包问题第2号物品决策后的状态 %}
+
+* 当第3号物品决策完之后，表中状态如下所示：
+{% asset_img 升级01背包问题第3号物品决策后的状态.png 升级01背包问题第3号物品决策后的状态 %}
+
+* 当第4号物品决策完之后，表中状态如下所示：
+{% asset_img 升级01背包问题第4号物品决策后的状态.png 升级01背包问题第4号物品决策后的状态 %}
+
+* 根据上表可知，当前背包中装入物品的总价值最大为18。
+</code></pre><p>将上述分析过程转化为<code>java</code>代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  求背包中装入物品的的最大总价值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> weights 每个物品的重量数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> values 每个物品的价值数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n 物品的个数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> maxWeight 背包可承受的最大重量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 背包中物品的最大总价值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMaxWeightInpackage</span><span class="params">(<span class="keyword">int</span>[] weights, <span class="keyword">int</span>[] values, <span class="keyword">int</span> n, <span class="keyword">int</span> maxWeight)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span>[][]  states = <span class="keyword">new</span> <span class="keyword">int</span>[n][maxWeight+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 初始化states</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxWeight; j++) &#123;</span><br><span class="line">            states[i][j] = -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对第0行进行特殊处理，手动标记</span></span><br><span class="line">    states[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;                   <span class="comment">//  将第0号物品不放入背包</span></span><br><span class="line">    states[<span class="number">0</span>][weights[<span class="number">0</span>]] = values[<span class="number">0</span>];    <span class="comment">//  将第0号武平放入背包</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 依次对剩下的物品进行决策</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="comment">// 将第i号物品不放入背包</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxWeight; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (states[i-<span class="number">1</span>][j] != -<span class="number">1</span>)&#123;</span><br><span class="line">                states[i][j] = states[i-<span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将第i号物品放入背包</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;=(maxWeight-weights[i]) ; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (states[i-<span class="number">1</span>][j] != -<span class="number">1</span>)&#123;</span><br><span class="line">                states[i][j+weights[i]] = Math.max((states[i-<span class="number">1</span>][j] + values[i]),(states[i][j+weights[i]]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 求出背包中的总价值最大值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= maxWeight; i++) &#123;</span><br><span class="line">        res = Math.max(res, states[n-<span class="number">1</span>][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从上述代码可知，该问题的时间复杂度为<code>O(n*weight)</code>，其中<code>n</code>为物品的个数，<code>maxWeight</code>为背包可承载的最大重量，该问题的空间复杂度为<code>O(n*weight)</code>，其中<code>n</code>为物品的个数，<code>maxWeight</code>为背包可承载的最大重量<br>优化：事实上，只需要申请<code>weight+1</code>的一维数组即可解决这个问题。代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  求背包中装入物品的的最大总价值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> weights 每个物品的重量数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> values 每个物品的价值数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n 物品的个数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> maxWeight 背包可承受的最大重量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 背包中物品的最大总价值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMaxWeightInpackage2</span><span class="params">(<span class="keyword">int</span>[] weights, <span class="keyword">int</span>[] values, <span class="keyword">int</span> n, <span class="keyword">int</span> maxWeight)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span>[] states = <span class="keyword">new</span> <span class="keyword">int</span>[maxWeight+<span class="number">1</span>];    <span class="comment">// 申请状态数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;=maxWeight ; i++) &#123;  <span class="comment">// 初始化状态数组</span></span><br><span class="line">        states[i] = -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对第0行进行特殊处理，手动标记</span></span><br><span class="line">    states[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    states[weights[<span class="number">0</span>]] = values[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 依次对剩下的物品进行决策</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=maxWeight-weights[i]; j&gt;=<span class="number">0</span>; j--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(states[j] != -<span class="number">1</span>)&#123;</span><br><span class="line">                states[j+weights[i]] = Math.max(states[j] + values[i], states[j+weights[i]]);   <span class="comment">// 更新states[j+weights[i]]</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在最后一行从后向前遍历</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= maxWeight; i++) &#123;</span><br><span class="line">        res = Math.max(res, states[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="jacob2359 wechat" style="width: 200px; max-width: 100%;">
+    <div>更多文章，请关注公众号：jacob2359</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
+          
+            <a href="/tags/递归/" rel="tag"># 递归</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/23/LeetCode-10-正则表达式匹配/" rel="next" title="LeetCode-10 正则表达式匹配">
+                <i class="fa fa-chevron-left"></i> LeetCode-10 正则表达式匹配
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">jacob2359</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/flase" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JacobLei" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划思想"><span class="nav-number">1.</span> <span class="nav-text">动态规划思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单0-1背包问题"><span class="nav-number">2.</span> <span class="nav-text">简单0-1背包问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-高级0-1背包问题"><span class="nav-number">3.</span> <span class="nav-text">2. 高级0-1背包问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jacob2359</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共17.3k字</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
