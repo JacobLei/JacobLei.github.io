@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,">
+  <meta name="keywords" content="LeetCode,动态规划,">
 
 
 
@@ -81,18 +81,23 @@
 
 
 
-<meta name="description" content="题目：10. 正则表达式匹配 难度：困难 分类：字符串 解决方案：">
-<meta name="keywords" content="LeetCode">
+<meta name="description" content="题目：10. 正则表达式匹配 难度：困难 分类：字符串 解决方案：动态规划">
+<meta name="keywords" content="LeetCode,动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-10 正则表达式匹配">
+<meta property="og:title" content="LeetCode-10 正则表达式匹配（未完成版）">
 <meta property="og:url" content="http://JacobLei.github.io/2019/05/23/LeetCode-10-正则表达式匹配/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：10. 正则表达式匹配 难度：困难 分类：字符串 解决方案：">
+<meta property="og:description" content="题目：10. 正则表达式匹配 难度：困难 分类：字符串 解决方案：动态规划">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-23T07:25:18.499Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/LeetCode-10-正则表达式匹配/实例示意图.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/LeetCode-10-正则表达式匹配/实例匹配成功.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/LeetCode-10-正则表达式匹配/状态方程dp内存空间初始状态.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/23/LeetCode-10-正则表达式匹配/第0行和第0列状态方程转换.png">
+<meta property="og:updated_time" content="2019-05-24T08:36:39.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-10 正则表达式匹配">
-<meta name="twitter:description" content="题目：10. 正则表达式匹配 难度：困难 分类：字符串 解决方案：">
+<meta name="twitter:title" content="LeetCode-10 正则表达式匹配（未完成版）">
+<meta name="twitter:description" content="题目：10. 正则表达式匹配 难度：困难 分类：字符串 解决方案：动态规划">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/23/LeetCode-10-正则表达式匹配/实例示意图.png">
 
 
 
@@ -128,7 +133,7 @@
 
 
 
-  <title>LeetCode-10 正则表达式匹配 | jacob2359</title>
+  <title>LeetCode-10 正则表达式匹配（未完成版） | jacob2359</title>
   
 
 
@@ -272,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-10 正则表达式匹配</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-10 正则表达式匹配（未完成版）</h1>
         
 
         <div class="post-meta">
@@ -348,11 +353,48 @@
 <li>题目：10. 正则表达式匹配</li>
 <li>难度：困难</li>
 <li>分类：字符串</li>
-<li>解决方案：<a id="more"></a>
+<li>解决方案：动态规划<a id="more"></a>
 </li>
 </ul>
-<p>今天我们学习第10题<strong>回文数</strong>下面我们看看这道题的题目描述。</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">题目描述</a></h1>
+<p>今天我们学习第10题<strong>正则表达式匹配</strong>，这是一个字符串的困难题，确实比前面的几道字符的题目难度大很多，若是第一次没看懂千万不要放弃，多看几次，边理解边画图，静下心来一定可以解决的。下面我们看看这道题的题目描述。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个字符串<code>s</code>和一个字符模式<code>p</code>。实现支持<code>.</code>和<code>*</code>的正则表达式匹配。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;.&apos; 匹配任意单个字符。</span><br><span class="line">&apos;*&apos; 匹配零个或多个前面的元素。</span><br></pre></td></tr></table></figure></p>
+<p>匹配应该覆盖整个字符串<code>s</code> ，而不是部分字符串。<br>说明:</p>
+<ul>
+<li><code>s</code>可能为空，且只包含从<code>a-z</code>的小写字母。</li>
+<li><code>s</code>可能为空，且只包含从<code>a-z</code>的小写字母，以及字符<code>.</code>和<code>*</code>。</li>
+</ul>
+<p>示例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a&quot;</span><br><span class="line">输出: false</span><br><span class="line">解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</span><br></pre></td></tr></table></figure></p>
+<p>示例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aa&quot;</span><br><span class="line">p = &quot;a*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &apos;*&apos; 代表可匹配零个或多个前面的元素, 即可以匹配 &apos;a&apos; 。因此, 重复 &apos;a&apos; 一次, 字符串可变为 &quot;aa&quot;。</span><br></pre></td></tr></table></figure></p>
+<p>示例3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;ab&quot;</span><br><span class="line">p = &quot;.*&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &quot;.*&quot; 表示可匹配零个或多个(&apos;*&apos;)任意字符(&apos;.&apos;)。</span><br></pre></td></tr></table></figure></p>
+<p>示例4：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;aab&quot;</span><br><span class="line">p = &quot;c*a*b&quot;</span><br><span class="line">输出: true</span><br><span class="line">解释: &apos;c&apos; 可以不被重复, &apos;a&apos; 可以被重复一次。因此可以匹配字符串 &quot;aab&quot;。</span><br></pre></td></tr></table></figure></p>
+<p>示例5：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">s = &quot;mississippi&quot;</span><br><span class="line">p = &quot;mis*is*p*.&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>对于题目描述的理解难度不是很大，这就是我们常常使用的正则表达式匹配方法。首先我们假设字符模式<code>p</code>中没有<code>.</code>和<code>*</code>的情况，这种情况下判断字符模式<code>p</code>和字符串<code>s</code>是否匹配的方法是逐一比较即可。如果两个字符串有一个位置上的字符不相等，则这两个字符串不匹配；如果两个字符串所有位置上的字符都相等，则这两个字符串匹配。接下来我们考虑字符模式<code>p</code>有<code>.</code>和<code>*</code>的情况：</p>
+<ul>
+<li>由题意可知，<code>.</code>匹配任意单个字符。如果字符模式<code>p</code>中的某一位置上的字符为<code>.</code>，则字符串<code>s</code>对应位置不论是任何字符都相等，继续匹配下一个字符；</li>
+<li><code>*</code>匹配零个或多个前面的元素。即<code>*</code>的存在使字符模式<code>p</code>变成了多个可能的字符串。因此，必须将<code>*</code>能够表示的所有情况与字符串<code>s</code>相比较，如果存在一种匹配的情况，那么这两个字符串匹配，反之，这两个字符串不匹配。<ul>
+<li>当字符模式<code>p</code>中存在<code>*</code>时，<code>*</code>和其前一个字符（令该字符为<code>x</code>）有如下三种可能的匹配情况：<ul>
+<li>空字符：<code>&quot;&quot;</code></li>
+<li>单一字符：<code>x</code></li>
+<li>多个字符：<code>xx</code>或<code>xxx</code>等等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>理解完题意后，我们再来举一个实例进一步分析，我们就用题目中的示例4作为实例。如下图所示，其中纵向为字符串<code>s</code>，横向为字符模式<code>p</code>。</p>
+<img src="/2019/05/23/LeetCode-10-正则表达式匹配/实例示意图.png" title="图1.实例示意图">
+<p>我们可以用字符模式<code>p</code>与字符串<code>s</code>一一比较，如图字符模式中<code>p[0]=c</code>与字符串中<code>s[0]=a</code>比较，发现他们不相等，这时如果字符模式<code>p</code>中的下一个字符不为<code>*</code>的话，则字符模式<code>p</code>与字符串<code>s</code>匹配不成功，返回<code>false</code>；而图中实例字符模式<code>p</code>的下一个字符为<code>*</code>，因此字符模式<code>p</code>中的<code>c*</code>匹配字符串<code>s</code>中的<code>&quot;&quot;</code>，接下来字符模式中<code>p[2]=a</code>与字符串中<code>s[0]=a</code>匹配，匹配成功，接下来字符模式中<code>p[3]=*</code>与字符串中<code>s[1]=a</code>匹配，匹配成功，接下来字符模式中<code>p[4]=b</code>与字符串中<code>s[2]=b</code>匹配，匹配成功。因此字符模式<code>p</code>与字符串<code>s</code>能匹配成功。如下图所示：</p>
+<img src="/2019/05/23/LeetCode-10-正则表达式匹配/实例匹配成功.png" title="图2.实例匹配成功">
+<p>分析到这里后，我们可以联想到动态规划的状态转化图像。如果对动态规划不太了解的小伙伴可以查看<a href="https://www.jacob2359.com/2019/05/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" target="_blank" rel="noopener">《数据结构与算法-动态规划》(点击跳转)</a>来学习。下面我们来分析上面这个实例的初始状态及转换后的状态。</p>
+<ul>
+<li>初始状态如下图所示，我们申请了<code>s.length+1</code>行和<code>p.length+1</code>列用来存储字符匹配的状态，我们用<code>dp</code>表示状态方程，<code>dp</code>的第0行和<code>dp</code>的第0列为特殊的行和列，其中<code>dp</code>的第0行用来处理字符模式<code>p</code>的<code>*</code>匹配空字符字等情况，如实例中的字符模式<code>p</code>中的<code>c*</code>匹配字符串<code>s</code>中的<code>&quot;&quot;</code>；<code>dp</code>的第0列除了<code>dp[0][0]</code>外状态都为<code>false</code>；而<code>dp[0][0]</code>的状态初始化为<code>true</code>。</li>
+</ul>
+<img src="/2019/05/23/LeetCode-10-正则表达式匹配/状态方程dp内存空间初始状态.png" title="图3.状态方程dp内存空间初始状态">
+<ul>
+<li>接下来分析<code>dp</code>的第0行和<code>dp</code>的第0列，由于<code>dp</code>的第0列除了<code>dp[0][0]</code>外状态都为<code>false</code>，这里主要讨论<code>dp</code>第0行状态变换，当字符串中的字符不为<code>*</code>时，其对应状态为<code>false</code>，当字符串中的字符为<code>*</code>时，其对应状态为与其前面第2个状态有关。如示例中，当字符模式<code>p[0]=c</code>时，其对应的状态方式<code>dp[0][1]=false</code>,当字符模式<code>p[1]=*</code>时，其对应的状态方式<code>dp[0][2]=dp[0][0]=true</code>。其他的同理。转换完后的状态方程如下图所示：</li>
+</ul>
+<img src="/2019/05/23/LeetCode-10-正则表达式匹配/第0行和第0列状态方程转换.png" title="图4.第0行和第0列状态方程转换">
+<h1 id="感觉这一还是没有理解透彻，先码在这里，弄懂后继续码"><a href="#感觉这一还是没有理解透彻，先码在这里，弄懂后继续码" class="headerlink" title="感觉这一还是没有理解透彻，先码在这里，弄懂后继续码"></a>感觉这一还是没有理解透彻，先码在这里，弄懂后继续码</h1>
       
     </div>
     
@@ -378,6 +420,8 @@
         <div class="post-tags">
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -479,7 +523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -501,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -553,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感觉这一还是没有理解透彻，先码在这里，弄懂后继续码"><span class="nav-number">3.</span> <span class="nav-text">感觉这一还是没有理解透彻，先码在这里，弄懂后继续码</span></a></li></ol></div>
             
 
           </div>
@@ -592,7 +636,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17.3k字</span>
+  <span class="post-count">博客全站共19.4k字</span>
 </div>
 
 

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,">
+  <meta name="keywords" content="LeetCode,数组,双指针,">
 
 
 
@@ -81,22 +81,21 @@
 
 
 
-<meta name="description" content="题目：9. 回文数 难度：简单 分类：字符串、数学 解决方案：双指针、整数取余">
-<meta name="keywords" content="LeetCode">
+<meta name="description" content="题目：11. 盛最多水的容器 难度：中等 分类：数组 解决方案：双指针">
+<meta name="keywords" content="LeetCode,数组,双指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-9 回文数">
-<meta property="og:url" content="http://JacobLei.github.io/2019/05/22/LeetCode-9-回文数/index.html">
+<meta property="og:title" content="LeetCode-11 盛最多水的容器">
+<meta property="og:url" content="http://JacobLei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：9. 回文数 难度：简单 分类：字符串、数学 解决方案：双指针、整数取余">
+<meta property="og:description" content="题目：11. 盛最多水的容器 难度：中等 分类：数组 解决方案：双指针">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/22/LeetCode-9-回文数/回文字符串提交结果.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/22/LeetCode-9-回文数/整数翻转实例.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/22/LeetCode-9-回文数/回文数提交结果.png">
-<meta property="og:updated_time" content="2019-05-24T01:23:43.192Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/题目.jpg">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/提交结果.png">
+<meta property="og:updated_time" content="2019-05-24T10:31:49.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-9 回文数">
-<meta name="twitter:description" content="题目：9. 回文数 难度：简单 分类：字符串、数学 解决方案：双指针、整数取余">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/22/LeetCode-9-回文数/回文字符串提交结果.png">
+<meta name="twitter:title" content="LeetCode-11 盛最多水的容器">
+<meta name="twitter:description" content="题目：11. 盛最多水的容器 难度：中等 分类：数组 解决方案：双指针">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/题目.jpg">
 
 
 
@@ -126,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/05/22/LeetCode-9-回文数/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/">
 
 
 
 
 
-  <title>LeetCode-9 回文数 | jacob2359</title>
+  <title>LeetCode-11 盛最多水的容器 | jacob2359</title>
   
 
 
@@ -259,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/22/LeetCode-9-回文数/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -276,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-9 回文数</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-11 盛最多水的容器</h1>
         
 
         <div class="post-meta">
@@ -288,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-22T13:17:40+08:00">
-                2019-05-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T16:34:27+08:00">
+                2019-05-24
               </time>
             
 
@@ -349,26 +348,21 @@
 
       
         <ul>
-<li>题目：9. 回文数</li>
-<li>难度：简单</li>
-<li>分类：字符串、数学</li>
-<li>解决方案：双指针、整数取余<a id="more"></a>
+<li>题目：11. 盛最多水的容器</li>
+<li>难度：中等</li>
+<li>分类：数组</li>
+<li>解决方案：双指针<a id="more"></a>
 </li>
 </ul>
-<p>今天我们学习第9题<strong>回文数</strong>，这是一个关于数学的简单题，这个题目比较简单，最好能手写出该题。下面我们看看这道题的题目描述。</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/palindrome-number/" target="_blank" rel="noopener">题目描述</a></h1><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
-<p>示例 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 121</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure></p>
-<p>示例 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: -121</span><br><span class="line">输出: false</span><br><span class="line">解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure></p>
-<p>示例 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: false</span><br><span class="line">解释: 从右向左读, 为 01 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure></p>
-<p>进阶:<strong>你能不将整数转为字符串来解决这个问题吗？</strong></p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>看完这个题目，对于回文数我们应该不陌生。我们在<a href="https://www.jacob2359.com/2019/05/13/LeetCode-5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/#more" target="_blank" rel="noopener">LeetCode-5 最长回文子串</a>中介绍过<strong>回文串</strong>，即从左向右读和从右向左读的结果是一样的字符串。本题是判断一个整数是否为一个回文数，最简单的做法是先将这个整数转化为字符串，然后使用双指针的方式判断这个字符串是否为回文串。<br>具体<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将整数转化为字符数组</span></span><br><span class="line">    <span class="keyword">char</span>[] str = String.valueOf(x).toCharArray();</span><br><span class="line">    <span class="comment">// 创建左右指针</span></span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = str.length-<span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 遍历字符串</span></span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="comment">// 如果左指针指向的字符与右指针指向的字符不同时，直接返回false</span></span><br><span class="line">        <span class="keyword">if</span> (str[left] != str[right])</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        left++;		<span class="comment">// 左指针向右移动</span></span><br><span class="line">        right--;	<span class="comment">// 右指针向左移动</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/05/22/LeetCode-9-回文数/回文字符串提交结果.png" title="图1.回文字符串提交结果">
-<p>将整数转化为字符串后这个题目的思路就很清晰了。注意看<strong>进阶</strong>部分的提示：<strong>你能不将整数转为字符串来解决这个问题吗？</strong> 因此我们需要换一种思路来解决这个题目。<br>我们想一想整数如果是负数，则直接返回<code>false</code>，如示例2中可以知道一个负数不可能为回文数。由于整数不可能为0开头（除整数0外），因此整数的个位数为0也直接返回<code>false</code>，如示例3所示。排除完这两种特殊情况后，我们该如何判断剩下的整数是不是回文数呢？要判断一个数是否为回文数，则需要判断前半段和后半段是否对称，我们将后半段部分的数字翻转一下，然后判断翻转后的数字是否与前半部分的数字是否相等即可。我们可以将整数对10取余得到整数的个位数。由于数字位数为奇数个和偶数个的情况不一样，我们通过两个实例分析，如下图2所示。</p>
-<img src="/2019/05/22/LeetCode-9-回文数/整数翻转实例.png" title="图2.整数翻转实例">
-<p>通过分析之后，具体代码就不难实现了。<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 排除负数和以0结尾的整数（除0以外）</span></span><br><span class="line">    <span class="keyword">if</span> ((x &lt; <span class="number">0</span>) || (x % <span class="number">10</span> == <span class="number">0</span> &amp;&amp; x != <span class="number">0</span> ))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> reverNum = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 翻转整数过程</span></span><br><span class="line">    <span class="keyword">while</span> (x &gt; reverNum)&#123;</span><br><span class="line">        reverNum = reverNum * <span class="number">10</span> + x % <span class="number">10</span>;  <span class="comment">// 计算翻转数字</span></span><br><span class="line">        x /= <span class="number">10</span>;                            <span class="comment">// 计算剩余数字</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> reverNum == x || reverNum / <span class="number">10</span> == x; <span class="comment">// reverNum == x为整数位数偶数个时的判断条件；reverNum / 10 == x为整数位数奇数个时的判断条件</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/05/22/LeetCode-9-回文数/回文数提交结果.png" title="图3.回文数提交结果">
-<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A9_PalindromeNumber.java" target="_blank" rel="noopener">LeetCode-9 回文数</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/palindrome-number/" target="_blank" rel="noopener">9.回文数</a></p>
+<p>今天我们学习第11题<strong>盛最多水的容器</strong>，这是一个数组的中等题，这个题目难度不大，记得在秋招面试中遇见过。下面我们看看这道题的题目描述。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">题目描述</a></h1><p>给定<code>n</code>个非负整数<code>a1，a2，...，an</code>，每个数代表坐标中的一个点<code>(i, ai)</code>。在坐标内画<code>n</code>条垂直线，垂直线<code>i</code>的两个端点分别为<code>(i, ai)</code>和<code>(i, 0)</code>。找出其中的两条线，使得它们与<code>x</code>轴共同构成的容器可以容纳最多的水。</p>
+<p>说明：你不能倾斜容器，且<code>n</code>的值至少为 2。</p>
+<img src="/2019/05/24/LeetCode-11-盛最多水的容器/题目.jpg" title="题目示意图">
+<p>图中垂直线代表输入数组<code>[1,8,6,2,5,4,8,3,7]</code>。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>结合这个题目通过给出的示意图来理解比较容易，输入数组中的数据代表水池的高度，数组中数据之间距离表示水池的宽度，它们的乘积则为可以容纳的水（即面积）。我们可以使用双指针来解决此问题，左指针为数组起始位置，右指针为数组终止位置，然后计算此时左右指针包含的面积（注意，计算面积时的高度为左右指针指向的数据取较小的那一个），然后移动指针，移动规则为移动指针指向数据较小的指针（左指针向右移动，右指针向左移动）。当左右指针指向同一个数据时，则退出循环，最大的面积即为所求的值。<br><code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// res为所求面积，初始化为0， left为左指针， right为右指针</span></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, left = <span class="number">0</span>, right = height.length-<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="comment">// 保留最大面积</span></span><br><span class="line">            res = Math.max(res, Math.min(height[left], height[right]) * (right-left));</span><br><span class="line">            <span class="comment">// 比较左右指针指向的数据，移动较小数据的指针</span></span><br><span class="line">            <span class="keyword">if</span>(height[left]&lt;height[right])</span><br><span class="line">                ++left;    <span class="comment">// 左指针向右移动</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                --right;    <span class="comment">// 右指针向左移动</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/05/24/LeetCode-11-盛最多水的容器/提交结果.png" title="图2.提交结果">
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A11_ContainerWithMostWater.java" target="_blank" rel="noopener">LeetCode-11 盛最多水的容器</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">11.字符串转换整数</a></p>
 
       
     </div>
@@ -396,6 +390,10 @@
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
+            <a href="/tags/数组/" rel="tag"># 数组</a>
+          
+            <a href="/tags/双指针/" rel="tag"># 双指针</a>
+          
         </div>
       
 
@@ -407,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/数据结构与算法-递归/" rel="next" title="数据结构与算法-递归">
-                <i class="fa fa-chevron-left"></i> 数据结构与算法-递归
+              <a href="/2019/05/23/数据结构与算法-动态规划/" rel="next" title="数据结构与算法-动态规划">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法-动态规划
               </a>
             
           </div>
@@ -416,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/23/LeetCode答疑-打卡微信群/" rel="prev" title="LeetCode答疑+打卡微信群">
-                LeetCode答疑+打卡微信群 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
