@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,">
+  <meta name="keywords" content="LeetCode,双指针,字符串,">
 
 
 
@@ -81,21 +81,20 @@
 
 
 
-<meta name="description" content="题目：7. 整数反转 难度：简单 分类：数学 解决方案：整数取模">
-<meta name="keywords" content="LeetCode">
+<meta name="description" content="题目：15. 三数之和 难度：中等 分类：字符串 解决方案：双指针">
+<meta name="keywords" content="LeetCode,双指针,字符串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-7 整数反转">
-<meta property="og:url" content="http://JacobLei.github.io/2019/05/20/LeetCode-7-整数反转/index.html">
+<meta property="og:title" content="LeetCode-15 三数之和">
+<meta property="og:url" content="http://JacobLei.github.io/2019/05/28/LeetCode-15-三数之和/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：7. 整数反转 难度：简单 分类：数学 解决方案：整数取模">
+<meta property="og:description" content="题目：15. 三数之和 难度：中等 分类：字符串 解决方案：双指针">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/20/LeetCode-7-整数反转/转换过程.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/20/LeetCode-7-整数反转/提交结果.png">
-<meta property="og:updated_time" content="2019-05-20T12:38:15.133Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/28/LeetCode-15-三数之和/示例1详细分析过程.png">
+<meta property="og:updated_time" content="2019-05-28T06:56:54.761Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-7 整数反转">
-<meta name="twitter:description" content="题目：7. 整数反转 难度：简单 分类：数学 解决方案：整数取模">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/20/LeetCode-7-整数反转/转换过程.png">
+<meta name="twitter:title" content="LeetCode-15 三数之和">
+<meta name="twitter:description" content="题目：15. 三数之和 难度：中等 分类：字符串 解决方案：双指针">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/28/LeetCode-15-三数之和/示例1详细分析过程.png">
 
 
 
@@ -125,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/05/20/LeetCode-7-整数反转/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/05/28/LeetCode-15-三数之和/">
 
 
 
 
 
-  <title>LeetCode-7 整数反转 | jacob2359</title>
+  <title>LeetCode-15 三数之和 | jacob2359</title>
   
 
 
@@ -258,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/20/LeetCode-7-整数反转/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/28/LeetCode-15-三数之和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -275,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-7 整数反转</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-15 三数之和</h1>
         
 
         <div class="post-meta">
@@ -287,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-20T19:47:59+08:00">
-                2019-05-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-28T13:47:15+08:00">
+                2019-05-28
               </time>
             
 
@@ -348,25 +347,32 @@
 
       
         <ul>
-<li>题目：7. 整数反转</li>
-<li>难度：简单</li>
-<li>分类：数学</li>
-<li>解决方案：整数取模<a id="more"></a>
+<li>题目：15. 三数之和</li>
+<li>难度：中等</li>
+<li>分类：字符串</li>
+<li>解决方案：双指针<a id="more"></a>
 </li>
 </ul>
-<p>今天我们学习第7题<strong>整数反转</strong>，这是个简单的数学题。下面我们看看这道题的题目描述。</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">题目描述</a></h1><p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。</p>
-<p>示例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 123</span><br><span class="line">输出: 321</span><br></pre></td></tr></table></figure></p>
-<p>示例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: -123</span><br><span class="line">输出: -321</span><br></pre></td></tr></table></figure></p>
-<p>示例3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 120</span><br><span class="line">输出: 21</span><br></pre></td></tr></table></figure></p>
-<p>注意:<br><strong>假设我们的环境只能存储得下32位的有符号整数，则其数值范围为[−2^31,  2^31 − 1]。请根据这个假设，如果反转后整数溢出那么就返回0。</strong></p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>相信小伙伴们看完这个题目后就会有思路，就是通过取模把最低位取到，然后拼接即可。对于整数<code>-123</code>的转换过程如图1所示：</p>
-<img src="/2019/05/20/LeetCode-7-整数反转/转换过程.png" title="图1.转换过程">
-<p>值得注意的是如果整数反转后溢出了怎么办？由题意可知，溢出后返回0，因此我们需要判断结果是否溢出。</p>
-<p>具体<code>java</code>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 注意这里为long类型，防止int类型的则行数反转后溢出</span></span><br><span class="line">        <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 反转整数</span></span><br><span class="line">        <span class="keyword">while</span>(x != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">// 获取到最低位</span></span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            <span class="comment">// 在原数字上移除最低位</span></span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 判断是否溢出，若溢出则返回0</span></span><br><span class="line">            <span class="keyword">if</span>(res &gt; Integer.MAX_VALUE || res &lt; Integer.MIN_VALUE)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/05/20/LeetCode-7-整数反转/提交结果.png" title="图2.提交结果">
-<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A7_ReverseInteger.java" target="_blank" rel="noopener">LeetCode-7 整数反转</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">7.整数反转</a></p>
+<p>今天我们学习第15题<strong>三数之和</strong>，这是一道中等题。像这样字符串的题目经常作为面试题来考察面试者算法能力和写代码能力，因此最好能手写出该题。下面我们看看这道题的题目描述。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/3sum/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个包含<code>n</code>个整数的数组<code>nums</code>，判断<code>nums</code>中是否存在三个元素<code>a</code>，<code>b</code>，<code>c</code> ，使得 <code>a + b + c = 0 ？</code>找出所有满足条件且不重复的三元组。</p>
+<p>注意：答案中<strong>不可以包含重复的三元组</strong>。</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">例如, 给定数组nums = [-1, 0, 1, 2, -1, -4]，</span><br><span class="line"></span><br><span class="line">满足要求的三元组集合为：</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>我们做过<a href="https://mp.weixin.qq.com/s?__biz=MzU5NTkyMDQyOQ==&amp;mid=2247483662&amp;idx=1&amp;sn=51920407843f16c16701416061ade8fb&amp;chksm=fe6bd24cc91c5b5a2e9f54985eefa36f4b9554b992e771237091b5574ad8c83d892d6a8b61e8&amp;token=911136023&amp;lang=zh_CN#rd" target="_blank" rel="noopener">LeetCode-1 两数之和</a>，这个题目与它有联系，但也有蛮大的差异。像这样求和的问题我们首先想到的是暴力求解方法，这个题目用暴力求解的时间复杂度为<code>O(n^3)</code>。我们想一想能不能将时间按复杂度降到<code>O(n^2)</code>？</p>
+<p>先将数组进行排序(排序函数的时间复杂度为<code>O(nlgn)</code>)，然后我们就可以对这个有序数组用双指针的方法从左右两边向中间扫描了：</p>
+<ul>
+<li>对于有序数组的两数之和，我们就是找到左右指针指向的数之和等于<code>target</code>就可以了；</li>
+<li>对于有序数组的三数之和，我们可以先固定一个数(即为<code>target</code>)，然后就是找到左右指针指向的数之和等于<code>target</code>就可以了。</li>
+</ul>
+<p>对题目描述中示例进行分析如下图所示：<br><img src="/2019/05/28/LeetCode-15-三数之和/示例1详细分析过程.png" title="示例1详细分析过程"></p>
+<p>在遍历查找过程中有几点需要值得<strong>注意的</strong>：</p>
+<ul>
+<li>题目要求<strong>答案中不可以包含重复的三元组</strong>，因此需要去重处理</li>
+<li>由于数组已排序，当固定数字大于零(即为<code>target&gt;0</code>)时,则它后面的数都大于零，不需要继续查找</li>
+</ul>
+<p><code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">   <span class="comment">// 存储满足条件的三元组</span></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 给数组排序</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 注意遍历的右边界条件</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len-<span class="number">2</span>; i++)&#123;</span><br><span class="line">            <span class="comment">// 去掉重复值</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i-<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 由于数组已排序，当nums[i]&gt;0,则它后面的数都大于零，不需要继续查找</span></span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 在数组中查找两个数与nums[i]的和为0, i+1表示左指针，len-1表示右指针，nums[i]表示固定数target</span></span><br><span class="line">            find(nums, i+<span class="number">1</span>, len-<span class="number">1</span>, nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查找函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> begin, <span class="keyword">int</span> end, <span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = begin, right = end;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right)&#123;</span><br><span class="line">            <span class="comment">// 查找满足条件的三个</span></span><br><span class="line">            <span class="keyword">if</span>(nums[left] + nums[right] + target == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">// 保存这个三个数</span></span><br><span class="line">                List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                tmp.add(target);</span><br><span class="line">                tmp.add(nums[left]);</span><br><span class="line">                tmp.add(nums[right]);</span><br><span class="line">                res.add(tmp);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 去掉重复的值</span></span><br><span class="line">                <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left+<span class="number">1</span>])</span><br><span class="line">                    left++;</span><br><span class="line">                <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right-<span class="number">1</span>])</span><br><span class="line">                    right--;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 移动左右指针</span></span><br><span class="line">                left++;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[left] + nums[right] + target &lt; <span class="number">0</span>)&#123;    <span class="comment">// 当这个三个之和小于0，则左指针向右移动</span></span><br><span class="line">                left++;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123; <span class="comment">// 当这三个数大于零，则右指针向左移动</span></span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A15_3Sum.java" target="_blank" rel="noopener">LeetCode-15 三数之和</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://blog.csdn.net/ljiabin/article/details/40620579" target="_blank" rel="noopener">15.三数之和</a></p>
 
       
     </div>
@@ -423,6 +429,10 @@
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
+            <a href="/tags/双指针/" rel="tag"># 双指针</a>
+          
+            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+          
         </div>
       
 
@@ -434,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/19/LeetCode-6-Z字形变换/" rel="next" title="LeetCode-6 Z字形变换">
-                <i class="fa fa-chevron-left"></i> LeetCode-6 Z字形变换
+              <a href="/2019/05/26/《批判性思维工具-Critical-Thinking-》-读书笔记-二-成为公正的思考者/" rel="next" title="《批判性思维工具(Critical Thinking)》-读书笔记(二):成为公正的思考者">
+                <i class="fa fa-chevron-left"></i> 《批判性思维工具(Critical Thinking)》-读书笔记(二):成为公正的思考者
               </a>
             
           </div>
@@ -443,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/21/LeetCode-8-字符串转换整数/" rel="prev" title="LeetCode-8 字符串转换整数">
-                LeetCode-8 字符串转换整数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
