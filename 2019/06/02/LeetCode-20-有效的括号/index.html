@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,字符串,">
+  <meta name="keywords" content="LeetCode,栈,">
 
 
 
@@ -81,23 +81,21 @@
 
 
 
-<meta name="description" content="题目：17. 电话号码的字母组合 难度：中等 分类：字符串 解决方案：字符串遍历">
-<meta name="keywords" content="LeetCode,字符串">
+<meta name="description" content="题目：20. 有效的括号 难度：简单 分类：栈 解决方案：入栈出栈">
+<meta name="keywords" content="LeetCode,栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-17 电话号码的字母组合">
-<meta property="og:url" content="http://JacobLei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/index.html">
+<meta property="og:title" content="LeetCode-20 有效的括号">
+<meta property="og:url" content="http://JacobLei.github.io/2019/06/02/LeetCode-20-有效的括号/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：17. 电话号码的字母组合 难度：中等 分类：字符串 解决方案：字符串遍历">
+<meta property="og:description" content="题目：20. 有效的括号 难度：简单 分类：栈 解决方案：入栈出栈">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/题目描述.jpg">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/数字与其对应的字母.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/示例详细分析过程.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/提交结果.png">
-<meta property="og:updated_time" content="2019-05-30T07:27:20.678Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/02/LeetCode-20-有效的括号/示例5详细示意图.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/02/LeetCode-20-有效的括号/提交结果.png">
+<meta property="og:updated_time" content="2019-06-02T13:03:08.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-17 电话号码的字母组合">
-<meta name="twitter:description" content="题目：17. 电话号码的字母组合 难度：中等 分类：字符串 解决方案：字符串遍历">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/题目描述.jpg">
+<meta name="twitter:title" content="LeetCode-20 有效的括号">
+<meta name="twitter:description" content="题目：20. 有效的括号 难度：简单 分类：栈 解决方案：入栈出栈">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/02/LeetCode-20-有效的括号/示例5详细示意图.png">
 
 
 
@@ -127,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/06/02/LeetCode-20-有效的括号/">
 
 
 
 
 
-  <title>LeetCode-17 电话号码的字母组合 | jacob2359</title>
+  <title>LeetCode-20 有效的括号 | jacob2359</title>
   
 
 
@@ -260,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/02/LeetCode-20-有效的括号/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -277,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-17 电话号码的字母组合</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-20 有效的括号</h1>
         
 
         <div class="post-meta">
@@ -289,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-30T13:24:15+08:00">
-                2019-05-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T18:40:15+08:00">
+                2019-06-02
               </time>
             
 
@@ -350,25 +348,32 @@
 
       
         <ul>
-<li>题目：17. 电话号码的字母组合</li>
-<li>难度：中等</li>
-<li>分类：字符串</li>
-<li>解决方案：字符串遍历<a id="more"></a>
-</li>
+<li>题目：20. 有效的括号</li>
+<li>难度：简单</li>
+<li>分类：栈</li>
+<li>解决方案：入栈出栈</li>
 </ul>
-<p>今天我们学习第17题<strong>电话号码的字母组合</strong>，这是一道中等题。像这样字符串的题目经常作为面试题来考察面试者算法能力和写代码能力，因此最好能手写出该题。下面我们看看这道题的题目描述。</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个仅包含数字<code>2-9</code>的字符串，返回所有它能表示的字母组合。</p>
-<p>给出数字到字母的映射如下（与电话按键相同）。注意<code>1</code>不对应任何字母。<br><img src="/2019/05/30/LeetCode-17-电话号码的字母组合/题目描述.jpg"></p>
-<p>示例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br></pre></td></tr></table></figure></p>
-<p>说明:<br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题目的题意很好理解，让我们求电话号码的字母组合，从数字2到9中每个数字可以代表若干个字母，然后输一串数字，求出所有可能的组合。对于每个数字及其对应的字母可用数组建立对应关系，如下图所示。</p>
-<img src="/2019/05/30/LeetCode-17-电话号码的字母组合/数字与其对应的字母.png" title="数字与其对应的字母">
-<p>我们可以通过这样的对应关系来构成组字符串，如对示例分析的示意图如下所示：</p>
-<img src="/2019/05/30/LeetCode-17-电话号码的字母组合/示例详细分析过程.png" title="示例详细分析过程">
-<p>图中叶子节点中字符串即为字母组合。<br>将上述分析过程转化为<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 数字与字母的对应关系</span></span><br><span class="line">        String[] map = &#123;<span class="string">""</span>, <span class="string">""</span>, <span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(digits.isEmpty())</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 图中树的根节点</span></span><br><span class="line">        res.add(<span class="string">""</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历输入的数字</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : digits.toCharArray())&#123;</span><br><span class="line">            res = combine(map[c-<span class="string">'0'</span>], res);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据数字组合字母</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;String&gt; <span class="title">combine</span><span class="params">(String digits, List&lt;String&gt; list)</span></span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : digits.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">for</span>(String s : list)&#123;</span><br><span class="line">                res.add(s+c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/05/30/LeetCode-17-电话号码的字母组合/提交结果.png" title="提交结果">
-<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A17_LetterCombinationsofaPhoneNumber.java" target="_blank" rel="noopener">LeetCode-17 电话号码的字母组合</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">17. 电话号码的字母组合</a></p>
+<a id="more"></a>
+<p>今天我们学习第20题<strong>有效的括号</strong>，这是一道关于栈的简单题，对熟悉栈的基本使用很有帮助。下面我们看看这道题的题目描述。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个只包括 <code>(</code>，<code>)</code>，<code>{</code>，<code>}</code>，<code>[</code>，<code>]</code> 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ul>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+</ul>
+<p>注意空字符串可被认为是有效字符串。</p>
+<p>示例 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure></p>
+<p>示例 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure></p>
+<p>示例 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure></p>
+<p>示例 4:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;([)]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure></p>
+<p>示例 5:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;&#123;[]&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题是目前为止遇到的第一个<strong>栈</strong>相关题目，对于栈不太熟悉的小伙伴可以扫描文章下方的二维码，关注『 算法半岛』回复『 数据结构目录』，即可获得相关学习资料。</p>
+<p>对于这个题，我们借助一个栈，遍历字符串时，当遇到<code>(</code>、<code>{</code>或<code>[</code>时，将字符入栈；当遇到<code>)</code>、<code>}</code>或<code>]</code>时，判断栈顶是否为其对应的左括号，如果对应得上，弹出栈顶元素，如果栈顶为空或则对应不上，则返回<code>false</code>。对示例5的详细示意图如下所示：</p>
+<img src="/2019/06/02/LeetCode-20-有效的括号/示例5详细示意图.png" title="示例5详细示意图">
+<p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 申请栈</span></span><br><span class="line">         Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将字符串转化为字符数组</span></span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;chars.length; i++)&#123;</span><br><span class="line">            <span class="comment">// 判断当前字符是否为 '(' 、'[' 或 '&#123;'</span></span><br><span class="line">            <span class="keyword">if</span> (chars[i] == <span class="string">'('</span> || chars[i] == <span class="string">'['</span> || chars[i] == <span class="string">'&#123;'</span>)&#123;</span><br><span class="line">                <span class="comment">// 如果时，则入栈</span></span><br><span class="line">                stack.push(chars[i]);   </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 如果不是，则为')'、']'或'&#125;''，判断栈中是否有对应的左括号</span></span><br><span class="line">                <span class="keyword">if</span> (stack.empty())&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = stack.pop();</span><br><span class="line">                    <span class="keyword">if</span> ((chars[i] == <span class="string">')'</span> &amp;&amp; c != <span class="string">'('</span>) || (chars[i] == <span class="string">']'</span> &amp;&amp; c != <span class="string">'['</span>) || (chars[i] == <span class="string">'&#125;'</span> &amp;&amp; c != <span class="string">'&#123;'</span>))&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 只有当栈为空时，才为true</span></span><br><span class="line">        <span class="keyword">return</span> stack.empty() ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/06/02/LeetCode-20-有效的括号/提交结果.png" title="快慢提交结果">
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A20_ValidParentheses.java" target="_blank" rel="noopener">LeetCode-20 有效的括号</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">有效的括号</a></p>
 
       
     </div>
@@ -425,7 +430,7 @@
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
-            <a href="/tags/字符串/" rel="tag"># 字符串</a>
+            <a href="/tags/栈/" rel="tag"># 栈</a>
           
         </div>
       
@@ -438,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/28/LeetCode-16-最接近的三数之和/" rel="next" title="LeetCode-16 最接近的三数之和">
-                <i class="fa fa-chevron-left"></i> LeetCode-16 最接近的三数之和
+              <a href="/2019/05/31/LeetCode-19-删除链表中的倒数第N个节点/" rel="next" title="LeetCode-19 删除链表中的倒数第N个节点">
+                <i class="fa fa-chevron-left"></i> LeetCode-19 删除链表中的倒数第N个节点
               </a>
             
           </div>
@@ -447,10 +452,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/31/LeetCode-18-四数之和/" rel="prev" title="LeetCode-18 四数之和">
-                LeetCode-18 四数之和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
