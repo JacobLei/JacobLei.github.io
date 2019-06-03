@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://JacobLei.github.io/"/>
-  <updated>2019-06-02T13:03:08.892Z</updated>
+  <updated>2019-06-03T13:34:06.878Z</updated>
   <id>http://JacobLei.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-21 合并两个有序链表</title>
+    <link href="http://JacobLei.github.io/2019/06/03/LeetCode-21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"/>
+    <id>http://JacobLei.github.io/2019/06/03/LeetCode-21-合并两个有序链表/</id>
+    <published>2019-06-03T12:56:37.000Z</published>
+    <updated>2019-06-03T13:34:06.878Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>题目：21. 合并两个有序链表</li><li>难度：简单</li><li>分类：链表</li><li>解决方案：链表的遍历<a id="more"></a></li></ul><p>今天我们学习第21题<strong>合并两个有序链表</strong>，这是一道简单题。下面我们看看这道题的题目描述。</p><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">题目描述</a></h1><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p><p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure></p><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这是一个链表题，这个比较简单，用下面的示意图表示示例的分析过程：<br><img src="/2019/06/03/LeetCode-21-合并两个有序链表/示例详细分析过程.png" title="示例详细分析过程"></p><p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建head节点和cur指针</span></span><br><span class="line">        ListNode head = <span class="keyword">new</span> ListNode(-<span class="number">1</span>), cur = head;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历两个链表，将较小值的节点连接cur节点后</span></span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(l1.val &lt;= l2.val)&#123;</span><br><span class="line">                cur.next = l1;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cur.next = l2;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="comment">// 判断哪个链表不为空，如不为空，则直接连接到cur节点后</span></span><br><span class="line">        cur.next = (l1 != <span class="keyword">null</span>) ? l1 : l2;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 返回head的下一个节点</span></span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><img src="/2019/06/03/LeetCode-21-合并两个有序链表/提交结果.png" title="提交结果"><h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A21_MergeTwoSortedLists.java" target="_blank" rel="noopener">LeetCode-21 合并两个有序链表</a></p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">有效的括号</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;题目：21. 合并两个有序链表&lt;/li&gt;
+&lt;li&gt;难度：简单&lt;/li&gt;
+&lt;li&gt;分类：链表&lt;/li&gt;
+&lt;li&gt;解决方案：链表的遍历
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
+    
+      <category term="链表" scheme="http://JacobLei.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-20 有效的括号</title>
@@ -531,32 +559,6 @@
 &lt;li&gt;难度：中等&lt;/li&gt;
 &lt;li&gt;分类：字符串&lt;/li&gt;
 &lt;li&gt;解决方案：字符串遍历
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-7 整数反转</title>
-    <link href="http://JacobLei.github.io/2019/05/20/LeetCode-7-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/"/>
-    <id>http://JacobLei.github.io/2019/05/20/LeetCode-7-整数反转/</id>
-    <published>2019-05-20T11:47:59.000Z</published>
-    <updated>2019-05-20T12:38:15.133Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>题目：7. 整数反转</li><li>难度：简单</li><li>分类：数学</li><li>解决方案：整数取模<a id="more"></a></li></ul><p>今天我们学习第7题<strong>整数反转</strong>，这是个简单的数学题。下面我们看看这道题的题目描述。</p><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">题目描述</a></h1><p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。</p><p>示例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 123</span><br><span class="line">输出: 321</span><br></pre></td></tr></table></figure></p><p>示例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: -123</span><br><span class="line">输出: -321</span><br></pre></td></tr></table></figure></p><p>示例3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 120</span><br><span class="line">输出: 21</span><br></pre></td></tr></table></figure></p><p>注意:<br><strong>假设我们的环境只能存储得下32位的有符号整数，则其数值范围为[−2^31,  2^31 − 1]。请根据这个假设，如果反转后整数溢出那么就返回0。</strong></p><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>相信小伙伴们看完这个题目后就会有思路，就是通过取模把最低位取到，然后拼接即可。对于整数<code>-123</code>的转换过程如图1所示：</p><img src="/2019/05/20/LeetCode-7-整数反转/转换过程.png" title="图1.转换过程"><p>值得注意的是如果整数反转后溢出了怎么办？由题意可知，溢出后返回0，因此我们需要判断结果是否溢出。</p><p>具体<code>java</code>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 注意这里为long类型，防止int类型的则行数反转后溢出</span></span><br><span class="line">        <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 反转整数</span></span><br><span class="line">        <span class="keyword">while</span>(x != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">// 获取到最低位</span></span><br><span class="line">            res = res * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            <span class="comment">// 在原数字上移除最低位</span></span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 判断是否溢出，若溢出则返回0</span></span><br><span class="line">            <span class="keyword">if</span>(res &gt; Integer.MAX_VALUE || res &lt; Integer.MIN_VALUE)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><img src="/2019/05/20/LeetCode-7-整数反转/提交结果.png" title="图2.提交结果"><h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A7_ReverseInteger.java" target="_blank" rel="noopener">LeetCode-7 整数反转</a></p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">7.整数反转</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;题目：7. 整数反转&lt;/li&gt;
-&lt;li&gt;难度：简单&lt;/li&gt;
-&lt;li&gt;分类：数学&lt;/li&gt;
-&lt;li&gt;解决方案：整数取模
     
     </summary>
     

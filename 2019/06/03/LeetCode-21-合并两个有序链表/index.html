@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,栈,">
+  <meta name="keywords" content="LeetCode,链表,">
 
 
 
@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="题目：20. 有效的括号 难度：简单 分类：栈 解决方案：入栈出栈">
-<meta name="keywords" content="LeetCode,栈">
+<meta name="description" content="题目：21. 合并两个有序链表 难度：简单 分类：链表 解决方案：链表的遍历">
+<meta name="keywords" content="LeetCode,链表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-20 有效的括号">
-<meta property="og:url" content="http://JacobLei.github.io/2019/06/02/LeetCode-20-有效的括号/index.html">
+<meta property="og:title" content="LeetCode-21 合并两个有序链表">
+<meta property="og:url" content="http://JacobLei.github.io/2019/06/03/LeetCode-21-合并两个有序链表/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：20. 有效的括号 难度：简单 分类：栈 解决方案：入栈出栈">
+<meta property="og:description" content="题目：21. 合并两个有序链表 难度：简单 分类：链表 解决方案：链表的遍历">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/06/02/LeetCode-20-有效的括号/示例5详细示意图.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/06/02/LeetCode-20-有效的括号/提交结果.png">
-<meta property="og:updated_time" content="2019-06-02T13:03:08.892Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/03/LeetCode-21-合并两个有序链表/示例详细分析过程.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/03/LeetCode-21-合并两个有序链表/提交结果.png">
+<meta property="og:updated_time" content="2019-06-03T13:34:06.878Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-20 有效的括号">
-<meta name="twitter:description" content="题目：20. 有效的括号 难度：简单 分类：栈 解决方案：入栈出栈">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/02/LeetCode-20-有效的括号/示例5详细示意图.png">
+<meta name="twitter:title" content="LeetCode-21 合并两个有序链表">
+<meta name="twitter:description" content="题目：21. 合并两个有序链表 难度：简单 分类：链表 解决方案：链表的遍历">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/03/LeetCode-21-合并两个有序链表/示例详细分析过程.png">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/06/02/LeetCode-20-有效的括号/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/06/03/LeetCode-21-合并两个有序链表/">
 
 
 
 
 
-  <title>LeetCode-20 有效的括号 | jacob2359</title>
+  <title>LeetCode-21 合并两个有序链表 | jacob2359</title>
   
 
 
@@ -258,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/02/LeetCode-20-有效的括号/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/03/LeetCode-21-合并两个有序链表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -275,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-20 有效的括号</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-21 合并两个有序链表</h1>
         
 
         <div class="post-meta">
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T18:40:15+08:00">
-                2019-06-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-03T20:56:37+08:00">
+                2019-06-03
               </time>
             
 
@@ -348,32 +348,20 @@
 
       
         <ul>
-<li>题目：20. 有效的括号</li>
+<li>题目：21. 合并两个有序链表</li>
 <li>难度：简单</li>
-<li>分类：栈</li>
-<li>解决方案：入栈出栈</li>
+<li>分类：链表</li>
+<li>解决方案：链表的遍历<a id="more"></a>
+</li>
 </ul>
-<a id="more"></a>
-<p>今天我们学习第20题<strong>有效的括号</strong>，这是一道关于栈的简单题，对熟悉栈的基本使用很有帮助。下面我们看看这道题的题目描述。</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个只包括 <code>(</code>，<code>)</code>，<code>{</code>，<code>}</code>，<code>[</code>，<code>]</code> 的字符串，判断字符串是否有效。</p>
-<p>有效字符串需满足：</p>
-<ul>
-<li>左括号必须用相同类型的右括号闭合。</li>
-<li>左括号必须以正确的顺序闭合。</li>
-</ul>
-<p>注意空字符串可被认为是有效字符串。</p>
-<p>示例 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure></p>
-<p>示例 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure></p>
-<p>示例 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure></p>
-<p>示例 4:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;([)]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure></p>
-<p>示例 5:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;&#123;[]&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure></p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题是目前为止遇到的第一个<strong>栈</strong>相关题目，对于栈不太熟悉的小伙伴可以扫描文章下方的二维码，关注『 算法半岛』回复『 数据结构目录』，即可获得相关学习资料。</p>
-<p>对于这个题，我们借助一个栈，遍历字符串时，当遇到<code>(</code>、<code>{</code>或<code>[</code>时，将字符入栈；当遇到<code>)</code>、<code>}</code>或<code>]</code>时，判断栈顶是否为其对应的左括号，如果对应得上，弹出栈顶元素，如果栈顶为空或则对应不上，则返回<code>false</code>。对示例5的详细示意图如下所示：</p>
-<img src="/2019/06/02/LeetCode-20-有效的括号/示例5详细示意图.png" title="示例5详细示意图">
-<p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 申请栈</span></span><br><span class="line">         Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将字符串转化为字符数组</span></span><br><span class="line">        <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;chars.length; i++)&#123;</span><br><span class="line">            <span class="comment">// 判断当前字符是否为 '(' 、'[' 或 '&#123;'</span></span><br><span class="line">            <span class="keyword">if</span> (chars[i] == <span class="string">'('</span> || chars[i] == <span class="string">'['</span> || chars[i] == <span class="string">'&#123;'</span>)&#123;</span><br><span class="line">                <span class="comment">// 如果时，则入栈</span></span><br><span class="line">                stack.push(chars[i]);   </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 如果不是，则为')'、']'或'&#125;''，判断栈中是否有对应的左括号</span></span><br><span class="line">                <span class="keyword">if</span> (stack.empty())&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = stack.pop();</span><br><span class="line">                    <span class="keyword">if</span> ((chars[i] == <span class="string">')'</span> &amp;&amp; c != <span class="string">'('</span>) || (chars[i] == <span class="string">']'</span> &amp;&amp; c != <span class="string">'['</span>) || (chars[i] == <span class="string">'&#125;'</span> &amp;&amp; c != <span class="string">'&#123;'</span>))&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 只有当栈为空时，才为true</span></span><br><span class="line">        <span class="keyword">return</span> stack.empty() ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/06/02/LeetCode-20-有效的括号/提交结果.png" title="快慢提交结果">
-<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A20_ValidParentheses.java" target="_blank" rel="noopener">LeetCode-20 有效的括号</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">有效的括号</a></p>
+<p>今天我们学习第21题<strong>合并两个有序链表</strong>，这是一道简单题。下面我们看看这道题的题目描述。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">题目描述</a></h1><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这是一个链表题，这个比较简单，用下面的示意图表示示例的分析过程：<br><img src="/2019/06/03/LeetCode-21-合并两个有序链表/示例详细分析过程.png" title="示例详细分析过程"></p>
+<p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建head节点和cur指针</span></span><br><span class="line">        ListNode head = <span class="keyword">new</span> ListNode(-<span class="number">1</span>), cur = head;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历两个链表，将较小值的节点连接cur节点后</span></span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(l1.val &lt;= l2.val)&#123;</span><br><span class="line">                cur.next = l1;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                cur.next = l2;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="comment">// 判断哪个链表不为空，如不为空，则直接连接到cur节点后</span></span><br><span class="line">        cur.next = (l1 != <span class="keyword">null</span>) ? l1 : l2;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 返回head的下一个节点</span></span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/06/03/LeetCode-21-合并两个有序链表/提交结果.png" title="提交结果">
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A21_MergeTwoSortedLists.java" target="_blank" rel="noopener">LeetCode-21 合并两个有序链表</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">有效的括号</a></p>
 
       
     </div>
@@ -430,7 +418,7 @@
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
-            <a href="/tags/栈/" rel="tag"># 栈</a>
+            <a href="/tags/链表/" rel="tag"># 链表</a>
           
         </div>
       
@@ -443,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/31/LeetCode-19-删除链表中的倒数第N个节点/" rel="next" title="LeetCode-19 删除链表中的倒数第N个节点">
-                <i class="fa fa-chevron-left"></i> LeetCode-19 删除链表中的倒数第N个节点
+              <a href="/2019/06/02/LeetCode-20-有效的括号/" rel="next" title="LeetCode-20 有效的括号">
+                <i class="fa fa-chevron-left"></i> LeetCode-20 有效的括号
               </a>
             
           </div>
@@ -452,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/03/LeetCode-21-合并两个有序链表/" rel="prev" title="LeetCode-21 合并两个有序链表">
-                LeetCode-21 合并两个有序链表 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
