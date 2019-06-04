@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构与算法,递归,">
+  <meta name="keywords" content="递归,数据结构与算法,">
 
 
 
@@ -82,19 +82,19 @@
 
 
 <meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
-<meta name="keywords" content="数据结构与算法,递归">
+<meta name="keywords" content="递归,数据结构与算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法-递归">
 <meta property="og:url" content="http://JacobLei.github.io/2019/05/21/数据结构与算法-递归/index.html">
 <meta property="og:site_name" content="jacob2359">
 <meta property="og:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.jpg">
-<meta property="og:updated_time" content="2019-05-23T07:26:47.731Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.png">
+<meta property="og:updated_time" content="2019-06-04T06:25:09.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法-递归">
 <meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.jpg">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.png">
 
 
 
@@ -348,7 +348,7 @@
       
         <p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。</p>
 <a id="more"></a>
-<h1 id="如何理解递归？"><a href="#如何理解递归？" class="headerlink" title="如何理解递归？"></a>如何理解递归？</h1><p>在学习数据结构与算法的过程中一般都会遇到一个坎——递归。今天我们就来分析分析递归。<br>首先我们通过一个生活中的例子入手。假如你现在正在排队买票，前面有很多人，怎么才能知道你现在是第几号呢？这个时候就可以用递归了，你知道问你前面的人是多少号，在他的号数上加一即为你的号数。但是，前面的人也不知道自己是多少号啊，所以他再问他前面的人，这样一个一个的向前面问，直到问道队头的人，他说他现在是1号，然后这样就可以一个一个向后把数字传回来，直到你前面的人告诉你他是多少号，这样你就知道了你的位置了。<br>这个例子就是一个标准的递归求解问题的分解过程，一个一个向前问的过程就是”递”，一个一个向后传回来的过程就是”归”。基本上所有的递归问题都可以用公式表示出来。如上述例子的递归推导公式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(n) = f(n-1) + 1，其中f(1) = 1</span><br></pre></td></tr></table></figure></p>
+<h1 id="如何理解递归？"><a href="#如何理解递归？" class="headerlink" title="如何理解递归？"></a>如何理解递归？</h1><p>在学习数据结构与算法的过程中一般都会遇到一个坎——递归。今天我们就来分析分析递归。<br>首先我们通过一个生活中的例子入手。假如你现在正在排队买票，前面有很多人，怎么才能知道你现在是第几号呢？这个时候就可以用<strong>递归</strong>了，你可以问你前面的人是多少号，在他的号数上加一即为你的号数。但是，前面的人也不知道自己是多少号啊，所以他再问他前面的人，这样一个一个的向前面问，直到问道队头的人，他说他现在是1号，然后这样就可以一个一个向后把数字传回来，直到你前面的人告诉你他是多少号，这样你就知道了你的位置了。<br>这个例子就是一个标准的递归求解问题的分解过程，一个一个向前问的过程就是”递”，一个一个向后传回来的过程就是”归”。基本上所有的递归问题都可以用公式表示出来。如上述例子的递归推导公式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(n) = f(n-1) + 1，其中f(1) = 1</span><br></pre></td></tr></table></figure></p>
 <p><code>f(n)</code>表示你现状所在的位置（多少号），<code>f(n-1)</code>表示你前面一个人所在的位置（多少号），<code>f(1) = 1</code>表示第一个人直到自己为1号。有了这个递推公式，我们就可以很轻松的将它改写为递归代码，如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> f(n-<span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="递归需要满足的条件"><a href="#递归需要满足的条件" class="headerlink" title="递归需要满足的条件"></a>递归需要满足的条件</h1><p>从上述例子可以可以总结如下三个条件：</p>
 <ol>
@@ -367,7 +367,7 @@
 <h1 id="避开思维误区"><a href="#避开思维误区" class="headerlink" title="避开思维误区"></a>避开思维误区</h1><p>对于排队买票的例子，递归调用只有一个分支，也就是说”一个问题只需要分解为一个子问题”，这时我们很容易弄清楚”递”的过程和”归”的过程，所以理解起来难度不大。但是，当我们面临一个问题有多个子问题的情况时，递归就没有那么好理解了。<br>就如爬楼梯的例子，我们人脑几乎没有办法将整个”递”的过程和”归”的过程每一步想得清清楚楚。计算机擅长做重复的事情，所以递归正是这样，而我们人脑更喜欢平铺直叙的思维方式，当我们看到递归时，我们总想把递归平铺展开，脑子里就会循环，一层一层往下调，然后一层一层返回，试图想弄清楚计算机每一步都是怎么执行的，这样很容易被绕进去。<br>对于递归代码，这种试图想清楚整个递和归过程的做法实际上是进入了一个<strong>思维误区</strong>。我们该如何去思考递归呢？<br>如果一个问题 A 可以分解为若干子问题 B、C、D，你可以假设子问题 B、C、D 已经解决，在此基础上思考如何解决问题 A。而且，你只需要思考问题 A 与子问题 B、C、D 两层之间的关系即可，不需要一层一层往下思考子问题与子子问题，子子问题与子子子问题之间的关系。屏蔽掉递归细节，这样子理解起来就简单多了。因此，<strong>编写递归代码的关键是，只要遇到递归，我们就把它抽象成一个递推公式，不用想一层层的调用关系，不要试图用人脑去分解递归的每个步骤</strong>。</p>
 <h1 id="递归代码的注意事项"><a href="#递归代码的注意事项" class="headerlink" title="递归代码的注意事项"></a>递归代码的注意事项</h1><h2 id="递归代码要警惕堆栈溢出"><a href="#递归代码要警惕堆栈溢出" class="headerlink" title="递归代码要警惕堆栈溢出"></a>递归代码要警惕堆栈溢出</h2><p>由于在函数调用时会使用栈来保存临时变量，每调用一个函数，都会将临时变量封装为栈帧压入内存栈，等函数执行完成返回时，才出栈。系统栈或者虚拟机栈空间一般都不大。<strong>如果递归求解的数据规模很大，调用层次很深，一直压入栈，就会有堆栈溢出的风险</strong>。<br>那么该如何避免堆栈溢出呢？<br>我们可以通过在代码中限制递归调用的最大深度的方式来解决这个问题。递归调用超过一定深度（比如 1000）之后，我们就不继续往下再递归了，直接返回报错。对于排队买票的例子，我们可以改造成下面这样子，就可以避免堆栈溢出了。为了代码简洁，有些边界条件没有考虑，比如 x&lt;=0。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 表示递归的深度</span></span><br><span class="line"><span class="keyword">int</span> depth = <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(depth &gt; <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">throw</span> exception;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> f(n-<span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>但这种做法并不能完全解决问题，因为最大允许的递归深度跟当前线程剩余的栈空间大小有关，事先无法计算。如果实时计算，代码过于复杂，就会影响代码的可读性。所以，如果最大深度比较小，比如 10、50，就可以用这种方法，否则这种方法并不是很实用。</p>
-<h2 id="递归代码要警惕重复计算"><a href="#递归代码要警惕重复计算" class="headerlink" title="递归代码要警惕重复计算"></a>递归代码要警惕重复计算</h2><p>我们在分析一下爬楼梯的例子，如果我们把整个递归过程分解一下的话，那就是这样的：<br><img src="/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.jpg" title="爬楼梯递归过程分解图"></p>
+<h2 id="递归代码要警惕重复计算"><a href="#递归代码要警惕重复计算" class="headerlink" title="递归代码要警惕重复计算"></a>递归代码要警惕重复计算</h2><p>我们在分析一下爬楼梯的例子，如果我们把整个递归过程分解一下的话，那就是这样的：<br><img src="/2019/05/21/数据结构与算法-递归/爬楼梯递归过程分解图.png" title="爬楼梯递归过程分解图"></p>
 <p>从图中，我们可以直观地看到，想要计算 f(5)，需要先计算 f(4) 和 f(3)，而计算 f(4) 还需要计算 f(3)，因此，f(3) 就被计算了很多次，这就是重复计算问题。</p>
 <p>为了避免重复计算，我们可以通过一个数据结构（比如散列表）来保存已经求解过的 f(k)。当递归调用到 f(k) 时，先看下是否已经求解过了。如果是，则直接从散列表中取值返回，不需要重复计算，这样就能避免刚讲的问题了。<br>我们改写爬楼梯的代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// hasSolvedList 为一个Map，其中key为n，value为f(n)</span></span><br><span class="line">    <span class="keyword">if</span>(hasSolvedList.containsKey(n))&#123;</span><br><span class="line">    	<span class="keyword">return</span> hasSolvedList.get(n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> res = climbStairs(n - <span class="number">1</span>) + climbStairs(n - <span class="number">2</span>);</span><br><span class="line">    hasSolvedList.put(n, res);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>除了堆栈溢出、重复计算这两个常见的问题。递归代码还有很多别的问题。</p>
@@ -429,9 +429,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
-          
             <a href="/tags/递归/" rel="tag"># 递归</a>
+          
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
           
         </div>
       
@@ -533,7 +533,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +646,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33.7k字</span>
+  <span class="post-count">博客全站共34.3k字</span>
 </div>
 
 
