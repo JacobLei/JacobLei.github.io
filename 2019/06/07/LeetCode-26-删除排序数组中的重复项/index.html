@@ -81,21 +81,18 @@
 
 
 
-<meta name="description" content="题目：16. 最接近的三数之和 难度：中等 分类：数组 解决方案：双指针">
+<meta name="description" content="题目：26. 删除排序数组中的重复项 难度：简单 分类：链表 解决方案：双指针">
 <meta name="keywords" content="LeetCode,数组,双指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-16 最接近的三数之和">
-<meta property="og:url" content="http://JacobLei.github.io/2019/05/28/LeetCode-16-最接近的三数之和/index.html">
+<meta property="og:title" content="LeetCode-26 删除排序数组中的重复项">
+<meta property="og:url" content="http://JacobLei.github.io/2019/06/07/LeetCode-26-删除排序数组中的重复项/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：16. 最接近的三数之和 难度：中等 分类：数组 解决方案：双指针">
+<meta property="og:description" content="题目：26. 删除排序数组中的重复项 难度：简单 分类：链表 解决方案：双指针">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/28/LeetCode-16-最接近的三数之和/示例详细分析过程.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/28/LeetCode-16-最接近的三数之和/提交结果.png">
-<meta property="og:updated_time" content="2019-05-28T14:24:15.982Z">
+<meta property="og:updated_time" content="2019-06-07T13:30:12.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-16 最接近的三数之和">
-<meta name="twitter:description" content="题目：16. 最接近的三数之和 难度：中等 分类：数组 解决方案：双指针">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/28/LeetCode-16-最接近的三数之和/示例详细分析过程.png">
+<meta name="twitter:title" content="LeetCode-26 删除排序数组中的重复项">
+<meta name="twitter:description" content="题目：26. 删除排序数组中的重复项 难度：简单 分类：链表 解决方案：双指针">
 
 
 
@@ -125,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/05/28/LeetCode-16-最接近的三数之和/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/06/07/LeetCode-26-删除排序数组中的重复项/">
 
 
 
 
 
-  <title>LeetCode-16 最接近的三数之和 | jacob2359</title>
+  <title>LeetCode-26 删除排序数组中的重复项 | jacob2359</title>
   
 
 
@@ -258,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/28/LeetCode-16-最接近的三数之和/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/07/LeetCode-26-删除排序数组中的重复项/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -275,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-16 最接近的三数之和</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-26 删除排序数组中的重复项</h1>
         
 
         <div class="post-meta">
@@ -287,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-28T20:42:53+08:00">
-                2019-05-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-07T20:16:20+08:00">
+                2019-06-07
               </time>
             
 
@@ -348,21 +345,23 @@
 
       
         <ul>
-<li>题目：16. 最接近的三数之和</li>
-<li>难度：中等</li>
-<li>分类：数组</li>
+<li>题目：26. 删除排序数组中的重复项</li>
+<li>难度：简单</li>
+<li>分类：链表</li>
 <li>解决方案：双指针<a id="more"></a>
 </li>
 </ul>
-<p>今天我们学习第16题<strong>最接近的三数之和</strong>，这是一道中等题。像这样数组的题目经常作为面试题来考察面试者算法能力和写代码能力，因此最好能手写出该题。下面我们看看这道题的题目描述。</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/3sum/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个包括<code>n</code>个整数的数组<code>nums</code>和一个目标值<code>target</code>。找出<code>nums</code>中的三个整数，使得它们的和与<code>target</code>最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
-<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [-1，2，1，-4], 和 target = 1.</span><br><span class="line"></span><br><span class="line">与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).</span><br></pre></td></tr></table></figure></p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题和<a href="https://mp.weixin.qq.com/s?__biz=MzU5NTkyMDQyOQ==&amp;mid=2247483835&amp;idx=1&amp;sn=f990a98cc015eb9fbc8bf7ceeabe9982&amp;chksm=fe6bd2f9c91c5bef3aa1305ca933860b9f8afb77b78457432530a20d1ce431bea373fc64713b&amp;token=1428867397&amp;lang=zh_CN#rd" target="_blank" rel="noopener">LeetCode-15 三数之和</a>的解题思路差不多，在第15题中是为了寻找满足<code>a + b + c = 0</code>，而在这道题中首先给出了一个目标值<code>target</code>，然后寻找三个数<code>a + b + c</code>的和与<code>target</code>最接近，即<code>|a + b + c-target|</code>的值最小。对示例分析如下图所示：</p>
-<img src="/2019/05/28/LeetCode-16-最接近的三数之和/示例详细分析过程.png" title="示例详细分析过程">
-<p>将上述分析过程转化为<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> sum =<span class="number">0</span>;    <span class="comment">// 表示数组中三个元素的和</span></span><br><span class="line">        <span class="keyword">int</span> dis = Integer.MAX_VALUE;   <span class="comment">// 表示数组中三个元素的和与target的距离，即|sum-target|</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 对数组进行排序</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="comment">// 遍历数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length-<span class="number">2</span>; ++i)&#123;</span><br><span class="line">            <span class="comment">// 定义左指针和右指针</span></span><br><span class="line">            <span class="keyword">int</span> left = i+<span class="number">1</span>, right = nums.length-<span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">                <span class="comment">// 数组中三个元素的和与target的差，即sum-target </span></span><br><span class="line">                <span class="keyword">int</span> diff = nums[i] + nums[left] + nums[right] - target;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 当sum-target == 0，则说明已经找到与target最近的数了（即target本身）</span></span><br><span class="line">                <span class="keyword">if</span> (diff == <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">return</span> target;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 寻找最小距离</span></span><br><span class="line">                <span class="keyword">if</span>(Math.abs(diff) &lt; dis)&#123;</span><br><span class="line">                    dis = Math.abs(diff);</span><br><span class="line">                    sum = diff + target;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 移动左右指针</span></span><br><span class="line">                <span class="keyword">if</span>(diff &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    --right;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    ++left;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/05/28/LeetCode-16-最接近的三数之和/提交结果.png" title="提交结果">
-<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A16_3SumClosest.java" target="_blank" rel="noopener">LeetCode-16 最接近的三数之和</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/3sum-closest/" target="_blank" rel="noopener">16. 最接近的三数之和</a></p>
+<p>今天我们学习第26题<strong>删除排序数组中的重复项</strong>，这是一道简单题。像这样数组的题目经常作为面试题来考察面试者算法能力和写代码能力，因此最好能手写出该题。下面我们看看这道题的题目描述。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个排序数组，你需要在<strong>原地</strong>删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p><strong>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成</strong>。</p>
+<p>示例 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure></p>
+<p>示例 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure></p>
+<p>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题目的是删除已经排好序的数组的重复项，题目中的示例已经进行了详细说明。对这个题目的题意理解不难，就是返回数组中不重复项的个数，并在原数组上去掉重复项。细心的小伙伴可能到，在测试用例中输入<code>[1,1,2]</code>，返回的是<code>[1,2]</code>，而不是数组中不重复项的个数。这一点在题目中的<strong>说明部分</strong>已经解释了，简单点理解就是<strong>在测试的时候返回的是修改后的没有重复项的数组</strong>。</p>
+<p>对于示例1的详细</p>
 
       
     </div>
@@ -434,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/28/《批判性思维工具-Critical-Thinking-》-读书笔记-三-批判性思维前四个阶段/" rel="next" title="《批判性思维工具(Critical Thinking)》-读书笔记(三):批判性思维前四个阶段">
-                <i class="fa fa-chevron-left"></i> 《批判性思维工具(Critical Thinking)》-读书笔记(三):批判性思维前四个阶段
+              <a href="/2019/06/06/LeetCode-24-两两交换链表中的节点/" rel="next" title="LeetCode-24 两两交换链表中的节点">
+                <i class="fa fa-chevron-left"></i> LeetCode-24 两两交换链表中的节点
               </a>
             
           </div>
@@ -443,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/30/LeetCode-17-电话号码的字母组合/" rel="prev" title="LeetCode-17 电话号码的字母组合">
-                LeetCode-17 电话号码的字母组合 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -597,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github地址"><span class="nav-number">3.</span> <span class="nav-text">Github地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li></ol></div>
             
 
           </div>
