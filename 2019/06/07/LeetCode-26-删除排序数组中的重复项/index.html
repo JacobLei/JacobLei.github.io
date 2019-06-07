@@ -89,10 +89,13 @@
 <meta property="og:site_name" content="jacob2359">
 <meta property="og:description" content="题目：26. 删除排序数组中的重复项 难度：简单 分类：链表 解决方案：双指针">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-07T13:40:12.399Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/07/LeetCode-26-删除排序数组中的重复项/示例1详细分析过程.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/07/LeetCode-26-删除排序数组中的重复项/提交结果.png">
+<meta property="og:updated_time" content="2019-06-07T14:16:55.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-26 删除排序数组中的重复项">
 <meta name="twitter:description" content="题目：26. 删除排序数组中的重复项 难度：简单 分类：链表 解决方案：双指针">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/07/LeetCode-26-删除排序数组中的重复项/示例1详细分析过程.png">
 
 
 
@@ -361,7 +364,11 @@
 <p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
 <p>你可以想象内部操作如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题目的是删除已经排好序的数组的重复项，题目中的示例已经进行了详细说明。对这个题目的题意理解不难，就是返回数组中不重复项的个数，并在原数组上去掉重复项。细心的小伙伴可能到，在测试用例中输入<code>[1,1,2]</code>，返回的是<code>[1,2]</code>，而不是数组中不重复项的个数。这一点在题目中的<strong>说明部分</strong>已经解释了，简单点理解就是<strong>在测试的时候返回的是修改后的没有重复项的数组</strong>。</p>
-<p>对于示例1的详细分析过程如下所示：</p>
+<p>对于示例1的详细分析过程如下所示：<br><img src="/2019/06/07/LeetCode-26-删除排序数组中的重复项/示例1详细分析过程.png" title="示例1详细分析过程"></p>
+<p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(nums.length &lt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> fast = <span class="number">1</span>;        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(slow &lt; fast &amp;&amp; fast &lt; nums.length)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 当出现重复项的时候，移动fast指针</span></span><br><span class="line">            <span class="keyword">while</span>(nums[slow] == nums[fast])&#123;</span><br><span class="line">                fast++;</span><br><span class="line">                <span class="keyword">if</span>(fast == nums.length)</span><br><span class="line">                    <span class="keyword">return</span> res;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">            <span class="comment">// 当不是重复项是，原地删除重复项（即将后面的数移动到前面来）</span></span><br><span class="line">            <span class="comment">// ++slow;</span></span><br><span class="line">            <span class="comment">// nums[slow] = nums[fast];</span></span><br><span class="line">            <span class="comment">// fast++;</span></span><br><span class="line">            <span class="comment">// 可以写出下面的表达形式，这里注意++i与i++的区别</span></span><br><span class="line">            nums[++slow] = nums[fast++];</span><br><span class="line">            </span><br><span class="line">            res++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/06/07/LeetCode-26-删除排序数组中的重复项/提交结果.png" title="提交结果">
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A26_RemoveDuplicatesfromSortedArray.java" target="_blank" rel="noopener">LeetCode-26 删除排序数组中的重复项</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">删除排序数组中的重复项</a></p>
 
       
     </div>
@@ -592,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github地址"><span class="nav-number">3.</span> <span class="nav-text">Github地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
@@ -631,7 +638,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共36k字</span>
+  <span class="post-count">博客全站共36.2k字</span>
 </div>
 
 
