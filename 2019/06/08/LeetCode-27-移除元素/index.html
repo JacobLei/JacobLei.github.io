@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,">
+  <meta name="keywords" content="LeetCode,数组,双指针,">
 
 
 
@@ -81,22 +81,22 @@
 
 
 
-<meta name="description" content="题目：2. 两数相加 难度：中等 分类：链表 解决方案：链表的遍历">
-<meta name="keywords" content="LeetCode">
+<meta name="description" content="题目：27. 移除元素 难度：简单 分类：数组 解决方案：双指针">
+<meta name="keywords" content="LeetCode,数组,双指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-2 两数相加">
-<meta property="og:url" content="http://JacobLei.github.io/2019/05/09/LeetCode-2-两数相加/index.html">
+<meta property="og:title" content="LeetCode-27 移除元素">
+<meta property="og:url" content="http://JacobLei.github.io/2019/06/08/LeetCode-27-移除元素/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：2. 两数相加 难度：中等 分类：链表 解决方案：链表的遍历">
+<meta property="og:description" content="题目：27. 移除元素 难度：简单 分类：数组 解决方案：双指针">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/09/LeetCode-2-两数相加/链表表示数字.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/09/LeetCode-2-两数相加/两数相加.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/09/LeetCode-2-两数相加/两数相加计算结果.png">
-<meta property="og:updated_time" content="2019-05-12T11:53:21.944Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/08/LeetCode-27-移除元素/指针理解.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/08/LeetCode-27-移除元素/示例1详细分析过程.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/08/LeetCode-27-移除元素/提交结果.png">
+<meta property="og:updated_time" content="2019-06-09T02:36:16.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-2 两数相加">
-<meta name="twitter:description" content="题目：2. 两数相加 难度：中等 分类：链表 解决方案：链表的遍历">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/09/LeetCode-2-两数相加/链表表示数字.png">
+<meta name="twitter:title" content="LeetCode-27 移除元素">
+<meta name="twitter:description" content="题目：27. 移除元素 难度：简单 分类：数组 解决方案：双指针">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/08/LeetCode-27-移除元素/指针理解.png">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/05/09/LeetCode-2-两数相加/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/06/08/LeetCode-27-移除元素/">
 
 
 
 
 
-  <title>LeetCode-2 两数相加 | jacob2359</title>
+  <title>LeetCode-27 移除元素 | jacob2359</title>
   
 
 
@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/09/LeetCode-2-两数相加/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/08/LeetCode-27-移除元素/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -276,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-2 两数相加</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode-27 移除元素</h1>
         
 
         <div class="post-meta">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T22:33:36+08:00">
-                2019-05-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-08T22:11:04+08:00">
+                2019-06-08
               </time>
             
 
@@ -349,18 +349,28 @@
 
       
         <ul>
-<li>题目：2. 两数相加</li>
-<li>难度：中等</li>
-<li>分类：链表</li>
-<li>解决方案：链表的遍历</li>
+<li>题目：27. 移除元素</li>
+<li>难度：简单</li>
+<li>分类：数组</li>
+<li>解决方案：双指针<a id="more"></a>
+</li>
 </ul>
-<a id="more"></a>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank" rel="noopener">题目描述</a></h1><p>给出两个<strong>非空</strong>的链表用来表示两个非负的整数。其中，它们各自的位数是按照<strong>逆序</strong>的方式存储的，并且它们的每个节点只能存储<strong>一位</strong>数字。<br>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。<br>注意：您可以假设除了数字0之外，这两个数都不会以0开头。<br>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">输出：7 -&gt; 0 -&gt; 8</span><br><span class="line">原因：342 + 465 = 807</span><br></pre></td></tr></table></figure></p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题理解起来难度不大，就是将数字从个位数开始将数字放到链表的各个结点上，如下所示：<br><img src="/2019/05/09/LeetCode-2-两数相加/链表表示数字.png" title="链表表示数字"><br>然后两个链表的对应位置上的数字相加，将相加的值保存到结果链表中。这里需要注意两个关键点：一是如果两个值相加大于9该怎么办？二是两个链表长度不一致该怎么办？<br>对于关键点一：我们需要借助一个进位标识<code>carry</code>，当两数之和大于9时将<code>carry</code>标识为1，否则标识为0。<br>对于关键点二：我们以最长链表作为终点，对于较短链表对应位置的数值，我们用0来补齐。<br>下面分析一个具体实例，该实例包含上述两个关键点，如下图所示：<br><img src="/2019/05/09/LeetCode-2-两数相加/两数相加.png" title="两数相加"><br>如上图所示，数字342的链表较短，数字7465的链表较长。当两个数字的第二个结点相加时，它们的和为10，这时就需要进位，即<code>carry=1</code>，且将个位数保留作为结果链表的值。当较短的链表指向为<code>null</code>结点时，较长的链表指向的值为7，这需要将较短链表的值设置为0，即结果为0+7。<br>通过上面分析后，再看看如下<code>java</code>便一目了然。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建结果链表的头节点，默认该节点中的value为-1</span></span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        ListNode pre = dummy;</span><br><span class="line">        <span class="comment">// 进位标识carry，默认为0</span></span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 遍历链表，当两个链表都为空时，退出</span></span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="keyword">null</span> || l2 != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 判断该节点是否为空，当结点为空时，用0补齐；不为空时，加数即为节点的值</span></span><br><span class="line">            <span class="keyword">int</span> d1 = (l1 == <span class="keyword">null</span>) ? <span class="number">0</span> : l1.val;</span><br><span class="line">            <span class="keyword">int</span> d2 = (l2 == <span class="keyword">null</span>) ? <span class="number">0</span> : l2.val;</span><br><span class="line">            <span class="comment">// 对结点求和，注意：求和是需要考虑到进位</span></span><br><span class="line">            <span class="keyword">int</span> sum = d1 + d2 + carry;</span><br><span class="line">            <span class="comment">// 更新进位标识</span></span><br><span class="line">            carry = (sum &gt;= <span class="number">10</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="comment">// sum%10标识求和的个位数，将其保存到结果链表中</span></span><br><span class="line">            pre.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">            pre = pre.next;</span><br><span class="line">            <span class="keyword">if</span>(l1 != <span class="keyword">null</span>) l1 = l1.next;</span><br><span class="line">            <span class="keyword">if</span>(l2 != <span class="keyword">null</span>) l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 重点，这是一个特殊情况，当两个链表计算完后，</span></span><br><span class="line">        <span class="comment">// 还需要判断进位标识是否为1，如果为1，如23+81=104，需要创建一个结点保存最高位</span></span><br><span class="line">        <span class="keyword">if</span>(carry == <span class="number">1</span>)</span><br><span class="line">            pre.next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dummy.next;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/05/09/LeetCode-2-两数相加/两数相加计算结果.png" title="两数相加计算结果">
-<p>对于时间复杂度和空间复杂度，该题都为O(n)。</p>
-<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A2_AddTwoNumbers.java" target="_blank" rel="noopener">LeetCode-2 两数相加</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/add-two-numbers/solution/liang-shu-xiang-jia-by-leetcode/" target="_blank" rel="noopener">2. 两数之和</a></p>
+<p>今天我们学习第27题<strong>移除元素</strong>，这个题目和昨天的<a href="https://www.jacob2359.com/2019/06/07/LeetCode-26-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" target="_blank" rel="noopener">LeetCode-26 删除排序数组中的重复项</a>原理一样。我们先看看这道题的题目描述。</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/remove-element/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个数组<code>nums</code>和一个值 <code>val</code>，你需要原地移除所有数值等于<code>val</code>的元素，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在<strong>原地修改输入数组并在使用<code>O(1)</code> 额外空间</strong>的条件下完成。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p>示例 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [3,2,2,3], val = 3,</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure></p>
+<p>示例 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,1,2,2,3,0,4,2], val = 2,</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</span><br><span class="line"></span><br><span class="line">注意这五个元素可为任意顺序。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure></p>
+<p>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝</span><br><span class="line">int len = removeElement(nums, val);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>我相信小伙伴们看完这个后都会有思路，这个题目和<a href="https://www.jacob2359.com/2019/06/07/LeetCode-26-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" target="_blank" rel="noopener">LeetCode-26 删除排序数组中的重复项</a>原理一样，也是使用双指针方法去解决，需要说明一下我们这里说的<strong>指针</strong>的含义，它不是狭义上C语言中的指针，而是一种思想，它是<strong>利用一个值去寻找另一个值</strong>的方法，如下图所示：<br><img src="/2019/06/08/LeetCode-27-移除元素/指针理解.png" title="指针理解"></p>
+<p>因此指针一个值的地址(C语言中的指针)，也可以是数组中的下标(index)。在这个题目中双指针就是两个数组的下标，通过维护数组的下标来改变原来的数组。对示例1的详细分析过程如下所示：<br><img src="/2019/06/08/LeetCode-27-移除元素/示例1详细分析过程.png" title="示例1详细分析过程"></p>
+<p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 初始化slow指针</span></span><br><span class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> slow;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 初始fast指针，并遍历数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> fast=<span class="number">0</span>; fast&lt;nums.length; fast++)&#123;</span><br><span class="line">            <span class="comment">// 当前数不为val时，才把该保存在数组中</span></span><br><span class="line">            <span class="keyword">if</span>(nums[fast] != val )&#123;</span><br><span class="line">                nums[slow++] = nums[fast];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/06/08/LeetCode-27-移除元素/提交结果.png" title="提交结果">
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A27_RemoveElement.java" target="_blank" rel="noopener">LeetCode-27 移除元素</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/remove-element/" target="_blank" rel="noopener">删除排序数组中的重复项</a></p>
 
       
     </div>
@@ -417,6 +427,10 @@
           
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
+            <a href="/tags/数组/" rel="tag"># 数组</a>
+          
+            <a href="/tags/双指针/" rel="tag"># 双指针</a>
+          
         </div>
       
 
@@ -428,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/04/spring实战1-自动化装配bean/" rel="next" title="[spring实战]1-自动化装配bean">
-                <i class="fa fa-chevron-left"></i> [spring实战]1-自动化装配bean
+              <a href="/2019/06/07/LeetCode-26-删除排序数组中的重复项/" rel="next" title="LeetCode-26 删除排序数组中的重复项">
+                <i class="fa fa-chevron-left"></i> LeetCode-26 删除排序数组中的重复项
               </a>
             
           </div>
@@ -438,8 +452,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/10/LeetCode-3-无重复字符的最长子串/" rel="prev" title="LeetCode-3 无重复字符的最长子串">
-                LeetCode-3 无重复字符的最长子串 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/09/LeetCode-28-实现strStr/" rel="prev" title="LeetCode-28 实现strStr()">
+                LeetCode-28 实现strStr() <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
