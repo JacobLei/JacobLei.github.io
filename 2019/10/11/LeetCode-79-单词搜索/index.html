@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,数组,回溯算法,DFS,">
+  <meta name="keywords" content="LeetCode,数组,DFS,回溯算法,">
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="题目：79. 单词搜索 难度：中等 分类：数组 解决方案：DFS、回溯算法">
-<meta name="keywords" content="LeetCode,数组,回溯算法,DFS">
+<meta name="keywords" content="LeetCode,数组,DFS,回溯算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-79 单词搜索">
 <meta property="og:url" content="http://JacobLei.github.io/2019/10/11/LeetCode-79-单词搜索/index.html">
@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jacoblei.github.io/2019/10/11/LeetCode-79-单词搜索/示例详细分析过程.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/10/11/LeetCode-79-单词搜索/提交结果.png">
-<meta property="og:updated_time" content="2019-06-11T06:09:11.877Z">
+<meta property="og:updated_time" content="2019-06-11T07:27:46.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-79 单词搜索">
 <meta name="twitter:description" content="题目：79. 单词搜索 难度：中等 分类：数组 解决方案：DFS、回溯算法">
@@ -364,7 +364,7 @@
 <p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 特殊情况判断</span></span><br><span class="line">        <span class="keyword">if</span>(board == <span class="keyword">null</span> || board.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> rows = board.length;</span><br><span class="line">        <span class="keyword">int</span> cols = board[<span class="number">0</span>].length;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 申请并初始化visited数组</span></span><br><span class="line">        <span class="keyword">boolean</span>[][] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[rows][cols];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 从二维网格的左上角开始于word的首字符进行判断</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;rows; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;cols; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dfs(board, word, <span class="number">0</span>, i, j, visited))  <span class="comment">// 判断函数</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] board, String word, <span class="keyword">int</span> idx, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">boolean</span>[][] visited)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 当单词判断结束后，直接返回true</span></span><br><span class="line">        <span class="keyword">if</span>(idx == word.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> rows = board.length;</span><br><span class="line">        <span class="keyword">int</span> cols = board[<span class="number">0</span>].length;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 边界条件处理</span></span><br><span class="line">        <span class="comment">// 或字符已经访问处理</span></span><br><span class="line">        <span class="comment">// 或word中的字符与二维网格中的字符不相等 直接返回false</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;<span class="number">0</span> || j&lt;<span class="number">0</span> || i&gt;=rows || j&gt;=cols </span><br><span class="line">           || visited[i][j]</span><br><span class="line">           || word.toCharArray()[idx] != board[i][j])&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// word中的字符与二维网格中的字符相等即修改visited对应位置为true</span></span><br><span class="line">        visited[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 判断word下一个字符与二维网格中已判断的字符的上下左右四个相邻字符是否有一个相等的字符</span></span><br><span class="line">        <span class="comment">// 如果相等，则继续进入深度遍历进行判断</span></span><br><span class="line">        <span class="keyword">boolean</span> res = dfs(board, word, idx+<span class="number">1</span>, i-<span class="number">1</span>, j, visited)</span><br><span class="line">                    || dfs(board, word, idx+<span class="number">1</span>, i+<span class="number">1</span>, j, visited)</span><br><span class="line">                    || dfs(board, word, idx+<span class="number">1</span>, i, j-<span class="number">1</span>, visited)</span><br><span class="line">                    || dfs(board, word, idx+<span class="number">1</span>, i, j+<span class="number">1</span>, visited);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 如果不相等，回溯</span></span><br><span class="line">        visited[i][j] = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <img src="/2019/10/11/LeetCode-79-单词搜索/提交结果.png" title="提交结果">
 <h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A79_WordSearch.java" target="_blank" rel="noopener">LeetCode-79 单词搜索</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/word-search//" target="_blank" rel="noopener">单词搜索</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/word-search/" target="_blank" rel="noopener">单词搜索</a></p>
 
       
     </div>
@@ -423,9 +423,9 @@
           
             <a href="/tags/数组/" rel="tag"># 数组</a>
           
-            <a href="/tags/回溯算法/" rel="tag"># 回溯算法</a>
-          
             <a href="/tags/DFS/" rel="tag"># DFS</a>
+          
+            <a href="/tags/回溯算法/" rel="tag"># 回溯算法</a>
           
         </div>
       
@@ -438,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/10/LeetCode-31-下一个排列/" rel="next" title="LeetCode-31 下一个排列">
-                <i class="fa fa-chevron-left"></i> LeetCode-31 下一个排列
+              <a href="/2019/06/11/数据结构与算法-深度优先搜索/" rel="next" title="数据结构与算法-深度优先搜索">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法-深度优先搜索
               </a>
             
           </div>
@@ -523,7 +523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -545,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -636,7 +636,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共38.5k字</span>
+  <span class="post-count">博客全站共39.3k字</span>
 </div>
 
 

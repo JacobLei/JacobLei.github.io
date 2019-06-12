@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构与算法,分治算法,">
+  <meta name="keywords" content="数据结构与算法,深度优先搜索,">
 
 
 
@@ -82,19 +82,19 @@
 
 
 <meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
-<meta name="keywords" content="数据结构与算法,分治算法">
+<meta name="keywords" content="数据结构与算法,深度优先搜索">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构与算法-分治算法">
-<meta property="og:url" content="http://JacobLei.github.io/2019/06/05/数据结构与算法-分治算法/index.html">
+<meta property="og:title" content="数据结构与算法-深度优先搜索">
+<meta property="og:url" content="http://JacobLei.github.io/2019/06/11/数据结构与算法-深度优先搜索/index.html">
 <meta property="og:site_name" content="jacob2359">
 <meta property="og:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/06/05/数据结构与算法-分治算法/归并排序.png">
-<meta property="og:updated_time" content="2019-06-11T07:25:35.120Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/11/数据结构与算法-深度优先搜索/深度优先遍历示意图.png">
+<meta property="og:updated_time" content="2019-06-12T08:35:31.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构与算法-分治算法">
+<meta name="twitter:title" content="数据结构与算法-深度优先搜索">
 <meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/05/数据结构与算法-分治算法/归并排序.png">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/11/数据结构与算法-深度优先搜索/深度优先遍历示意图.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/06/05/数据结构与算法-分治算法/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/06/11/数据结构与算法-深度优先搜索/">
 
 
 
 
 
-  <title>数据结构与算法-分治算法 | jacob2359</title>
+  <title>数据结构与算法-深度优先搜索 | jacob2359</title>
   
 
 
@@ -257,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/05/数据结构与算法-分治算法/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/11/数据结构与算法-深度优先搜索/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -274,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据结构与算法-分治算法</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构与算法-深度优先搜索</h1>
         
 
         <div class="post-meta">
@@ -286,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-05T16:42:38+08:00">
-                2019-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T15:26:29+08:00">
+                2019-06-11
               </time>
             
 
@@ -348,31 +348,16 @@
       
         <p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。</p>
 <a id="more"></a>
-<h1 id="如何理解分治算法？"><a href="#如何理解分治算法？" class="headerlink" title="如何理解分治算法？"></a>如何理解分治算法？</h1><p><strong>分治算法</strong>主要理解<strong>分而治之</strong>四个字，即<strong>将大问题划分成n个规模较小，并且结构与原问题相似的子问题，然后递归地解决这些子问题，最后结合子问题的结果，得到原问题的解</strong>。具体的步骤为：</p>
+<h1 id="DFS理解"><a href="#DFS理解" class="headerlink" title="DFS理解"></a>DFS理解</h1><p><strong>深度优先搜索</strong>(Depth First Search, DFS)可以理解为走迷宫，假设当一个人走迷宫的时候，会遇到岔路口，面对多条路选择时，可以先随便选择一条，走着走着发现如果走不通了，可以退回到上一个岔路口，然后重新选择一条，用同样的方法继续走，直到直到出口为止。这样的策略即为DFS。</p>
+<h1 id="DFS示意图"><a href="#DFS示意图" class="headerlink" title="DFS示意图"></a>DFS示意图</h1><p>接下来我们将DFS应用到图的搜索中，如下图所示：<br><img src="/2019/06/11/数据结构与算法-深度优先搜索/深度优先遍历示意图.png" title="深度优先遍历示意图"></p>
+<h1 id="DFS代码"><a href="#DFS代码" class="headerlink" title="DFS代码"></a>DFS代码</h1><p>在完成相应的<code>java</code>代码前，我们先解释相关函数及参数的含义：</p>
 <ul>
-<li>“分”——将一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题</li>
-<li>“治”——将最后子问题可以简单的直接求解</li>
-<li>“合”——将所有子问题的解合并起来就是原问题的解</li>
+<li><code>HashMap&lt;Integer, LinkedList&lt;Integer&gt;&gt; graph</code>：我们使用一个<code>HashMap</code>来存储图，其中<code>HashMap</code>中的<code>key</code>为图的顶点，<code>LinkedList&lt;Integer&gt;&gt;</code>为与该顶点相连的顶点；</li>
+<li><code>HashMap&lt;Integer, Boolean&gt; visited</code>：我们使用一个<code>visited</code>用来记录顶点是否被访问，用来避免顶点被重复访问；</li>
+<li><code>visit(HashMap&lt;Integer, LinkedList&lt;Integer&gt;&gt; graph, HashMap&lt;Integer, Boolean&gt; visited, Integer start)</code>：该函数为DFS的主体部分，用来遍历各个顶点。</li>
 </ul>
-<h2 id="分治算法能解决的问题满足的几个条件："><a href="#分治算法能解决的问题满足的几个条件：" class="headerlink" title="分治算法能解决的问题满足的几个条件："></a>分治算法能解决的问题满足的几个条件：</h2><ul>
-<li><p>原问题与分解成的小问题具有相同的模式</p>
-</li>
-<li><p>原问题分解成的子问题可以独立求解，子问题之间没有相关性（这里注意与<a href="https://www.jacob2359.com/2019/05/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_blank" rel="noopener">动态规划</a>的区别）</p>
-</li>
-<li><p>具有分解终止条件，也就是说，当问题足够小时，可以直接求解</p>
-</li>
-<li><p>可以将子问题合并成原问题，而这个合并操作的复杂度不能太高，否则就起不到减小算法总体复杂度的效果</p>
-</li>
-</ul>
-<h2 id="分治算法与递归"><a href="#分治算法与递归" class="headerlink" title="分治算法与递归"></a>分治算法与递归</h2><p>分治算法与递归区别<strong>分治算法是一种处理问题的思想，递归是一种编程技巧</strong>，分治算法一般都比较适合用递归来实现。分治算法的递归实现中，每一层递归都会涉及以下三个操作：</p>
-<ul>
-<li>分解：将原问题分解成一系列子问题</li>
-<li>解决：递归地求解各个子问题，若子问题足够小，则直接求解</li>
-<li>合并：将子问题的结果合并成原问题</li>
-</ul>
-<h1 id="分治算法应用分析"><a href="#分治算法应用分析" class="headerlink" title="分治算法应用分析"></a>分治算法应用分析</h1><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是利用<strong>归并</strong>的思想实现的排序方法，主要采用的是<strong>分治</strong>策略进行排序。其详细过程如图所示：</p>
-<img src="/2019/06/05/数据结构与算法-分治算法/归并排序.png" title="归并排序">
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://www.cnblogs.com/chengxiao/p/6194356.html" target="_blank" rel="noopener">图解排序算法(四)之归并排序</a><br><a href="https://time.geekbang.org/column/article/73503" target="_blank" rel="noopener">分治算法</a></p>
+<p>具体<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDFS</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(HashMap&lt;Integer, LinkedList&lt;Integer&gt;&gt; graph, HashMap&lt;Integer, Boolean&gt; visited)</span></span>&#123;</span><br><span class="line">        visit(graph, visited, <span class="number">1</span>);</span><br><span class="line">        visit(graph, visited, <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(HashMap&lt;Integer, LinkedList&lt;Integer&gt;&gt; graph, HashMap&lt;Integer, Boolean&gt; visited, Integer start)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 如果该顶点没有被访问，则访问该顶点</span></span><br><span class="line">        <span class="keyword">if</span> (!visited.containsKey(start))&#123;</span><br><span class="line">            System.out.println(<span class="string">"当前进入节点为："</span> + start);</span><br><span class="line">            visited.put(start, <span class="keyword">true</span>);</span><br><span class="line">            <span class="comment">// 访问该顶点的相连顶点</span></span><br><span class="line">            <span class="keyword">for</span> (Integer i : graph.get(start))&#123;</span><br><span class="line">                <span class="keyword">if</span> (!visited.containsKey(i))&#123;</span><br><span class="line">                    visit(graph,visited, i);    <span class="comment">// 递归访问相连顶点</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"当前离开节点为："</span> + start);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造各个顶点</span></span><br><span class="line">        LinkedList&lt;Integer&gt; v1 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        v1.add(<span class="number">2</span>);</span><br><span class="line">        v1.add(<span class="number">3</span>);</span><br><span class="line">        v1.add(<span class="number">4</span>);</span><br><span class="line">        LinkedList&lt;Integer&gt; v2 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        v2.add(<span class="number">1</span>);</span><br><span class="line">        v2.add(<span class="number">3</span>);</span><br><span class="line">        LinkedList&lt;Integer&gt; v3 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        v3.add(<span class="number">1</span>);</span><br><span class="line">        v3.add(<span class="number">2</span>);</span><br><span class="line">        LinkedList&lt;Integer&gt; v4 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        v4.add(<span class="number">1</span>);</span><br><span class="line">        v4.add(<span class="number">5</span>);</span><br><span class="line">        v4.add(<span class="number">6</span>);</span><br><span class="line">        LinkedList&lt;Integer&gt; v5 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        v5.add(<span class="number">4</span>);</span><br><span class="line">        LinkedList&lt;Integer&gt; v6 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        v6.add(<span class="number">4</span>);</span><br><span class="line">        v6.add(<span class="number">7</span>);</span><br><span class="line">        LinkedList&lt;Integer&gt; v7 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        v7.add(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造图</span></span><br><span class="line">        HashMap&lt;Integer, LinkedList&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        graph.put(<span class="number">1</span>, v1);</span><br><span class="line">        graph.put(<span class="number">2</span>, v2);</span><br><span class="line">        graph.put(<span class="number">3</span>, v3);</span><br><span class="line">        graph.put(<span class="number">4</span>, v4);</span><br><span class="line">        graph.put(<span class="number">5</span>, v5);</span><br><span class="line">        graph.put(<span class="number">6</span>, v6);</span><br><span class="line">        graph.put(<span class="number">7</span>, v7);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// visited数组记录被访问的节点</span></span><br><span class="line">        HashMap&lt;Integer, Boolean&gt; visited = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        dfs(graph, visited);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">当前进入节点为：<span class="number">1</span></span><br><span class="line">当前进入节点为：<span class="number">2</span></span><br><span class="line">当前进入节点为：<span class="number">3</span></span><br><span class="line">当前离开节点为：<span class="number">3</span></span><br><span class="line">当前离开节点为：<span class="number">2</span></span><br><span class="line">当前进入节点为：<span class="number">4</span></span><br><span class="line">当前进入节点为：<span class="number">5</span></span><br><span class="line">当前离开节点为：<span class="number">5</span></span><br><span class="line">当前进入节点为：<span class="number">6</span></span><br><span class="line">当前进入节点为：<span class="number">7</span></span><br><span class="line">当前离开节点为：<span class="number">7</span></span><br><span class="line">当前离开节点为：<span class="number">6</span></span><br><span class="line">当前离开节点为：<span class="number">4</span></span><br><span class="line">当前离开节点为：<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -429,7 +414,7 @@
           
             <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
           
-            <a href="/tags/分治算法/" rel="tag"># 分治算法</a>
+            <a href="/tags/深度优先搜索/" rel="tag"># 深度优先搜索</a>
           
         </div>
       
@@ -442,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/04/LeetCode-22-括号生成/" rel="next" title="LeetCode-22 括号生成">
-                <i class="fa fa-chevron-left"></i> LeetCode-22 括号生成
+              <a href="/2019/06/10/LeetCode-31-下一个排列/" rel="next" title="LeetCode-31 下一个排列">
+                <i class="fa fa-chevron-left"></i> LeetCode-31 下一个排列
               </a>
             
           </div>
@@ -452,8 +437,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/06/LeetCode-24-两两交换链表中的节点/" rel="prev" title="LeetCode-24 两两交换链表中的节点">
-                LeetCode-24 两两交换链表中的节点 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/11/LeetCode-79-单词搜索/" rel="prev" title="LeetCode-79 单词搜索">
+                LeetCode-79 单词搜索 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -605,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#如何理解分治算法？"><span class="nav-number">1.</span> <span class="nav-text">如何理解分治算法？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分治算法能解决的问题满足的几个条件："><span class="nav-number">1.1.</span> <span class="nav-text">分治算法能解决的问题满足的几个条件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治算法与递归"><span class="nav-number">1.2.</span> <span class="nav-text">分治算法与递归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分治算法应用分析"><span class="nav-number">2.</span> <span class="nav-text">分治算法应用分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">2.1.</span> <span class="nav-text">归并排序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DFS理解"><span class="nav-number">1.</span> <span class="nav-text">DFS理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DFS示意图"><span class="nav-number">2.</span> <span class="nav-text">DFS示意图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DFS代码"><span class="nav-number">3.</span> <span class="nav-text">DFS代码</span></a></li></ol></div>
             
 
           </div>
