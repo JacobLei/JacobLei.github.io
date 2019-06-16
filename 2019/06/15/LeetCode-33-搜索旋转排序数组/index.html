@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="LeetCode,数组,二分查找,">
 
 
 
@@ -81,14 +81,22 @@
 
 
 
+<meta name="description" content="题目：33. 搜索旋转排序数组 难度：中等 分类：数组 解决方案：二分查找">
+<meta name="keywords" content="LeetCode,数组,二分查找">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-33 搜索旋转排序数组">
 <meta property="og:url" content="http://JacobLei.github.io/2019/06/15/LeetCode-33-搜索旋转排序数组/index.html">
 <meta property="og:site_name" content="jacob2359">
+<meta property="og:description" content="题目：33. 搜索旋转排序数组 难度：中等 分类：数组 解决方案：二分查找">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-15T09:11:51.096Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/15/LeetCode-33-搜索旋转排序数组/旋转数组.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/15/LeetCode-33-搜索旋转排序数组/示例1详细分析过程.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/15/LeetCode-33-搜索旋转排序数组/提交结果.png">
+<meta property="og:updated_time" content="2019-06-16T11:44:12.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-33 搜索旋转排序数组">
+<meta name="twitter:description" content="题目：33. 搜索旋转排序数组 难度：中等 分类：数组 解决方案：二分查找">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/15/LeetCode-33-搜索旋转排序数组/旋转数组.png">
 
 
 
@@ -291,6 +299,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -318,7 +348,28 @@
       
 
       
-        
+        <ul>
+<li>题目：33. 搜索旋转排序数组</li>
+<li>难度：中等</li>
+<li>分类：数组</li>
+<li>解决方案：二分查找<a id="more"></a>
+</li>
+</ul>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">题目描述</a></h1><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组<code>[0,1,2,4,5,6,7]</code>可能变为<code>[4,5,6,7,0,1,2]</code> )。</p>
+<p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回<code>-1</code>。</p>
+<p>你可以假设数组中不存在重复的元素。</p>
+<p>你的算法时间复杂度必须是<code>O(log n)</code>级别。</p>
+<p>示例 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [4,5,6,7,0,1,2], target = 0</span><br><span class="line">输出: 4</span><br></pre></td></tr></table></figure></p>
+<p>示例 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [4,5,6,7,0,1,2], target = 3</span><br><span class="line">输出: -1</span><br></pre></td></tr></table></figure></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这是一个二分查找的变形题，对于二分查找不太熟悉的小伙伴可以扫描文章下方的二维码，关注『 算法半岛』回复『 数据结构目录』，即可获得相关学习资料。</p>
+<p>这道题与传统的二分查找不同的是，给定的数组是一个旋转排序数组。我们先分析一下什么是旋转排序数组，如下图所示：<br><img src="/2019/06/15/LeetCode-33-搜索旋转排序数组/旋转数组.png" title="旋转数组"></p>
+<p>我们称红色部分的7和绿色部分的0为旋转区域，即排序数组分割区域。我们对上面任意一个旋转数组进行查找给定值，如示例1为对上面的旋转数组4查找给定值0，查找过程如下所示：<br><img src="/2019/06/15/LeetCode-33-搜索旋转排序数组/示例1详细分析过程.png" title="示例1详细分析过程"></p>
+<p>上述分析所对应的<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; nums[high])&#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &lt; target &amp;&amp; nums[high]&gt;=target)&#123;</span><br><span class="line">                    low = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    high = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &gt; target &amp;&amp; nums[low] &lt;= target)&#123;</span><br><span class="line">                    high = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    low = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<img src="/2019/06/15/LeetCode-33-搜索旋转排序数组/提交结果.png" title="提交结果">
+<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A33_SearchinRotatedSortedArray.java" target="_blank" rel="noopener">LeetCode-33 搜索旋转排序数组</a></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">搜索旋转排序数组</a></p>
+
       
     </div>
     
@@ -369,6 +420,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/数组/" rel="tag"># 数组</a>
+          
+            <a href="/tags/二分查找/" rel="tag"># 二分查找</a>
+          
+        </div>
       
 
       
@@ -443,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -524,6 +594,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github地址"><span class="nav-number">3.</span> <span class="nav-text">Github地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -556,7 +642,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共42.3k字</span>
+  <span class="post-count">博客全站共42.8k字</span>
 </div>
 
 
