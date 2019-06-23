@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LeetCode,数组,双指针,">
+  <meta name="keywords" content="数据结构与算法,二叉树,">
 
 
 
@@ -81,21 +81,25 @@
 
 
 
-<meta name="description" content="题目：11. 盛最多水的容器 难度：中等 分类：数组 解决方案：双指针">
-<meta name="keywords" content="LeetCode,数组,双指针">
+<meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta name="keywords" content="数据结构与算法,二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-11 盛最多水的容器">
-<meta property="og:url" content="http://JacobLei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/index.html">
+<meta property="og:title" content="数据结构与算法-二叉树">
+<meta property="og:url" content="http://JacobLei.github.io/2019/06/23/数据结构与算法-二叉树/index.html">
 <meta property="og:site_name" content="jacob2359">
-<meta property="og:description" content="题目：11. 盛最多水的容器 难度：中等 分类：数组 解决方案：双指针">
+<meta property="og:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/题目.jpg">
-<meta property="og:image" content="http://jacoblei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/提交结果.png">
-<meta property="og:updated_time" content="2019-05-24T10:31:49.770Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/23/数据结构与算法-二叉树/常见的二叉树.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/23/数据结构与算法-二叉树/完全二叉树.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/23/数据结构与算法-二叉树/满二叉树.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/23/数据结构与算法-二叉树/链式存储法.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/23/数据结构与算法-二叉树/顺序存储法.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/23/数据结构与算法-二叉树/满二叉树.png">
+<meta property="og:updated_time" content="2019-06-23T11:10:33.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-11 盛最多水的容器">
-<meta name="twitter:description" content="题目：11. 盛最多水的容器 难度：中等 分类：数组 解决方案：双指针">
-<meta name="twitter:image" content="http://jacoblei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/题目.jpg">
+<meta name="twitter:title" content="数据结构与算法-二叉树">
+<meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/23/数据结构与算法-二叉树/常见的二叉树.png">
 
 
 
@@ -125,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://JacobLei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/">
+  <link rel="canonical" href="http://JacobLei.github.io/2019/06/23/数据结构与算法-二叉树/">
 
 
 
 
 
-  <title>LeetCode-11 盛最多水的容器 | jacob2359</title>
+  <title>数据结构与算法-二叉树 | jacob2359</title>
   
 
 
@@ -258,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/05/24/LeetCode-11-盛最多水的容器/">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/23/数据结构与算法-二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jacob2359">
@@ -275,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode-11 盛最多水的容器</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构与算法-二叉树</h1>
         
 
         <div class="post-meta">
@@ -287,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T16:34:27+08:00">
-                2019-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-23T14:48:58+08:00">
+                2019-06-23
               </time>
             
 
@@ -310,8 +314,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
                   </a>
                 </span>
 
@@ -347,22 +351,33 @@
       
 
       
-        <ul>
-<li>题目：11. 盛最多水的容器</li>
-<li>难度：中等</li>
-<li>分类：数组</li>
-<li>解决方案：双指针<a id="more"></a>
-</li>
+        <p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。</p>
+<a id="more"></a>
+<h1 id="二叉树的理解"><a href="#二叉树的理解" class="headerlink" title="二叉树的理解"></a>二叉树的理解</h1><p>在理解树的基本概念和结构后接下来我们学习最常用的一种树——二叉树，如下图所示：</p>
+<p><img src="常见的二叉树.png" alt="常见的二叉树"></p>
+<p>从图中可以观察到，每个节点<strong>最多</strong>有两个分支，也就是两个节点，一般称为<strong>左子节点</strong>和<strong>右子节点</strong>。注意，是最多有两个节点，而不是必须有两个节点。像上图中的C节点只有一个节点（右子节点）。</p>
+<h1 id="完全二叉树和满二叉树"><a href="#完全二叉树和满二叉树" class="headerlink" title="完全二叉树和满二叉树"></a>完全二叉树和满二叉树</h1><p>在二叉树中有两种特殊的二叉树，分别是完全二叉树和满二叉树。</p>
+<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><p><img src="完全二叉树.png" alt="完全二叉树"></p>
+<p>如上图所示，节点F、G、H、I和J是叶子节点，这些叶子节点都在最后的两层，最后一层的叶子节点靠左排列，并且除最后一层外，其他层的节点个数达到最大，这样的二叉树即为<strong>完全二叉树</strong>。</p>
+<h2 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h2><p><img src="满二叉树.png" alt="满二叉树"></p>
+<p>如上图所示，节点D、E、F和G是叶子节点，这些叶子节点都在最后一层，且除了叶子节点外其他的节点都有左右两个子节点，这样的二叉树即为<strong>满二叉树</strong>。</p>
+<h1 id="二叉树的存储方式"><a href="#二叉树的存储方式" class="headerlink" title="二叉树的存储方式"></a>二叉树的存储方式</h1><p>对于二叉树的存储，可以通过<strong>链式存储法</strong>和<strong>顺序存储法</strong>分别存储。</p>
+<h2 id="链式存储法"><a href="#链式存储法" class="headerlink" title="链式存储法"></a>链式存储法</h2><p><img src="链式存储法.png" alt="链式存储法"></p>
+<p>观察上图可以知道，对于每个节点有三个字段，其中<code>data</code>表示存储数据，<code>left</code>表示指向左子节点的指针，<code>right</code>表示指向右子节点的指针。如果我们知道了一颗二叉树的根节点，则我们可以通过左右子节点的指针进行查找。大部分的二叉树的代码都是通过链式存储法来实现的。</p>
+<h2 id="顺序存储法"><a href="#顺序存储法" class="headerlink" title="顺序存储法"></a>顺序存储法</h2><p><img src="顺序存储法.png" alt="顺序存储法"></p>
+<p>观察上图可以知道，当二叉树中的某一个节点<code>index</code>为i，则它的左子节点的<code>index</code>为<code>2*i+1</code>，它的右子节点的<code>index</code>为<code>2*i+2</code>，它的父节点的<code>index</code>为<code>i/2</code>。因此，我们只要知道根节点的<code>index</code>，则可以通过上述表达式进行查找。对于使用顺序存储法时，需要申请连续的内存空间，因此对于节点个数不多完全二叉树和满二叉树比较合适，但是对于不完全二叉树就会造成大量的空间浪费。</p>
+<h1 id="二叉树的前序遍历、中序遍历和后序遍历"><a href="#二叉树的前序遍历、中序遍历和后序遍历" class="headerlink" title="二叉树的前序遍历、中序遍历和后序遍历"></a>二叉树的前序遍历、中序遍历和后序遍历</h1><p>在对二叉树遍历时，前序、中序和后序是指<strong>当前节点与它的左右子节点的打印现后顺序</strong>。</p>
+<ul>
+<li>前序遍历：先打印当前节点，然后打印左子树，最后打印右子树。当前节点 -&gt; 左子树 -&gt; 右子树；</li>
+<li>中序遍历：先打印左子树，然后打印当前节点，最后打印右子树。左子树 -&gt; 当前节点 -&gt; 右子树；</li>
+<li>后序遍历：先打印左子树，然后打印右子树，最后打印当前节点。左子树 -&gt; 右子树 -&gt; 当前节点。</li>
 </ul>
-<p>今天我们学习第11题<strong>盛最多水的容器</strong>，这是一个数组的中等题，这个题目难度不大，记得在秋招面试中遇见过。下面我们看看这道题的题目描述。</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">题目描述</a></h1><p>给定<code>n</code>个非负整数<code>a1，a2，...，an</code>，每个数代表坐标中的一个点<code>(i, ai)</code>。在坐标内画<code>n</code>条垂直线，垂直线<code>i</code>的两个端点分别为<code>(i, ai)</code>和<code>(i, 0)</code>。找出其中的两条线，使得它们与<code>x</code>轴共同构成的容器可以容纳最多的水。</p>
-<p>说明：你不能倾斜容器，且<code>n</code>的值至少为 2。</p>
-<img src="/2019/05/24/LeetCode-11-盛最多水的容器/题目.jpg" title="题目示意图">
-<p>图中垂直线代表输入数组<code>[1,8,6,2,5,4,8,3,7]</code>。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>结合这个题目通过给出的示意图来理解比较容易，输入数组中的数据代表水池的高度，数组中数据之间距离表示水池的宽度，它们的乘积则为可以容纳的水（即面积）。我们可以使用双指针来解决此问题，左指针为数组起始位置，右指针为数组终止位置，然后计算此时左右指针包含的面积（注意，计算面积时的高度为左右指针指向的数据取较小的那一个），然后移动指针，移动规则为移动指针指向数据较小的指针（左指针向右移动，右指针向左移动）。当左右指针指向同一个数据时，则退出循环，最大的面积即为所求的值。<br><code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// res为所求面积，初始化为0， left为左指针， right为右指针</span></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, left = <span class="number">0</span>, right = height.length-<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="comment">// 保留最大面积</span></span><br><span class="line">            res = Math.max(res, Math.min(height[left], height[right]) * (right-left));</span><br><span class="line">            <span class="comment">// 比较左右指针指向的数据，移动较小数据的指针</span></span><br><span class="line">            <span class="keyword">if</span>(height[left]&lt;height[right])</span><br><span class="line">                ++left;    <span class="comment">// 左指针向右移动</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                --right;    <span class="comment">// 右指针向左移动</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<img src="/2019/05/24/LeetCode-11-盛最多水的容器/提交结果.png" title="图2.提交结果">
-<h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A11_ContainerWithMostWater.java" target="_blank" rel="noopener">LeetCode-11 盛最多水的容器</a></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">11.字符串转换整数</a></p>
+<p><img src="满二叉树.png" alt="满二叉树"><br>对上面二叉树的打印顺序分别为：</p>
+<ul>
+<li>前序遍历：A -&gt; B -&gt; D -&gt; E -&gt; C -&gt; F -&gt; G</li>
+<li>中序遍历：D -&gt; B -&gt; E -&gt; A -&gt; F -&gt; C -&gt; G</li>
+<li>后序遍历：D -&gt; E -&gt; B -&gt; F -&gt; G -&gt; C -&gt; A</li>
+</ul>
 
       
     </div>
@@ -417,11 +432,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
           
-            <a href="/tags/数组/" rel="tag"># 数组</a>
-          
-            <a href="/tags/双指针/" rel="tag"># 双指针</a>
+            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
           
         </div>
       
@@ -434,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/23/数据结构与算法-动态规划/" rel="next" title="数据结构与算法-动态规划">
-                <i class="fa fa-chevron-left"></i> 数据结构与算法-动态规划
+              <a href="/2019/06/17/数据结构与算法-跳表/" rel="next" title="数据结构与算法-跳表">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法-跳表
               </a>
             
           </div>
@@ -444,8 +457,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/25/LeetCode-12-整数转罗马数字/" rel="prev" title="LeetCode-12 整数转罗马数字">
-                LeetCode-12 整数转罗马数字 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/11/LeetCode-79-单词搜索/" rel="prev" title="LeetCode-79 单词搜索">
+                LeetCode-79 单词搜索 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -597,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github地址"><span class="nav-number">3.</span> <span class="nav-text">Github地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树的理解"><span class="nav-number">1.</span> <span class="nav-text">二叉树的理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完全二叉树和满二叉树"><span class="nav-number">2.</span> <span class="nav-text">完全二叉树和满二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#完全二叉树"><span class="nav-number">2.1.</span> <span class="nav-text">完全二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#满二叉树"><span class="nav-number">2.2.</span> <span class="nav-text">满二叉树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树的存储方式"><span class="nav-number">3.</span> <span class="nav-text">二叉树的存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链式存储法"><span class="nav-number">3.1.</span> <span class="nav-text">链式存储法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序存储法"><span class="nav-number">3.2.</span> <span class="nav-text">顺序存储法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树的前序遍历、中序遍历和后序遍历"><span class="nav-number">4.</span> <span class="nav-text">二叉树的前序遍历、中序遍历和后序遍历</span></a></li></ol></div>
             
 
           </div>
