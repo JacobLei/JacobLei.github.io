@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构与算法,散列表,">
+
+
+
+
+
+  <link rel="alternate" href="/flase" title="jacob2359" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta name="keywords" content="数据结构与算法,散列表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法-散列表">
+<meta property="og:url" content="http://JacobLei.github.io/2019/06/24/数据结构与算法-散列表/index.html">
+<meta property="og:site_name" content="jacob2359">
+<meta property="og:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/号码牌散列.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/线性探测.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/散列表中查找元素.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/链表法.png">
+<meta property="og:updated_time" content="2019-07-02T14:44:08.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法-散列表">
+<meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
+<meta name="twitter:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/号码牌散列.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://JacobLei.github.io/2019/06/24/数据结构与算法-散列表/">
+
+
+
+
+
+  <title>数据结构与算法-散列表 | jacob2359</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jacob2359</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://JacobLei.github.io/2019/06/24/数据结构与算法-散列表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jacob2359">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jacob2359">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构与算法-散列表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T16:53:55+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。</p>
+<a id="more"></a>
+<h1 id="散列表的理解"><a href="#散列表的理解" class="headerlink" title="散列表的理解"></a>散列表的理解</h1><p>散列表也叫<code>Hash</code>表，具有像数组那样根据随机访问的特性，可以根据<code>key</code>来获得<code>value</code>。</p>
+<p>接下来举一个具体实例来理解散列表。当学校举办校运动会，每个运动员都有一个号码牌，这个号码牌的是根据“年级+班级+序号”组成，比如初一三班的小岛的号码牌为<code>070311</code>，其中<code>07</code>表示七年级即初一，<code>03</code>表示三班,<code>11</code>表示班上第11个班上参加运动会的序号。这个时候我们如何存储运动员的信息，来实现通过号码牌来查找运动员的信息？</p>
+<p>按照以往的经验，我们可以通过使用数组来存储，其中号码牌即为数组的下标，数组的值为运动员的信息。但是这里有一个问题，运动员的号码牌不是连续的，而申请数组的时候内存空间是连续的，因此会有很多内存空间浪费。</p>
+<p>这个时候就可以使用散列表，处理过程如下所示：</p>
+<p><img src="号码牌散列.png" alt="号码牌散列"></p>
+<p>从上图可以观察到，我们在存储运动员信息的时候，不是将整个号码牌作为数组的下标，而是将号码牌先进行<code>hash</code>函数（对100取余）处理后得到的数作为数组的下标，这样就可以数组的大小大大减小，并且在查找到时候也可以通过号码牌来查找对应的运动员的信息。细心的小伙伴观察到，如果<code>hash</code>函数处理后的余数一样该怎么办？比如，号码牌为<code>080211</code>的运动员就会和<code>070311</code>运动员在<code>hash</code>函数处理后得到的数是一样，因此会发生冲突，这个就是<strong>散列冲突的问题</strong>，在后续的讲解中会有相应的解决方案。这里先讲解<code>Hash</code>函数。</p>
+<h1 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a><code>Hash</code>函数</h1><p>从上面的图可以观察到，中间的部分的部分为<code>Hash</code>函数，也称为散列函数。它在散列表中起着关键作用。<br><code>Hash</code>函数一般使用<code>hash(key)</code>表示，其中<code>key</code>表示元素的键值部分，<code>hash(key)</code>的表示经过<code>Hash</code>函数计算得到的<code>Hash</code>值（散列值）。<br>对于上面运动会的问题，我们的<code>Hash</code>函数是将号码牌转为整型后对<code>100</code>取余。不同的应用实例的<code>Hash</code>函数不同，该怎么去构造<code>Hash</code>函数，一般遵循一下三条：</p>
+<ul>
+<li><code>Hash</code>函数计算得到的散列值是一个<strong>非负整数</strong>；</li>
+<li>如果<code>key1 == key2</code>，那么<code>hash(key1) == hash(key2)</code>;</li>
+<li>如果<code>key1 != key2</code>，那么<code>hash(key1) != hash(key2)</code>.</li>
+</ul>
+<p>对于第一条很好理解，因为数组的下标是从0开始，所以<code>Hash</code>函数生成的<code>Hash</code>值也需要是非负整数。<br>对于第二条，相同的<code>key</code>经过<code>Hash</code>函数处理后得到的<code>Hash</code>值应该也是相同的。<br>对于第三条，逻辑上应该是这样的，不同的<code>key</code>经过<code>Hash</code>函数处理后得到的<code>Hash</code>值应该是不相同的，但是想要找到一条不同的<code>key</code>对应的<code>Hash</code>值都不一样几乎为不可能的，数组的存储空间是有限的，会加大散列冲突的概率。对于散列冲突，我们需要通过其他的方式来解决。</p>
+<h1 id="散列冲突"><a href="#散列冲突" class="headerlink" title="散列冲突"></a>散列冲突</h1><p>上一小节已经分析了散列冲突产生的原因，我们一般使用<strong>开放寻址法</strong>和<strong>链表法</strong>来解决。</p>
+<h2 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h2><p>开放寻址法的主要思想是当出现散列冲突时，我们去重新寻找下一个位置，直到找到空闲位置为止，将数据放置到找到的空闲位置。那么如何去寻找空闲位置呢？一般有线性探测法、二次探测法和双重散列法。</p>
+<h3 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h3><p><img src="线性探测.png" alt="线性探测"><br>如上图所示，就是使用线性探测法进行寻址。<code>table</code>部分红色区域表示该部分已经存储数据，当号码牌<code>060702</code>通过<code>Hash</code>函数进行散列后，得到的区域已经存储了数据，因此需要从当前为止开始依次向后查找，遇到空闲的位置即为找到存储数据的位置。</p>
+<p><img src="散列表中查找元素.png" alt="散列表中查找元素"><br>在<code>Hash</code>表中进行查找元素的过程与插入的过程相似。首先通过<code>Hash</code>函数进行散列后求出对应的散列值，然后比较数组中的该位置的元素是否与要查找的元素相等，若相等，则找到对应的元素；若不想等，则依次向后查找。如果遍历数组时，遇到空闲位置还没找到，则说明散列表中没有对应的元素。</p>
+<p>通过插入和查找过程可以发现，当散列表中的数据越来越多时，散列冲突会越来越大，数组中的空闲位置会越来越少，线性探测的时间会越来越久。最坏的时间复杂度为<code>O(n)</code>。</p>
+<h3 id="二次探测法"><a href="#二次探测法" class="headerlink" title="二次探测法"></a>二次探测法</h3><p>将线性探测的寻址方法表示出来即为：<code>hash(key)+0</code>，<code>hash(key)+1</code>，<code>hash(key)+2</code>……</p>
+<p>二次探测法与线性探测法很类似，只是步长由原来的1变为二次方即<code>hash(key)+0</code>，<code>hash(key)+1^2</code>，<code>hash(key)+2^2</code>……</p>
+<h3 id="双重散列法"><a href="#双重散列法" class="headerlink" title="双重散列法"></a>双重散列法</h3><p>双重散列是指我们不仅仅使用一个散列函数，而是使用一组散列函数。如<code>hash1(key)</code>，<code>hash2(key)</code>，<code>hash3(key)</code>……我们先用第一个散列函数计算，如果存储位置已经被占用，则使用第二个散列函数，以此类推直到找到空余的存储位置即可。</p>
+<h2 id="链表法"><a href="#链表法" class="headerlink" title="链表法"></a>链表法</h2><p>链表法比开放寻址法更为常用，在<code>JDK8</code>以前的<code>HashMap</code>底层源码就是使用链表法进行实现的。其结构图如下所示：</p>
+<p><img src="链表法.png" alt="链表法"><br>如上图所示，在散列表中每个桶或者槽会对应一条链表，所有散列相同的元素会在存储在同一槽中对应的链表中。</p>
+<p>在插入时，通过<code>Hash</code>函数计算出对应的槽位，然后将其插入到对应的链表中即可；当查找时，也是通过<code>Hash</code>函数计算出相应的槽位，然后查找相应的元素即可。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="jacob2359 wechat" style="width: 200px; max-width: 100%;">
+    <div>更多文章，请关注公众号：算法半岛</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢鼓励</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="jacob2359 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="jacob2359 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
+          
+            <a href="/tags/散列表/" rel="tag"># 散列表</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/24/数据结构与算法-二叉查找树/" rel="next" title="数据结构与算法-二叉查找树">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法-二叉查找树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/11/LeetCode-79-单词搜索/" rel="prev" title="LeetCode-79 单词搜索">
+                LeetCode-79 单词搜索 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">jacob2359</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/flase" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JacobLei" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表的理解"><span class="nav-number">1.</span> <span class="nav-text">散列表的理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash函数"><span class="nav-number">2.</span> <span class="nav-text">Hash函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列冲突"><span class="nav-number">3.</span> <span class="nav-text">散列冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开放寻址法"><span class="nav-number">3.1.</span> <span class="nav-text">开放寻址法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性探测法"><span class="nav-number">3.1.1.</span> <span class="nav-text">线性探测法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二次探测法"><span class="nav-number">3.1.2.</span> <span class="nav-text">二次探测法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双重散列法"><span class="nav-number">3.1.3.</span> <span class="nav-text">双重散列法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表法"><span class="nav-number">3.2.</span> <span class="nav-text">链表法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jacob2359</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共47.3k字</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

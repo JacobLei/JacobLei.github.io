@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构与算法,二叉树,">
+  <meta name="keywords" content="数据结构与算法,二叉查找树,">
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
-<meta name="keywords" content="数据结构与算法,二叉树">
+<meta name="keywords" content="数据结构与算法,二叉查找树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法-二叉查找树">
 <meta property="og:url" content="http://JacobLei.github.io/2019/06/24/数据结构与算法-二叉查找树/index.html">
@@ -91,11 +91,11 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-二叉查找树/二叉查找树.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-二叉查找树/二叉查找树的查找操作.png">
-<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-二叉查找树/二叉查找树的查找操作.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-二叉查找树/二叉查找树的插入操作.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-二叉查找树/二叉查找树的删除操作1.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-二叉查找树/二叉查找树的删除操作2.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-二叉查找树/二叉查找树的删除操作3.png">
-<meta property="og:updated_time" content="2019-06-24T06:20:46.990Z">
+<meta property="og:updated_time" content="2019-07-02T12:23:26.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法-二叉查找树">
 <meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
@@ -362,7 +362,7 @@
 <li>如果根节点的值大于需要查找的值，则在左子树中递归查找。</li>
 </ul>
 <p>查找的代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class BinarySearchTree &#123;</span><br><span class="line">  public static class Node &#123;</span><br><span class="line">    private int data;</span><br><span class="line">    private Node left;</span><br><span class="line">    private Node right;</span><br><span class="line"></span><br><span class="line">    public Node(int data) &#123;</span><br><span class="line">      this.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private Node tree;</span><br><span class="line"></span><br><span class="line">  public Node find(int data) &#123;</span><br><span class="line">    Node p = tree;</span><br><span class="line">    while (p != null) &#123;</span><br><span class="line">      if(p.data &lt; data)</span><br><span class="line">        p = p.right;</span><br><span class="line">      else if(p.data &gt; data)</span><br><span class="line">        p = p.left;</span><br><span class="line">      else</span><br><span class="line">        return p;</span><br><span class="line">    &#125;</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="二叉查找树的插入操作"><a href="#二叉查找树的插入操作" class="headerlink" title="二叉查找树的插入操作"></a>二叉查找树的插入操作</h1><p><img src="二叉查找树的查找操作.png" alt="二叉查找树的查找操作"></p>
+<h1 id="二叉查找树的插入操作"><a href="#二叉查找树的插入操作" class="headerlink" title="二叉查找树的插入操作"></a>二叉查找树的插入操作</h1><p><img src="二叉查找树的插入操作.png" alt="二叉查找树的插入操作"></p>
 <p>对于二叉查找树的插入操作时，新插入节点一般都是插入到叶子节点，从根节点开始依次比较新插入节点的值与当前节点值的大小关系，具体步骤如下：</p>
 <ul>
 <li>如果新插入节点的值<strong>大于</strong>当前节点的值，并且当前节点的右子树为空，则将新插入的节点插入到右子节点的位置；如果当前节点的右子树不可空，则递归遍历右子树，查找插入的位置；</li>
@@ -435,7 +435,7 @@
           
             <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
           
-            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
+            <a href="/tags/二叉查找树/" rel="tag"># 二叉查找树</a>
           
         </div>
       
@@ -458,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/11/LeetCode-79-单词搜索/" rel="prev" title="LeetCode-79 单词搜索">
-                LeetCode-79 单词搜索 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/24/数据结构与算法-散列表/" rel="prev" title="数据结构与算法-散列表">
+                数据结构与算法-散列表 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -537,7 +537,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -559,7 +559,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -650,7 +650,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共45.7k字</span>
+  <span class="post-count">博客全站共47.3k字</span>
 </div>
 
 
