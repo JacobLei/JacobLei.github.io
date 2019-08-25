@@ -93,7 +93,13 @@
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/线性探测.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/散列表中查找元素.png">
 <meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/链表法.png">
-<meta property="og:updated_time" content="2019-07-02T14:44:08.912Z">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/装载因子的确定.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/动态扩容策略.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/链表法-红黑树.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/HashMap初始化大小.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/HashMap装载因子.png">
+<meta property="og:image" content="http://jacoblei.github.io/2019/06/24/数据结构与算法-散列表/HashMap中的Hash函数.png">
+<meta property="og:updated_time" content="2019-08-25T09:12:52.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法-散列表">
 <meta name="twitter:description" content="本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。">
@@ -375,6 +381,35 @@
 <h2 id="链表法"><a href="#链表法" class="headerlink" title="链表法"></a>链表法</h2><p>链表法比开放寻址法更为常用，在<code>JDK8</code>以前的<code>HashMap</code>底层源码就是使用链表法进行实现的。其结构图如下所示：</p>
 <p><img src="链表法.png" alt="链表法"><br>如上图所示，在散列表中每个桶或者槽会对应一条链表，所有散列相同的元素会在存储在同一槽中对应的链表中。</p>
 <p>在插入时，通过<code>Hash</code>函数计算出对应的槽位，然后将其插入到对应的链表中即可；当查找时，也是通过<code>Hash</code>函数计算出相应的槽位，然后查找相应的元素即可。</p>
+<h1 id="Hash函数的确定"><a href="#Hash函数的确定" class="headerlink" title="Hash函数的确定"></a><code>Hash</code>函数的确定</h1><p>通过前面学习到，<code>Hash</code>表的查询效率并不是<code>O(1)</code>，它与<code>Hash</code>函数、散列冲突等因素有关。如果<code>Hash</code>函数确定得不好，可能导致散列冲突概率升高，查询效率下降。那么，该如何设计<code>Hash</code>函数呢？</p>
+<p>首先，<code>Hash</code>函数的设计一般设计得不要过于复杂，过于复杂的<code>Hash</code>函数会导致计算时间过多，从而影响散列表的性能；</p>
+<p>其次，<code>Hash</code>函数生成的值要尽可能随机并且均匀分布，这样才能避免或者最小化散列冲突，而且即使出现冲突，散列到每个槽中的数据也会比较平均，不会导致某些槽中的数据过多，而另一部分槽中的数据过少的情况。</p>
+<p>传统的<code>Hash</code>函数的设计方法有直接寻址法、平方取中法、折叠法、随机数法等，也可以根据实际情况自己设计<code>Hash</code>函数。</p>
+<h1 id="装载因子的确定"><a href="#装载因子的确定" class="headerlink" title="装载因子的确定"></a>装载因子的确定</h1><p>为了定量的表示<code>Hash</code>表中空位的多少，定义<strong>装载因子</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hash表的装载因子 = 填入表中的元素个数 / Hash表的长度</span><br></pre></td></tr></table></figure></p>
+<p>由公式可知，装载因子越大，说明<code>Hash</code>表中的元素越多，空闲位置越少，散列冲突的概率越大，散列表的性能就会下降。</p>
+<p>对于没有频繁插入和删除的静态数据结合来说，可以根据数据的特点和分布情况设计出符合这些数据的<code>Hash</code>函数，从而减少了散列冲突。</p>
+<p>但是大部分情况下是动态数据，数据集合是频繁变动的，我们无法事先知道数据的个数，因此也无法事先申请一个足够大的<code>Hash</code>表。随着数据加入，填入表中的元素个数增多，装载因子增大，当装载因子达到一定程度时，散列冲突便不可接受，因此我们无法根据数据的特征和分布情况设计出符合这些数据的<code>Hash</code>函数，而是需要<strong>动态扩容</strong>，重新申请一个更大的<code>Hash</code>表，将数据重新存储到新的<code>Hash</code>表中。</p>
+<p>如下图中的散列表，当装载因子达到0.8时进行扩容，装载因子变为0.4，原来的数据就会存储在新的<code>Hash</code>表中。<br><img src="装载因子的确定.png" alt="装载因子的确定"></p>
+<p>当数据插入到<code>Hash</code>表时，如果装载因子还未达到临界值，此时还不需要扩容，插入的数据非常快，但如果装载因子达到了临界值，这是就需要先进行扩容，然后再插入数据，这个时候就会变得很慢。</p>
+<p>当数据需要从<code>Hash</code>表中删除时，如果<code>Hash</code>表已经经历过扩容，随着数据的删除，空闲空间会越来越多。当程序对内存空间非常敏感时，可以设置当装载因子小于某个临界值时，启动动态缩容，让内容空间得到充分利用；当程序对内存空间不太敏感时，就不需要进行动态缩容处理。</p>
+<h1 id="动态扩容策略"><a href="#动态扩容策略" class="headerlink" title="动态扩容策略"></a>动态扩容策略</h1><p>为了减少动态扩容耗时，我们可以将扩容的操作穿插在插入操作过程中。具体如下图所示：<br><img src="动态扩容策略.png" alt="动态扩容策略"><br>这样每次插入时迁移一个数据，没有集中一次性迁移数据那样耗时，不会形成明显的阻塞。由于迁移过程中，有新旧两个<code>Hash</code>表，查找数据时，先在新的<code>Hash</code>表中进行查找，如果没有，再去旧的<code>Hash</code>表中进行查找。</p>
+<h1 id="合理的选择Hash冲突解决办法"><a href="#合理的选择Hash冲突解决办法" class="headerlink" title="合理的选择Hash冲突解决办法"></a>合理的选择<code>Hash</code>冲突解决办法</h1><p>常用的解决<code>Hash</code>冲突的方法有开放寻址法和链表法。在<code>Java</code>中<code>ThreadLocalMap</code>采用线性探测的开放寻址法来解决冲突，<code>LinkedHashMap</code>采用了链表法解决<code>Hash</code>冲突。</p>
+<h2 id="开放寻址法-1"><a href="#开放寻址法-1" class="headerlink" title="开放寻址法"></a>开放寻址法</h2><ul>
+<li>优点：将数据存储在数组中；利用CPU缓存加快查询速度；并且序列化简单。</li>
+<li>缺点：删除数据麻烦，需要特殊标记已删除的数据；需要将所有数据存储在一个连续的存储空间中，比起链表来说，冲突的代价更高。</li>
+<li>适用场景：当数据量较小、装载因子小的时候可以采用开放寻址法。</li>
+</ul>
+<h2 id="链表法-1"><a href="#链表法-1" class="headerlink" title="链表法"></a>链表法</h2><ul>
+<li>优点：对内存利用率高；对装载因子的容忍度高（开放寻址法只适用在装载因子小于1的情况，接近1时，就可能会有大量散列冲突，导致大量的探测、再散列，性能下降很多。但对于链表法，只要散列函数的值随机均匀，当装载因子大于1时，只是对应的链表长度增加，这里也可以通过将链表改造为跳表或者红黑树的方式加快查找速度）</li>
+<li>缺点：由于链表需要存储指针，存储较小的对象时，指针占用的内容消耗比较大；链表不支持随机查找，查找效率较低。</li>
+<li>适用场景：适合于存储大对象、数据量大的散列表；比开放寻址法更加灵活，支持更多的优化策略，如使用红黑树替代链表。</li>
+<li>优化：我们可将链表法中的链表替换成更加高效的动态的数据结构，如跳表、红黑树等。<br><img src="链表法-红黑树.png" alt="链表法-红黑树"></li>
+</ul>
+<h1 id="Java中的HashMap分析"><a href="#Java中的HashMap分析" class="headerlink" title="Java中的HashMap分析"></a><code>Java</code>中的<code>HashMap</code>分析</h1><p><code>HashMap</code>是一个成熟的散列表，在Java中得到了广泛应用，下面来具体分析。</p>
+<h2 id="初始大小"><a href="#初始大小" class="headerlink" title="初始大小"></a>初始大小</h2><p>如下图所示，<code>HashMap</code>默认的初始大小为16。<br><img src="HashMap初始化大小.png" alt="HashMap初始化大小"><br>如果事先知道数据量的大小，可以通过修改初始大小，减少动态扩容次数，来提升<code>HashMap</code>性能。</p>
+<h2 id="装载因子和动态扩容"><a href="#装载因子和动态扩容" class="headerlink" title="装载因子和动态扩容"></a>装载因子和动态扩容</h2><p>如下图所示，<code>HashMap</code>默认的装载因子为0.75。<br><img src="HashMap装载因子.png" alt="HashMap装载因子"><br>当<code>HashMap</code>中元素个数超过<code>0.75*capacity</code>（<code>capacity</code>表示<code>HashMap</code>实际的容量），就会启动动态扩容，每次扩容的大小为原来的两倍。</p>
+<h2 id="Hash冲突的解决办法"><a href="#Hash冲突的解决办法" class="headerlink" title="Hash冲突的解决办法"></a><code>Hash</code>冲突的解决办法</h2><p>在<code>JDK1.8</code>之前，<code>HashMap</code>底层采用的链表法来解决冲突。即使装载因子和<code>Hash</code>函数设计的再合理，随着数据量的增加也会出现链表过长的情况，一旦链表过长，严重影响了<code>HashMap</code>的性能。<br>在<code>JDK1.8</code>中对<code>HashMap</code>底层做了优化。当链表长度大于8时，链表就转化为红黑树，当链表小于8时，将红黑树转化为链表。因为当链表过长的时候，查找的效率将会变慢，利用红黑树快速增删改查的特性，可以提高<code>HashMap</code>的性能，而链表不长时，红黑树的快速增删改查的特性就不太明显，并且红黑树的还有维护成本，因此不需要将链表转化为红黑树。</p>
+<h2 id="Hash函数-1"><a href="#Hash函数-1" class="headerlink" title="Hash函数"></a><code>Hash</code>函数</h2><p><code>HashMap</code>中的<code>Hash</code>函数如下图所示，追求简单高效且分布均匀。<br><img src="HashMap中的Hash函数.png" alt="HashMap中的Hash函数"></p>
 
       
     </div>
@@ -607,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表的理解"><span class="nav-number">1.</span> <span class="nav-text">散列表的理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash函数"><span class="nav-number">2.</span> <span class="nav-text">Hash函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列冲突"><span class="nav-number">3.</span> <span class="nav-text">散列冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开放寻址法"><span class="nav-number">3.1.</span> <span class="nav-text">开放寻址法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性探测法"><span class="nav-number">3.1.1.</span> <span class="nav-text">线性探测法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二次探测法"><span class="nav-number">3.1.2.</span> <span class="nav-text">二次探测法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双重散列法"><span class="nav-number">3.1.3.</span> <span class="nav-text">双重散列法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表法"><span class="nav-number">3.2.</span> <span class="nav-text">链表法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表的理解"><span class="nav-number">1.</span> <span class="nav-text">散列表的理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash函数"><span class="nav-number">2.</span> <span class="nav-text">Hash函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列冲突"><span class="nav-number">3.</span> <span class="nav-text">散列冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开放寻址法"><span class="nav-number">3.1.</span> <span class="nav-text">开放寻址法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性探测法"><span class="nav-number">3.1.1.</span> <span class="nav-text">线性探测法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二次探测法"><span class="nav-number">3.1.2.</span> <span class="nav-text">二次探测法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双重散列法"><span class="nav-number">3.1.3.</span> <span class="nav-text">双重散列法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表法"><span class="nav-number">3.2.</span> <span class="nav-text">链表法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash函数的确定"><span class="nav-number">4.</span> <span class="nav-text">Hash函数的确定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装载因子的确定"><span class="nav-number">5.</span> <span class="nav-text">装载因子的确定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态扩容策略"><span class="nav-number">6.</span> <span class="nav-text">动态扩容策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合理的选择Hash冲突解决办法"><span class="nav-number">7.</span> <span class="nav-text">合理的选择Hash冲突解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开放寻址法-1"><span class="nav-number">7.1.</span> <span class="nav-text">开放寻址法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表法-1"><span class="nav-number">7.2.</span> <span class="nav-text">链表法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的HashMap分析"><span class="nav-number">8.</span> <span class="nav-text">Java中的HashMap分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始大小"><span class="nav-number">8.1.</span> <span class="nav-text">初始大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装载因子和动态扩容"><span class="nav-number">8.2.</span> <span class="nav-text">装载因子和动态扩容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash冲突的解决办法"><span class="nav-number">8.3.</span> <span class="nav-text">Hash冲突的解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash函数-1"><span class="nav-number">8.4.</span> <span class="nav-text">Hash函数</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -646,7 +681,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.3k字</span>
+  <span class="post-count">博客全站共49.1k字</span>
 </div>
 
 
