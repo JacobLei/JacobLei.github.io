@@ -49,6 +49,57 @@
   </entry>
   
   <entry>
+    <title>数据结构与算法-平衡二叉查找树</title>
+    <link href="http://JacobLei.github.io/2019/09/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    <id>http://JacobLei.github.io/2019/09/07/数据结构与算法-红黑树/</id>
+    <published>2019-09-07T10:14:13.000Z</published>
+    <updated>2019-09-07T11:14:48.204Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。</p><a id="more"></a><p>在学习完二叉查找树后我们了解到它支持快速插入、删除、查找操作，各个操作的时间复杂度跟树的高度成正比，理想情况下，时间复杂度为<code>O(logn)</code>。但是随着对二叉查找树的不断更新，树的高度可能远大于<code>O(logn)</code>从而导致操作效率的下降。当二叉查找树只有左子树或只有右子树时，二叉查找树退化成为链表，时间复杂度为<code>O(n)</code>。为了避免解决上述问题，我们学习<strong>平衡二叉查找树</strong>。</p><h1 id="什么是平衡二叉查找树"><a href="#什么是平衡二叉查找树" class="headerlink" title="什么是平衡二叉查找树"></a>什么是平衡二叉查找树</h1><p>一颗平衡二叉树要求二叉树中的每个节点的左子树和右子树的高度最多相差1。如完全二叉树、满二叉树都是平衡二叉树。如下图左边的树即为平衡二叉树，右边的树不为平衡二叉树。<br><img src="平衡二叉树与非平衡二叉树.png" alt="平衡二叉树与非平衡二叉树"></p><p>平衡二叉查找树不仅需要满足平衡的条件，而且需要满足二叉查找树的条件。最经典的平衡二叉查找树为AVL树。</p><h1 id="平衡二叉查找树的性质"><a href="#平衡二叉查找树的性质" class="headerlink" title="平衡二叉查找树的性质"></a>平衡二叉查找树的性质</h1><ul><li>左子树与右子树高度之差绝对值不超过1</li><li>树的每个左子树和右子树都是平衡二叉查找树</li><li>每个节点都有一个平衡因子，任何一个节点的平衡因子为-1、0或者1（每一个节点的平衡因子 = 右子树高度 - 左子树高度）</li></ul><h1 id="平衡二叉查找树的生成"><a href="#平衡二叉查找树的生成" class="headerlink" title="平衡二叉查找树的生成"></a>平衡二叉查找树的生成</h1><p>由于平衡二叉查找树既要保证平衡性质又要保证查找的性质，那么该如何生成一颗平衡二叉查找树呢？</p><p>由于平衡二叉查找树首先一颗二叉查找树，我们需要根据二叉查找树的规则进行插入</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文为王争老师在『极客时间』中的课程《数据结构与算法之美》的学习笔记，想要学习原文的同学购买相关课程学习。如有侵权请联系作者删除。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据结构与算法" scheme="http://JacobLei.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数据结构与算法" scheme="http://JacobLei.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="平衡二叉查找树" scheme="http://JacobLei.github.io/tags/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netty[1]--Java网络编程</title>
+    <link href="http://JacobLei.github.io/2019/08/25/netty-1-Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    <id>http://JacobLei.github.io/2019/08/25/netty-1-Java网络编程/</id>
+    <published>2019-08-25T10:27:12.000Z</published>
+    <updated>2019-08-25T15:39:04.362Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-五种IO模型"><a href="#1-五种IO模型" class="headerlink" title="1 五种IO模型"></a>1 五种IO模型</h1><p>把内存中的数据写到外部设备（硬盘、终端、网络等）上这个动作称为输出（写）<code>Output</code>操作，把外部设备的数据读取到内存中的这个动作称为输入（读）<code>Input</code>操作，我们把这种输入和输出动作称为IO操作。IO操作是操作系统的底层功能实现，一般是通过调用IO指令完成。在本系列文章中，所有的IO都是网络IO。</p><p>常见的IO模型有：阻塞式IO（blocking IO）、非阻塞式IO（nonblocking IO）、IO复用（IO multiplexing）、信号驱动式IO（signal driven IO）和异步IO（asynchronous IO）。其中前四种IO模型为同步IO，最后一种为异步IO。</p><p>对于每一种模型，一个输入操作通常包含两个不同的阶段：</p><ul><li>第一阶段：等待数据准备好；</li><li>第二阶段：将数据从内核拷贝到进程中。<br>对于一个套接字上的输入操作，第一阶段通常需要等待数据从网络中到达，当所等待的分组到达时，它被复制到内核中的某个缓冲区。第二阶段把数据从内核缓冲区复制到应用进程缓冲区。具体如下图所示：</li></ul><p><img src="数据读入.png" alt="数据读入"></p><h2 id="1-1-阻塞式IO"><a href="#1-1-阻塞式IO" class="headerlink" title="1.1 阻塞式IO"></a>1.1 阻塞式IO</h2><p>以在食堂就餐为例，当自己点了一份盖饭，然后原地等着厨师把盖饭做好，接着自己端到餐桌上就餐。这样的流程就为阻塞式IO，即当厨师给你做饭时，你需要在原地等待，而不能做其他的事情。</p><p>在网络编程中，读取客户端的数据需要调用<code>recvfrom</code>，在默认情况下，这个调用会阻塞到数据接收完成。具体流程如下图所示：<br><img src="阻塞式IO.png" alt="阻塞式IO"><br>这是最简单的IO模型，当文件描述符（fd）较少、就绪很快的情况下可以使用。</p><h2 id="1-2-非阻塞式IO"><a href="#1-2-非阻塞式IO" class="headerlink" title="1.2 非阻塞式IO"></a>1.2 非阻塞式IO</h2><p>以在食堂就餐为例，当自己点了一份盖饭，点完之后先回到桌上看一会书，然后厨师差不多将要做好盖饭后，再去问问盖饭做完了没有，如果做好了就去端了回到餐桌上就餐，如果没有没有做好再等一会在过去问，依次循环直到饭做好为止。这样的流程就是非阻塞式IO。</p><p>对于非阻塞IO，需要设置<code>socket</code>为<code>non-blocking</code>。具体流程如下图所示：<br><img src="非阻塞式IO.png" alt="非阻塞式IO"></p><h2 id="1-3-IO复用"><a href="#1-3-IO复用" class="headerlink" title="1.3 IO复用"></a>1.3 IO复用</h2><p>以在食堂就餐为例，当进入食堂后，你将你需要点的盖饭告诉服务员，服务员通知厨师去做，等盖饭做好后，服务员再过来通知你饭已经做好了，然后你再去窗口将饭端到自己的餐桌上就餐。</p><p>在网络编程中，我们一般调用<code>select</code>、<code>poll</code>或者<code>epoll</code>来等待数据报套接字变为可读，当套接字为可读时，再调用<code>recvfrom</code>把所读数据复制到应用进程缓冲区中。具体流程图如下图所示：<br><img src="IO复用.png" alt="IO复用"></p><h2 id="1-4-信号驱动式IO"><a href="#1-4-信号驱动式IO" class="headerlink" title="1.4 信号驱动式IO"></a>1.4 信号驱动式IO</h2><p>以在食堂就餐为例，当你想吃中饭时，先给食堂厨师发个短信，告诉需要一份盖饭，厨师收到短信后回复“收到，马上为你准备”；当厨师将盖饭做好后，发送一个短信告诉你盖饭已经做好了，这时你再去窗口取盖饭到餐桌上就餐。</p><p>在网络编程中，信号驱动式IO使用的比较少。具体流程图如下图所示：<br><img src="信号驱动式IO.png" alt="信号驱动式IO"></p><h2 id="1-5-异步IO"><a href="#1-5-异步IO" class="headerlink" title="1.5 异步IO"></a>1.5 异步IO</h2><p>以在食堂就餐为例，当进入食堂后，你将你需要点的盖饭告诉服务员，然后你就取餐桌等待即可；服务员通知厨师去做，等盖饭做好后，服务员将盖饭端到你餐桌。</p><p>在网络编程中，其具体流程图如下图所示：<br><img src="异步IO.png" alt="异步IO"></p><h1 id="2-网络编程模型"><a href="#2-网络编程模型" class="headerlink" title="2 网络编程模型"></a>2 网络编程模型</h1><p>基于上述五种模型，在Java中，随着NIO和NIO2.0(AIO)的引入，有BIO、NIO和AIO网络编程模型。</p><h2 id="2-1-BIO"><a href="#2-1-BIO" class="headerlink" title="2.1 BIO"></a>2.1 BIO</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-五种IO模型&quot;&gt;&lt;a href=&quot;#1-五种IO模型&quot; class=&quot;headerlink&quot; title=&quot;1 五种IO模型&quot;&gt;&lt;/a&gt;1 五种IO模型&lt;/h1&gt;&lt;p&gt;把内存中的数据写到外部设备（硬盘、终端、网络等）上这个动作称为输出（写）&lt;code&gt;Outp
+      
+    
+    </summary>
+    
+      <category term="netty" scheme="http://JacobLei.github.io/categories/netty/"/>
+    
+    
+      <category term="netty" scheme="http://JacobLei.github.io/tags/netty/"/>
+    
+      <category term="Java网络编程" scheme="http://JacobLei.github.io/tags/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数据结构与算法-散列表</title>
     <link href="http://JacobLei.github.io/2019/06/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%95%A3%E5%88%97%E8%A1%A8/"/>
     <id>http://JacobLei.github.io/2019/06/24/数据结构与算法-散列表/</id>
@@ -274,9 +325,9 @@
     
       <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
     
-      <category term="双指针" scheme="http://JacobLei.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
       <category term="字符串" scheme="http://JacobLei.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="双指针" scheme="http://JacobLei.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     
   </entry>
   
@@ -506,64 +557,6 @@
       <category term="双指针" scheme="http://JacobLei.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     
       <category term="链表" scheme="http://JacobLei.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-18 四数之和</title>
-    <link href="http://JacobLei.github.io/2019/05/31/LeetCode-18-%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    <id>http://JacobLei.github.io/2019/05/31/LeetCode-18-四数之和/</id>
-    <published>2019-05-31T01:02:34.000Z</published>
-    <updated>2019-05-31T02:36:30.255Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>题目：18. 四数之和</li><li>难度：中等</li><li>分类：数组</li><li>解决方案：双指针<a id="more"></a></li></ul><p>今天我们学习第18题<strong>四数之和</strong>，这是一道中等题。像这样数组的题目经常作为面试题来考察面试者算法能力和写代码能力，因此最好能手写出该题。下面我们看看这道题的题目描述。</p><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/4sum/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个包含<code>n</code>个整数的数组<code>nums</code>和一个目标值<code>target</code>，判断<code>nums</code> 中是否存在四个元素<code>a</code>，<code>b</code>，<code>c</code>和<code>d</code> ，使得<code>a + b + c + d</code>的值与 <code>target</code>相等？找出所有满足条件且不重复的四元组。</p><p>注意：<strong>答案中不可以包含重复的四元组。</strong></p><p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。</span><br><span class="line"></span><br><span class="line">满足要求的四元组集合为：</span><br><span class="line">[</span><br><span class="line">  [-1,  0, 0, 1],</span><br><span class="line">  [-2, -1, 1, 2],</span><br><span class="line">  [-2,  0, 0, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>在前面，我们做过<a href="https://www.jacob2359.com/2019/05/04/LeetCode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_blank" rel="noopener">LeetCode-1 两数之和</a>和<a href="https://www.jacob2359.com/2019/05/28/LeetCode-15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_blank" rel="noopener">LeetCode-15 三数之和</a>，这个题目是求四数之和，其基本思路和三数之和差不多，只是在三数之和的基础上增加一个<code>for</code>循环。具体求解过程详见<a href="https://www.jacob2359.com/2019/05/28/LeetCode-15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_blank" rel="noopener">LeetCode-15 三数之和</a>。<code>java</code>代码如下所示；<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; fourSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> &amp;&amp; nums.length &lt; <span class="number">4</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 对数组排序</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 固定第一个数</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length-<span class="number">3</span>; ++i)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(i!=<span class="number">0</span> &amp;&amp; nums[i] == nums[i-<span class="number">1</span>]) </span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(nums[i+<span class="number">1</span>]&gt;<span class="number">0</span> &amp;&amp; nums[i] &gt;= target)</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            <span class="comment">// 固定第二个数</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;nums.length-<span class="number">2</span>; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>((j != i + <span class="number">1</span>) &amp;&amp; nums[j] == nums[j-<span class="number">1</span>]) </span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 使用左右指针进行查找</span></span><br><span class="line">                <span class="keyword">int</span> left = j+<span class="number">1</span>, right = nums.length-<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">                    <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[left] + nums[right];</span><br><span class="line">                    <span class="keyword">if</span>(sum == target)&#123;</span><br><span class="line">                        ArrayList&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">                        tmp.add(nums[i]);</span><br><span class="line">                        tmp.add(nums[j]);</span><br><span class="line">                        tmp.add(nums[left]);</span><br><span class="line">                        tmp.add(nums[right]);</span><br><span class="line">                        res.add(tmp);</span><br><span class="line">                        ++left;</span><br><span class="line">                        --right;</span><br><span class="line">                        <span class="keyword">while</span>(left&lt;right &amp;&amp; nums[left] == nums[left-<span class="number">1</span>])</span><br><span class="line">                            ++left;</span><br><span class="line">                        <span class="keyword">while</span>(left&lt;right &amp;&amp; nums[right] == nums[right+<span class="number">1</span>])</span><br><span class="line">                            --right;</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum &gt; target)</span><br><span class="line">                        --right;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        ++left;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><img src="/2019/05/31/LeetCode-18-四数之和/提交结果.png" title="提交结果"><h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A18_4Sum.java" target="_blank" rel="noopener">LeetCode-18 四数之和</a></p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/4sum/" target="_blank" rel="noopener">四数之和</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;题目：18. 四数之和&lt;/li&gt;
-&lt;li&gt;难度：中等&lt;/li&gt;
-&lt;li&gt;分类：数组&lt;/li&gt;
-&lt;li&gt;解决方案：双指针
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
-    
-      <category term="数组" scheme="http://JacobLei.github.io/tags/%E6%95%B0%E7%BB%84/"/>
-    
-      <category term="双指针" scheme="http://JacobLei.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-17 电话号码的字母组合</title>
-    <link href="http://JacobLei.github.io/2019/05/30/LeetCode-17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/"/>
-    <id>http://JacobLei.github.io/2019/05/30/LeetCode-17-电话号码的字母组合/</id>
-    <published>2019-05-30T05:24:15.000Z</published>
-    <updated>2019-05-30T07:27:20.678Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>题目：17. 电话号码的字母组合</li><li>难度：中等</li><li>分类：字符串</li><li>解决方案：字符串遍历<a id="more"></a></li></ul><p>今天我们学习第17题<strong>电话号码的字母组合</strong>，这是一道中等题。像这样字符串的题目经常作为面试题来考察面试者算法能力和写代码能力，因此最好能手写出该题。下面我们看看这道题的题目描述。</p><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">题目描述</a></h1><p>给定一个仅包含数字<code>2-9</code>的字符串，返回所有它能表示的字母组合。</p><p>给出数字到字母的映射如下（与电话按键相同）。注意<code>1</code>不对应任何字母。<br><img src="/2019/05/30/LeetCode-17-电话号码的字母组合/题目描述.jpg"></p><p>示例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br></pre></td></tr></table></figure></p><p>说明:<br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这个题目的题意很好理解，让我们求电话号码的字母组合，从数字2到9中每个数字可以代表若干个字母，然后输一串数字，求出所有可能的组合。对于每个数字及其对应的字母可用数组建立对应关系，如下图所示。</p><img src="/2019/05/30/LeetCode-17-电话号码的字母组合/数字与其对应的字母.png" title="数字与其对应的字母"><p>我们可以通过这样的对应关系来构成组字符串，如对示例分析的示意图如下所示：</p><img src="/2019/05/30/LeetCode-17-电话号码的字母组合/示例详细分析过程.png" title="示例详细分析过程"><p>图中叶子节点中字符串即为字母组合。<br>将上述分析过程转化为<code>java</code>代码如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 数字与字母的对应关系</span></span><br><span class="line">        String[] map = &#123;<span class="string">""</span>, <span class="string">""</span>, <span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(digits.isEmpty())</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        <span class="comment">// 图中树的根节点</span></span><br><span class="line">        res.add(<span class="string">""</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历输入的数字</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : digits.toCharArray())&#123;</span><br><span class="line">            res = combine(map[c-<span class="string">'0'</span>], res);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据数字组合字母</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;String&gt; <span class="title">combine</span><span class="params">(String digits, List&lt;String&gt; list)</span></span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : digits.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">for</span>(String s : list)&#123;</span><br><span class="line">                res.add(s+c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><img src="/2019/05/30/LeetCode-17-电话号码的字母组合/提交结果.png" title="提交结果"><h1 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a>Github地址</h1><p><a href="https://github.com/JacobLei/leetcode/blob/master/src/main/java/A17_LetterCombinationsofaPhoneNumber.java" target="_blank" rel="noopener">LeetCode-17 电话号码的字母组合</a></p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">17. 电话号码的字母组合</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;题目：17. 电话号码的字母组合&lt;/li&gt;
-&lt;li&gt;难度：中等&lt;/li&gt;
-&lt;li&gt;分类：字符串&lt;/li&gt;
-&lt;li&gt;解决方案：字符串遍历
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://JacobLei.github.io/tags/LeetCode/"/>
-    
-      <category term="字符串" scheme="http://JacobLei.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
